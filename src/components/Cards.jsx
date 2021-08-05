@@ -26,14 +26,13 @@ class Cards extends React.Component {
           <Link to={ `/comidas/${item.idMeal}` } key={ item.idMeal }>
             <div
               data-testid={ `${index}-recipe-card` }
-              style={ { margin: '10px' } }
+              className="recipe-card"
             >
-              <h3 data-testid={ `${index}-card-name` }>{ item.strMeal }</h3>
+              <p data-testid={ `${index}-card-name` }>{ item.strMeal }</p>
               <img
-                data-testid={ `${index}-card-img` }
                 src={ item.strMealThumb }
                 alt="food card"
-                width="50px"
+                className="recipe-image"
               />
             </div>
           </Link>
@@ -47,14 +46,14 @@ class Cards extends React.Component {
         <Link to={ `/bebidas/${item.idDrink}` } key={ item.idDrink }>
           <div
             data-testid={ `${index}-recipe-card` }
-            style={ { margin: '10px' } }
+            className="recipe-card"
           >
-            <h3 data-testid={ `${index}-card-name` }>{ item.strDrink }</h3>
+            <p data-testid={ `${index}-card-name` }>{ item.strDrink }</p>
             <img
               data-testid={ `${index}-card-img` }
               src={ item.strDrinkThumb }
               alt="food card"
-              width="50px"
+              className="recipe-image"
             />
           </div>
         </Link>
@@ -65,7 +64,7 @@ class Cards extends React.Component {
   render() {
     const { itemsToRender, typeFood } = this.props;
     return (
-      <div style={ { display: 'flex' } }>
+      <div className="recipe-cards">
         {this.renderCards(itemsToRender, typeFood)}
       </div>
     );

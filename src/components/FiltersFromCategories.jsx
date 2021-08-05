@@ -47,11 +47,11 @@ class FiltersFromCategories extends React.Component {
     return filteredItems.map((item, index) => (
       <div
         key={ index }
-        style={ { margin: '10px' } }
       >
         <button
           data-testid={ `${item.strCategory}-category-filter` }
           type="button"
+          className="filter-category-button"
           onClick={ () => this.onClickFiltering(item.strCategory) }
         >
           { item.strCategory }
@@ -63,14 +63,17 @@ class FiltersFromCategories extends React.Component {
   render() {
     const { categories } = this.props;
     return (
-      <div style={ { display: 'flex' } }>
-        <button
-          data-testid="All-category-filter"
-          onClick={ this.removeAllFilters }
-          type="button"
-        >
-          All
-        </button>
+      <div className="filter-category-buttons">
+        <div>
+          <button
+            data-testid="All-category-filter"
+            className="filter-category-button"
+            onClick={ this.removeAllFilters }
+            type="button"
+          >
+            All
+          </button>
+        </div>
         {this.renderCards(categories)}
       </div>
     );

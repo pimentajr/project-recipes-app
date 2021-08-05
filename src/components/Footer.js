@@ -17,9 +17,20 @@ class Footer extends Component {
           data-testid="drinks-bottom-btn"
           src={ drinkIcon }
         >
-          <img
+          {/* <img
             src={ drinkIcon }
             alt="Atalho para Bebidas"
+          /> */}
+          <i
+            style={
+              {
+                fontSize: '38px',
+                display: 'block',
+                margin: '0',
+                padding: '0',
+                color: '#0F46A5' }
+            }
+            className="fas fa-cocktail"
           />
         </Link>
         <Link
@@ -27,9 +38,18 @@ class Footer extends Component {
           data-testid="explore-bottom-btn"
           src={ exploreIcon }
         >
-          <img
+          {/* <img
             src={ exploreIcon }
             alt="Atalho para Explorar"
+          /> */}
+          <i
+            style={ {
+              fontSize: '38px',
+              display: 'block',
+              margin: '0',
+              color: '#D95948',
+              padding: '0' } }
+            className="far fa-compass"
           />
         </Link>
         <Link
@@ -37,9 +57,18 @@ class Footer extends Component {
           data-testid="food-bottom-btn"
           src={ mealIcon }
         >
-          <img
+          {/* <img
             src={ mealIcon }
             alt="Atalho para Comidas"
+          /> */}
+          <i
+            style={ {
+              fontSize: '38px',
+              display: 'block',
+              marginRight: '6px',
+              padding: '0',
+              color: '#0F46A5' } }
+            className="fas fa-utensils"
           />
         </Link>
       </div>

@@ -76,10 +76,12 @@ class Bebidas extends React.Component {
           typeFood="drinks"
         />
         <Cards
+          className="recipe-cards"
           itemsToRender={ itemsToRender }
           renderOneOrNot={ renderOneOrNot }
           typeFood="drink"
         />
+        <div style={ { height: '60px' } } />
         <Footer />
       </div>
     );

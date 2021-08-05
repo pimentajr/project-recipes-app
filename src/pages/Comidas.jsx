@@ -76,10 +76,12 @@ class Comidas extends React.Component {
           typeFood="meals"
         />
         <Cards
+          className="recipe-cards"
           itemsToRender={ itemsToRender }
           renderOneOrNot={ renderOneOrNot }
           typeFood="food"
         />
+        <div style={ { height: '60px' } } />
         <Footer />
       </div>
     );

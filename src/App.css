@@ -9,6 +9,60 @@
 .footer {
   bottom: 0;
   position: fixed;
+  background-color: #ffffff;
+  border: 1px solid lightgrey;
+}
+
+.recipe-card {
+  background-color: #A7C8FD;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 47vw;
+  font-size: 28px;
+  font-weight: bolder;
+  font-family: 'Palanquin', sans-serif;
+  text-align: center;
+  color: #2E2F37;
+  align-items: center;
+  justify-content: space-around;
+  margin: 15px 5px;
+  border: 0.6px solid #82889E;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px  #82889E;
+}
+
+.recipe-image {
+  width: 150px;
+  border-radius: 20%;
+  margin-bottom: 10px;
+  border: 2px solid gray;
+}
+
+.recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-category-buttons {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.filter-category-button {
+  background-color: #0F46A5;
+  border-radius: 8px;
+  border: #307DFB;
+  margin: 5px;
+  font-size: 13px;
+  color: #ffffffff;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 130px;
+  height: 40px;
+  box-shadow: 2px 3px 8px  #307DFB;
 }
 
 .btn-start {
