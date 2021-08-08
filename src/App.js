@@ -17,6 +17,7 @@ import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ProcessoComidas from './pages/ProcessoComidas';
 import ProcessoBebidas from './pages/ProcessoBebidas';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           render={ (props) => <ProcessoBebidas { ...props } /> }
         />
         <Route exact path="/explorar/comidas/area" component={ ExplorarComidasPorArea } />
+        <Route exact path="/explorar/bebidas/area" component={ NotFound } />
         <Route path="/perfil" component={ Perfil } />
         <Route path="/receitas-feitas" component={ ReceitasFeitas } />
         <Route path="/receitas-favoritas" component={ ReceitasFavoritas } />
