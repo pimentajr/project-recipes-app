@@ -9,9 +9,11 @@ function Explorer() {
     enableSearchButton: false,
     enableProfileButton: true,
   };
+
   return (
     <div>
       <Header props={ headerProps } />
+      <h1>Explorar...</h1>
       <Link to="/explorar/comidas">
         <button
           type="button"
