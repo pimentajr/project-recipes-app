@@ -9,6 +9,5 @@ export async function CategoryDrinkFilter(param) {
   const linkDrinkCategory = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${param}`;
   const awaitDrink = await fetch(linkDrinkCategory);
   const awaitDrinkToJSON = await awaitDrink.json();
-  console.log(awaitDrinkToJSON);
-  return awaitDrinkToJSON.drinks;
+  return awaitDrinkToJSON;
 }

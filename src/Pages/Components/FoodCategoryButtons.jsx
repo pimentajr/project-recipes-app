@@ -23,8 +23,7 @@ export default function FoodCategory() {
 
     setSelectedCategory(value);
     const lastCategory = selectedCategory;
-
-    if (target.value === lastCategory || target.value === 'All') {
+    if (target.innerHTML === lastCategory || target.innerHTML === 'All') {
       setRenderCategory(true);
     } else {
       const twelveItems = 12;

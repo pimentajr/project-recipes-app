@@ -12,17 +12,23 @@ import DrinkCategoryCards from './Components/DrinkCategoryCards';
 
 function Drinks() {
   const history = useHistory();
-  const { dataDrinks, setRequestDrinksParams, renderCategory } = useContext(Context);
+  const { dataDrinks,
+    setRequestDrinksParams,
+    renderCategory,
+    requestDrinksParams } = useContext(Context);
 
   const [showSearch, setShowSearch] = useState(false);
   const drinks = 'drinks';
 
   // Busca por bebidas quando monta a tela de bebidas
   useEffect(() => {
-    setRequestDrinksParams({ searchInput: '', searchMethod: '' });
-
+    if (requestDrinksParams.searchInput === ''
+    && requestDrinksParams.searchMethod === '') {
+      setRequestDrinksParams({
+        searchInput: '', searchMethod: '' });
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [renderCategory]);
 
   if (dataDrinks !== null && dataDrinks.length === 1) {
     const oneResult = dataDrinks[0];

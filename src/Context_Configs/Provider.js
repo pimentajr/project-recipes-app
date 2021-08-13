@@ -112,6 +112,7 @@ function Provider({ children }) {
     setFoodsForCategory,
     drinksForCategory,
     setDrinksForCategory,
+    requestDrinksParams,
   };
 
   return (
