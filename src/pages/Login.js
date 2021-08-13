@@ -38,7 +38,9 @@ function Login(props) {
   return (
     <div className="login-page">
       <div className="container">
-        <h1>Recipes App</h1>
+        <div className="title-container">
+          <h1 className="title">Recipes App</h1>
+        </div>
         <div className="imgcontainer">
           <img src={ foodLogo } alt="food-logo" />
         </div>

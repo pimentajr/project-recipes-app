@@ -1,4 +1,5 @@
 .login-page {
+  background-color: white;
   border: 3px solid #f1f1f1;
   display: flex;
   flex-direction: column;
@@ -6,17 +7,30 @@
 }
 
 .login-page .container {
-  font-family: Times , serif;
+  font-family: fantasy;
   padding: 16px;
 }
 
-.login-page h1 {
+.login-page .container .title-container {
+  background-color: #ffc729;
+  border-radius: 25px;
+}
+
+.login-page .container .title {
+  color: white;
+  font-family: monospace;
+  font-size: 40px;
+  letter-spacing: 1px;
+  margin: 0 auto;
   text-align: center;
+  text-shadow: -1px -1px 0 orangered , 3px 3px 0 black;
+  top: 100%;
+  width: 100%;
 }
 
 .login-page input {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
   box-sizing: border-box;
   display: inline-block;
   margin: 8px 0;
@@ -24,14 +38,24 @@
   width: 100%;
 }
 
+input:focus {
+  border: 0 none;
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.login-page input:focus {
+  border: 2px solid #ffc729;
+}
+
 .login-page img {
   width: 70%;
 }
 
 .login-page button {
-  background-color: rgb(100, 198, 255);
+  background-color: #ffc729;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   color: black;
   cursor: pointer;
   margin: 8px 0;
@@ -48,7 +72,46 @@
   opacity: 0.8;
 }
 
+.login-page button:focus {
+  border: 0 none;
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
 .login-page .imgcontainer {
   margin: 24px 0 12px;
   text-align: center;
+}
+
+/* Referências para usar animação:
+https://css-tricks.com/snippets/css/shake-css-keyframe-animation/
+https://metring.com.br/animacao-infinita-em-css
+https://developer.mozilla.org/pt-BR/docs/Web/CSS/@keyframes
+ */
+
+.login-page .title-container .title {
+  animation: shake 0.7s cubic-bezier(0.6, 0.07, 0.19, 0.17) both;
+  animation-iteration-count: infinite;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translate3d(1, 8, 3);
+}
+
+@keyframes shake {
+
+  10%, 90% {
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(3px, 0, 0);
+  }
 }
