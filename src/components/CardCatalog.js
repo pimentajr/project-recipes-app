@@ -55,8 +55,6 @@ function CardCatalog() {
     ));
   }
 
-  console.log(catalog);
-
   useEffect(() => () => setCatalog(''), [setCatalog]);
 
   return (

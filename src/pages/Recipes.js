@@ -7,11 +7,19 @@ import shareIcon from '../images/shareIcon.svg';
 function Recipes() {
   const headerProps = {
     title: 'Receitas Feitas',
-    enableSearchButton: true,
+    enableSearchButton: false,
     enableProfileButton: true,
   };
 
+  const [hidden, setHidden] = useState(false);
+
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+
+  function copyButton(doneRecipe) {
+    alert('Link copiado!');
+    copy(`http://localhost:3000/${doneRecipe.type}s/${doneRecipe.id}`);
+    setHidden(true);
+  }
 
   function renderMealRecipe(doneRecipess, index) {
     return (
@@ -33,16 +41,14 @@ function Recipes() {
         </p>
         <p data-testid={ `${index}-horizontal-done-date` }>{doneRecipess.doneDate}</p>
         <button
-          onClick={ () => {
-            alert('Link copiado!');
-            copy(`http://localhost:3000/${doneRecipess.type}s/${doneRecipess.id}`);
-          } }
+          onClick={ () => copyButton(doneRecipess) }
           src={ shareIcon }
           type="button"
           data-testid={ `${index}-horizontal-share-btn` }
         >
           <img src={ shareIcon } alt="shareIcon" />
         </button>
+        {hidden && <p>Link copiado!</p>}
         { doneRecipess.tags.map((tag, index2) => {
           if (index2 <= 1) {
             return (
@@ -77,15 +83,13 @@ function Recipes() {
         <p data-testid={ `${index}-horizontal-done-date` }>{doneRecipess.doneDate}</p>
         <button
           src={ shareIcon }
-          onClick={ () => {
-            alert('Link copiado!');
-            copy(`http://localhost:3000/${doneRecipess.type}s/${doneRecipess.id}`);
-          } }
+          onClick={ () => copyButton(doneRecipess) }
           type="button"
           data-testid={ `${index}-horizontal-share-btn` }
         >
           <img src={ shareIcon } alt="shareIcon" />
         </button>
+        {hidden && <p>Link copiado!</p>}
       </div>
     );
   }
@@ -94,8 +98,10 @@ function Recipes() {
     Food: true,
     Drinks: true,
   });
+
   const MINUS_ONE = -1;
   let index = MINUS_ONE;
+
   return (
     <div>
       <Header props={ headerProps } />
