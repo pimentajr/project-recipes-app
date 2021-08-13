@@ -8,3 +8,10 @@
   margin: 0 11px;
   width: 150px;
 }
+
+.scroll-container {
+  margin-top: 20%;
+  display: flex;
+  overflow-y: hidden;
+  height: 100%;
+}
