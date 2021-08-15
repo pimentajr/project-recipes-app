@@ -53,17 +53,16 @@ function RecomendationRecipesCards({ identifier }) {
             data-testid={ `${index}-recomendation-card` }
             className="recomendations-card"
           >
+            <div
+              data-testid={ `${index}-card-name` }
+            >
+              <h4 data-testid={ `${index}-recomendation-title` }>{supply[type.title]}</h4>
+            </div>
             <img
-              className="supply-card"
               src={ supply[type.image] }
               alt={ supply[type.title] }
               data-testid={ `${index}-card-img` }
             />
-            <div
-              data-testid={ `${index}-card-name` }
-            >
-              <h1 data-testid={ `${index}-recomendation-title` }>{supply[type.title]}</h1>
-            </div>
           </div>
         </Link>
       ))}
