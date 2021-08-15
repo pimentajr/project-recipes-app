@@ -7,18 +7,17 @@
 }
 
 .login-page .container {
-  font-family: fantasy;
+  font-family: Verdana , Tahoma , sans-serif;
   padding: 16px;
 }
 
 .login-page .container .title-container {
-  background-color: #ffc729;
+  background-color: #fc6e51;
   border-radius: 25px;
 }
 
 .login-page .container .title {
   color: white;
-  font-family: monospace;
   font-size: 40px;
   letter-spacing: 1px;
   margin: 0 auto;
@@ -45,7 +44,7 @@ input:focus {
 }
 
 .login-page input:focus {
-  border: 2px solid #ffc729;
+  border: 2px solid #fc6e51;
 }
 
 .login-page img {
@@ -53,7 +52,7 @@ input:focus {
 }
 
 .login-page button {
-  background-color: #ffc729;
+  background-color: #fc6e51;
   border: none;
   border-radius: 25px;
   color: black;
