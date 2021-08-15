@@ -4,7 +4,8 @@ import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 import MealFavoriteButton from '../components/MealFavoriteButton';
 import CheckboxMeal from '../components/CheckboxMeal';
-import '../components/css/RecipeDetails.css';
+// import '../components/css/RecipeDetails.css';
+import './css/RecipeDetails.css';
 
 function RecipeMealInProgress({ match, location }) {
   const [recipe, setRecipe] = useState('');
@@ -58,40 +59,55 @@ function RecipeMealInProgress({ match, location }) {
   function renderMealDetails() {
     if (recipe.meals) {
       return (
-        <div className="supply-card">
-          <img
-            data-testid="recipe-photo"
-            src={ recipe.meals[0].strMealThumb }
-            alt={ recipe.meals[0].strMeal }
-          />
-          <h1 data-testid="recipe-title">{ recipe.meals[0].strMeal }</h1>
-          <button
-            onClick={ () => {
-              alert('Link copiado!');
-              copy(`http://localhost:3000${pathURL}`);
-              setHidden(false);
-            } }
-            type="button"
-            data-testid="share-btn"
-          >
-            <img src={ shareIcon } alt="shareIcon" />
-          </button>
-          {!hidden && <div>Link copiado!</div>}
-          <MealFavoriteButton recipe={ recipe.meals[0] } />
-          <h3 data-testid="recipe-category">
-            {recipe.meals[0].strCategory}
-          </h3>
-          <h2>Ingredientes</h2>
-          <CheckboxMeal
-            recipe={ recipe }
-            ingredients={ ingredients }
-            measures={ measures }
-            pathname={ pathname }
-          />
-          <h2>Instruções</h2>
-          <p data-testid="instructions">
-            {recipe.meals[0].strInstructions}
-          </p>
+        <div className="supply-card-container">
+          <div className="supply-card">
+            <div className="title-container">
+              <h1 data-testid="recipe-title">{ recipe.meals[0].strMeal }</h1>
+              <h3 data-testid="recipe-category">
+                {recipe.meals[0].strCategory}
+              </h3>
+            </div>
+            <div className="img-buttons-container">
+              <img
+                className="supply-img"
+                data-testid="recipe-photo"
+                src={ recipe.meals[0].strMealThumb }
+                alt={ recipe.meals[0].strMeal }
+              />
+              <button
+                onClick={ () => {
+                  alert('Link copiado!');
+                  copy(`http://localhost:3000${pathURL}`);
+                  setHidden(false);
+                } }
+                type="button"
+                data-testid="share-btn"
+              >
+                <img src={ shareIcon } alt="shareIcon" />
+              </button>
+              {!hidden && <div>Link copiado!</div>}
+              <MealFavoriteButton recipe={ recipe.meals[0] } />
+            </div>
+            <div className="ingredients-container">
+              <div className="title-container">
+                <h3>Ingredientes</h3>
+              </div>
+              <CheckboxMeal
+                recipe={ recipe }
+                ingredients={ ingredients }
+                measures={ measures }
+                pathname={ pathname }
+              />
+            </div>
+            <div className="intructions-container">
+              <div className="title-container">
+                <h3>Instruções</h3>
+              </div>
+              <p data-testid="instructions">
+                {recipe.meals[0].strInstructions}
+              </p>
+            </div>
+          </div>
         </div>
       );
     }
