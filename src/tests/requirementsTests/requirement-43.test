@@ -1,4 +1,5 @@
 import React from 'react';
+import { screen, fireEvent } from '@testing-library/react';
 import { renderWithRouterAndStore } from '../helper/testConfig';
 import * as requestMenu from '../../services/requestMenu';
 import mealsFiltersByAll from '../mocks/meals/mockFilterMealsByAll';
@@ -26,19 +27,47 @@ jest
   .spyOn(requestMenu, 'drinksRecipeDetails')
   .mockImplementation(() => Promise.resolve(drinkRecipeDetails));
 
-afterEach(() => jest.clearAllMocks());
-beforeEach(() => jest.clearAllMocks());
+// Como realizar o mock do clipboard https://stackoverflow.com/questions/62351935/how-to-mock-navigator-clipboard-writetext-in-jest
+
+const originalClipboard = { ...global.navigator.clipboard };
+
+beforeEach(() => {
+  jest.clearAllMocks();
+  const mockClipboard = {
+    writeText: jest.fn(),
+  };
+  global.navigator.clipboard = mockClipboard;
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+  global.navigator.clipboard = originalClipboard;
+});
 
 describe(`43 - Implement the solution so that when you click the share button, the
 recipe link within the app should be copied to the clipboard and a message notifying
 you that the link was copied should appear`, () => {
   it(`Checks the message "Link copiado!" and if the food recipe link was copied to the
-  clipboard`, () => {
+  clipboard`, async () => {
     renderWithRouterAndStore(<App />, { route: mockMealPath });
+
+    fireEvent.click(await screen.findByTestId('share-btn'));
+
+    expect(await screen.findByText('Link copiado!')).toBeInTheDocument();
+    expect(navigator.clipboard.writeText).toHaveBeenCalled();
+    expect(navigator.clipboard.writeText)
+      .toHaveBeenCalledWith(expect.stringContaining('comidas/52977'));
   });
 
   it(`Checks the message "Link copiado!" and if the drink recipe link was copied to
-  the clipboard`, () => {
+  the clipboard`, async () => {
     renderWithRouterAndStore(<App />, { route: mockDrinkPath });
+
+    fireEvent.click(await screen.findByTestId('share-btn'));
+
+    expect(await screen.findByText('Link copiado!')).toBeInTheDocument();
+    expect(navigator.clipboard.writeText).toHaveBeenCalled();
+    expect(navigator.clipboard.writeText)
+      .toHaveBeenCalledWith(expect.stringContaining('/bebidas/15997'));
   });
 });
