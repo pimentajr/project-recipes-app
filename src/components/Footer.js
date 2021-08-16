@@ -47,7 +47,7 @@ class Footer extends Component {
               fontSize: '38px',
               display: 'block',
               margin: '0',
-              color: '#D95948',
+              color: '#1d7a66',
               padding: '0' } }
             className="far fa-compass"
           />

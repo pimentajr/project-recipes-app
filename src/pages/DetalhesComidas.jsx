@@ -145,46 +145,52 @@ class DetalhesComidas extends Component {
     const valuesMeasure = filtradosMeasure.map((value) => meals[0][value]);
     const onlyMeasures = valuesMeasure.filter((value) => value);
     return (
-      <div>
-        Detalhes de comidas
-        <div>
+      <div className="recipe-details">
+        <div className="image-details">
           <img
             data-testid="recipe-photo"
             src={ strMealThumb }
             alt={ strMeal }
-            style={ { width: '100px' } }
           />
         </div>
-        <div>
+        <div className="div-content">
           <h3 data-testid="recipe-title">{ strMeal }</h3>
-          <button
-            type="button"
-            data-testid="share-btn"
-            onClick={ this.shareLinkClick }
-          >
-            <img src={ shareIcon } alt="share" />
-          </button>
-          <button
-            type="button"
-            onClick={ this.favoriteButtonClick }
-          >
-            { !favoriteButton
-              ? (
-                <img
-                  data-testid="favorite-btn"
-                  src={ whiteHeartIcon }
-                  alt="no-favorite"
-                />)
-              : (
-                <img
-                  data-testid="favorite-btn"
-                  src={ blackHeartIcon }
-                  alt="yes-favorite"
-                />)}
-          </button>
+          <div className="buttons-details">
+            <button
+              type="button"
+              data-testid="share-btn"
+              onClick={ this.shareLinkClick }
+              className="share-button"
+            >
+              {/* <img src={ shareIcon } alt="share" /> */}
+              <i className="fas fa-share-alt-square" />
+            </button>
+            <button
+              type="button"
+              onClick={ this.favoriteButtonClick }
+              className="like-button"
+            >
+              { !favoriteButton
+                ? (
+                // <img
+                //   data-testid="favorite-btn"
+                //   src={ whiteHeartIcon }
+                //   alt="no-favorite"
+                // />)
+                  <i className="fas fa-heart like-button-notLiked" />)
+                : (
+                // <img
+                //   data-testid="favorite-btn"
+                //   src={ blackHeartIcon }
+                //   alt="yes-favorite"
+                // />
+                  <i className="fas fa-heart like-button-liked" />
+                )}
+            </button>
+          </div>
           {shareButton ? <span style={ { color: 'red' } }>Link copiado!</span> : null}
-          <p data-testid="recipe-category">{ strCategory }</p>
-          <p>Ingredientes:</p>
+          <p className="category-details" data-testid="recipe-category">{ strCategory }</p>
+          <p className="ingredients-details">Ingredientes:</p>
           { onlyIngredientes.map((value, index) => (
             <p
               key={ index }
@@ -192,7 +198,7 @@ class DetalhesComidas extends Component {
             >
               {`${value} - ${onlyMeasures[index]}`}
             </p>)) }
-          <p data-testid="instructions">{ strInstructions }</p>
+          <p className="text-instructions" data-testid="instructions">{ strInstructions }</p>
           <iframe
             src={ strYoutube }
             height="200"
@@ -226,7 +232,7 @@ class DetalhesComidas extends Component {
         {showButton
           && (
             <Link to={ `/comidas/${id}/in-progress` }>
-              <div>
+              <div className="div-button-details">
                 <button
                   data-testid="start-recipe-btn"
                   type="button"

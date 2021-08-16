@@ -59,7 +59,7 @@ class Login extends Component {
     return (
       <div>
         <div className="meals">
-          <span className="logo">TRYBE</span>
+          <span className="logo">App Recipes</span>
           <object
             className="rocksGlass"
             type="image/svg+xml"
@@ -67,38 +67,41 @@ class Login extends Component {
           >
             Glass
           </object>
-          <label htmlFor="email">
-            <input
-              data-testid="email-input"
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              value={ email }
-              onChange={ this.handleChangeState }
-            />
-          </label>
-          <br />
-          <label htmlFor="password">
-            <input
-              data-testid="password-input"
-              type="password"
-              name="password"
-              placeholder="Senha"
-              value={ password }
-              onChange={ this.handleChangeState }
-            />
-          </label>
-          <br />
-          <Link to="/comidas">
-            <button
-              disabled={ disabled }
-              data-testid="login-submit-btn"
-              type="button"
-              onClick={ this.getEmailForLogin }
-            >
-              Entrar
-            </button>
-          </Link>
+          <div className="login-div">
+            <label htmlFor="email">
+              <input
+                data-testid="email-input"
+                className="input-login"
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                value={ email }
+                onChange={ this.handleChangeState }
+              />
+            </label>
+            <label htmlFor="password">
+              <input
+                className="input-login"
+                data-testid="password-input"
+                type="password"
+                name="password"
+                placeholder="Senha"
+                value={ password }
+                onChange={ this.handleChangeState }
+              />
+            </label>
+            <Link to="/comidas">
+              <button
+                disabled={ disabled }
+                data-testid="login-submit-btn"
+                type="button"
+                className="button-login"
+                onClick={ this.getEmailForLogin }
+              >
+                Entrar
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     );

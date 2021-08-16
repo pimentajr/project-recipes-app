@@ -1,3 +1,4 @@
+
 .footer, .header {
   display: flex;
   flex-direction: row;
@@ -11,6 +12,72 @@
   position: fixed;
   background-color: #ffffff;
   border: 1px solid lightgrey;
+}
+
+.header h3 {
+  font-family: 'Palanquin', sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  color: #1d7a66;
+}
+
+.form-search {
+  text-align: center;
+}
+
+.searcher {
+  display: block;
+  width: 90vw;
+  margin-left: 5vw;
+  border-radius: 5px;
+  border: 1px solid #BFC6DC;
+}
+
+.radio-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'Palanquin', sans-serif;
+  font-size: 18px;
+}
+.radio-button {
+  margin: 5px;
+}
+
+.button-search-input {
+  margin: 5px;
+  top:10px;
+  background-color: #0F46A5;
+  border-radius: 8px;
+  border: #307DFB;
+  font-size: 10px;
+  color: #ffffffff;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 80px;
+  height: 30px;
+}
+
+.profile-button {
+  background-color: #ffffff;
+  border: #ffffff;
+}
+
+.profile-button i {
+  font-size: 40px;
+  font-weight: bold;
+  color: #0F46A5;
+}
+
+.search-button {
+  background-color: #ffffff;
+  border: #ffffff;
+}
+
+.search-button i {
+  font-size: 35px;
+  font-weight:normal;
+  color: #0F46A5;
 }
 
 .recipe-card {
@@ -65,11 +132,6 @@
   box-shadow: 2px 3px 8px  #307DFB;
 }
 
-.btn-start {
-  bottom: 0;
-  position: fixed;
-}
-
 .div-scroll {
   display: flex;
   height: 280px;
@@ -79,17 +141,66 @@
 
 .recomendation-card {
   width: 180px;
+  margin: 0 10px;
 }
 
 .img-card {
   width: 180px;
 }
 
+.button-login:disabled {
+  background-color: lightgray;
+  border-radius: 8px;
+  border: 1px solid white;
+  font-size: 13px;
+  color: #ffffffff;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 130px;
+  height: 40px;
+}
+
+.button-login {
+  background-color: #1d7a66;
+  border-radius: 8px;
+  border: 1px solid white;
+  font-size: 13px;
+  color: #ffffffff;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 130px;
+  height: 40px;
+}
+
+.login-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.input-login {
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: #307DFB;
+  font-size: 17px;
+  color: #0F46A5;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 50vw;
+  height: 50px;
+}
+
 .meals {
   align-items: center;
-  background: #0fa36b;
+  background: #0F46A5;
   color: #464646;
   display: flex;
+  font-family: 'Palanquin', sans-serif;
   flex-direction: column;
   font-family: sans-serif;
   height: 100vh;
@@ -100,28 +211,180 @@
 .rocksGlass {
   animation: shake 1s infinite ease;
   max-height: 80vh;
+  height: 170px;
+  width: 180px;
+  margin: 30px;
 }
-
-/*
-#iceLeft {
-  animation: clink .8s infinite ease;
-  opacity: 0.6;
-  transform-origin: 36px 66px;
-}
-
-#iceRight {
-  animation: clink .8s .2s infinite ease;
-  opacity: 0.6;
-  transform-origin: 60px 78px;
-}
-*/
 
 .meals > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
-  font-family: Montserrat , sans-serif;
+  font-family: 'Palanquin', sans-serif;
   font-size: 3em;
   font-weight: 900;
+}
+
+.recipe-details {
+  display: flex;
+  font-size: 1.2em;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Palanquin', sans-serif;
+}
+
+.div-button-details {
+  border: 1px solid lightgray;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 70px;
+}
+
+.buttons-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-button {
+  background-color: white;
+  color: #0F46A5;
+  border: white;
+}
+
+.share-button i {
+  font-size: 45px;
+}
+
+.like-button {
+  background-color: #0F46A5;
+  color: #0F46A5;
+  border: white;
+  margin: 5px;
+  padding: 5px 9.5px;
+  border-radius: 4px;
+}
+
+.like-button-progress {
+  background-color: #0F46A5;
+  color: #0F46A5;
+  border: white;
+  margin: 5px;
+  padding: 0px 8px;
+  border-radius: 4px;
+}
+
+.like-button-notLiked {
+  color: white;
+  border: white;
+}
+
+.like-button-liked {
+  color: #1d7a66;
+}
+
+.btn-start {
+  background-color: #0F46A5;
+  border-radius: 8px;
+  border: #307DFB;
+  margin: 5px;
+  font-size: 13px;
+  color: #ffffffff;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 130px;
+  height: 40px;
+  box-shadow: 2px 3px 8px  #307DFB;
+}
+
+.footer-progress {
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  position: fixed;
+  background-color: #ffffff;
+  border: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.btn-start:disabled {
+  background-color: lightgray;
+  border-radius: 8px;
+  border: 1px solid white;
+  font-size: 13px;
+  color: #ffffffff;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 130px;
+  height: 40px;
+}
+
+.div-content {
+  text-align: center;
+}
+
+.div-content h3 {
+  font-size: 35px;
+}
+
+.text-instructions {
+  margin: 0 20px;
+  margin-bottom: 20px;
+}
+
+.image-details img {
+  border-radius: 100%;
+  border: 1px solid #307DFB;
+  width: 150px;
+  margin: 20px;
+}
+
+.category-details {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.ingredients-details {
+  font-size: 38px;
+}
+
+.profile {
+  font-family: 'Palanquin', sans-serif;
+  text-align: center;
+}
+
+.email-profile {
+  font-size: 30px;
+  margin-top: 50px;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 45px;
+}
+
+.profile-buttons button {
+  background-color: #0F46A5;
+  border-radius: 8px;
+  border: #307DFB;
+  margin: 12px;
+  font-size: 16px;
+  color: #ffffffff;
+  font-weight: bold;
+  line-height: 24px;
+  font-family: 'Palanquin', sans-serif;
+  width: 170px;
+  height: 80px;
+  box-shadow: 2px 3px 8px  #307DFB;
 }
 
 @keyframes shake {

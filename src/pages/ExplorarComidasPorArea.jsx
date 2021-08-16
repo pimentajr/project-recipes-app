@@ -60,7 +60,7 @@ class ExplorarComidasPorArea extends Component {
 
     return (
       <>
-        <Header />
+        <Header title="Explorar Area" />
         <select
           data-testid="explore-by-area-dropdown"
           onChange={ this.handleChange }

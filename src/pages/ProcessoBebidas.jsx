@@ -184,8 +184,8 @@ class ProcessoBebidas extends Component {
     const { pathname } = location;
     const urlId = pathname.split('/')[2];
     return (
-      <div>
-        <div>
+      <div className="recipe-details">
+        <div className="recipe-details">
           <InProgressDrinksHelper
             strDrinkThumb={ strDrinkThumb }
             strDrink={ strDrink }
@@ -195,7 +195,7 @@ class ProcessoBebidas extends Component {
             shareButton={ shareButton }
             strAlcoholic={ strAlcoholic }
           />
-          <p>Ingredientes:</p>
+          <p className="ingredients-details">Ingredientes:</p>
           { onlyIngredientes.map((value, index) => (
             <div
               key={ index }
@@ -217,20 +217,23 @@ class ProcessoBebidas extends Component {
               </label>
             </div>
           )) }
-          <p data-testid="instructions">{ strInstructions }</p>
+          <p className="text-instructions" data-testid="instructions">{ strInstructions }</p>
         </div>
-        <Link to="/receitas-feitas">
-          <button
-            data-testid="finish-recipe-btn"
-            type="button"
-            className="btn-start"
-            onClick={ this.doneRecipes }
-            disabled={ !setIngredients.cocktails[urlId]
+        <div style={ { height: '50px', width: '100vw' } } />
+        <div className="footer-progress">
+          <Link to="/receitas-feitas">
+            <button
+              data-testid="finish-recipe-btn"
+              type="button"
+              className="btn-start"
+              onClick={ this.doneRecipes }
+              disabled={ !setIngredients.cocktails[urlId]
               || setIngredients.cocktails[urlId].length !== onlyIngredientes.length }
-          >
-            Finalizar Receita
-          </button>
-        </Link>
+            >
+              Finalizar Receita
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

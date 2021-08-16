@@ -149,46 +149,54 @@ class DetalhesBebidas extends Component {
     const valuesMeasure = filtradosMeasure.map((value) => drinks[0][value]);
     const onlyMeasures = valuesMeasure.filter((value) => value);
     return (
-      <div>
-        Detalhes de bebidas
-        <div>
+      <div className="recipe-details">
+        <div className="image-details">
           <img
             data-testid="recipe-photo"
             src={ strDrinkThumb }
             alt={ strDrink }
-            style={ { width: '100px' } }
           />
         </div>
-        <div>
+        <div className="div-content">
           <h3 data-testid="recipe-title">{ strDrink }</h3>
-          <button
-            type="button"
-            data-testid="share-btn"
-            onClick={ this.shareLinkClick }
-          >
-            <img src={ shareIcon } alt="share" />
-          </button>
-          <button
-            type="button"
-            onClick={ this.favoriteButtonClick }
-          >
-            { !favoriteButton
-              ? (
-                <img
-                  data-testid="favorite-btn"
-                  src={ whiteHeartIcon }
-                  alt="no-favorite"
-                />)
-              : (
-                <img
-                  data-testid="favorite-btn"
-                  src={ blackHeartIcon }
-                  alt="yes-favorite"
-                />)}
-          </button>
+          <div className="buttons-details">
+
+            <button
+              type="button"
+              data-testid="share-btn"
+              onClick={ this.shareLinkClick }
+              className="share-button"
+            >
+              {/* <img src={ shareIcon } alt="share" /> */}
+              <i className="fas fa-share-alt-square" />
+            </button>
+            <button
+              type="button"
+              onClick={ this.favoriteButtonClick }
+              className="like-button"
+            >
+              { !favoriteButton
+                ? (
+                // <img
+                //   data-testid="favorite-btn"
+                //   src={ whiteHeartIcon }
+                //   alt="no-favorite"
+                // />
+                  <i className="fas fa-heart like-button-notLiked" />
+                )
+                : (
+                // <img
+                //   data-testid="favorite-btn"
+                //   src={ blackHeartIcon }
+                //   alt="yes-favorite"
+                // />
+                  <i className="fas fa-heart like-button-liked" />
+                )}
+            </button>
+          </div>
           {shareButton ? <span style={ { color: 'red' } }>Link copiado!</span> : null}
-          <p data-testid="recipe-category">{ strAlcoholic }</p>
-          <p>Ingredientes:</p>
+          <p className="category-details" data-testid="recipe-category">{ strAlcoholic }</p>
+          <p className="ingredients-details">Ingredientes:</p>
           { onlyIngredientes.map((value, index) => (
             <p
               key={ index }
@@ -196,7 +204,7 @@ class DetalhesBebidas extends Component {
             >
               {`${value} - ${onlyMeasures[index]}`}
             </p>)) }
-          <p data-testid="instructions">{ strInstructions }</p>
+          <p className="text-instructions" data-testid="instructions">{ strInstructions }</p>
         </div>
         <div className="div-scroll">
           {
@@ -222,7 +230,7 @@ class DetalhesBebidas extends Component {
         {showButton
           && (
             <Link to={ `/bebidas/${id}/in-progress` }>
-              <div>
+              <div className="div-button-details">
                 <button
                   data-testid="start-recipe-btn"
                   type="button"

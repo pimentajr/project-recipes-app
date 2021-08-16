@@ -184,8 +184,8 @@ class ProcessoComidas extends Component {
     const { pathname } = location;
     const urlId = pathname.split('/')[2];
     return (
-      <div>
-        <div>
+      <div className="recipe-details">
+        <div className="recipe-details">
           <InProgressFoodHelper
             strMealThumb={ strMealThumb }
             strMeal={ strMeal }
@@ -195,7 +195,7 @@ class ProcessoComidas extends Component {
             shareButton={ shareButton }
             strCategory={ strCategory }
           />
-          <p>Ingredientes:</p>
+          <p className="ingredients-details">Ingredientes:</p>
           { onlyIngredientes.map((value, index) => (
             <div
               key={ index }
@@ -210,6 +210,7 @@ class ProcessoComidas extends Component {
                   id={ `${index}-ingredient-name-and-measure` }
                   type="checkbox"
                   name={ value }
+                  style={ { margin: '0 8px' } }
                   onClick={ this.riskDoneIngredients }
                   defaultChecked={ ingredients[value] }
                 />
@@ -217,20 +218,23 @@ class ProcessoComidas extends Component {
               </label>
             </div>
           )) }
-          <p data-testid="instructions">{ strInstructions }</p>
+          <p className="text-instructions" data-testid="instructions">{ strInstructions }</p>
         </div>
-        <Link to="/receitas-feitas">
-          <button
-            data-testid="finish-recipe-btn"
-            type="button"
-            className="btn-start"
-            onClick={ this.doneRecipes }
-            disabled={ !setIngredients.meals[urlId]
+        <div style={ { height: '50px', width: '100vw' } } />
+        <div className="footer-progress">
+          <Link to="/receitas-feitas">
+            <button
+              data-testid="finish-recipe-btn"
+              type="button"
+              className="btn-start"
+              onClick={ this.doneRecipes }
+              disabled={ !setIngredients.meals[urlId]
               || setIngredients.meals[urlId].length !== onlyIngredientes.length }
-          >
-            Finalizar Receita
-          </button>
-        </Link>
+            >
+              Finalizar Receita
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
