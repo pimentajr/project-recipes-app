@@ -7,7 +7,7 @@ import '../styles/drink.css';
 function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
-  const [changeInput, setChangeInput] = useState(false);
+  const [changeInput, setChangeInput] = useState(true);
   const [changeInputDrinkChecked, setchangeInputDrinkChecked] = useState('');
 
   async function getDetailsById() {
@@ -21,7 +21,7 @@ function RecipeProgressDrink(props) {
 
   function isChecked(numero) {
     setChangeInput(() => !changeInput);
-    if (changeInput === false) {
+    if (changeInput === true) {
       setchangeInputDrinkChecked('checked');
       localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
     } else {
@@ -81,8 +81,18 @@ function RecipeProgressDrink(props) {
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ drink.strInstructions }</p>
-        <button type="button" data-testid="share-btn">Share</button>
-        <button type="button" data-testid="favorite-btn">Favorite</button>
+        <button
+          type="button"
+          data-testid="share-btn"
+        >
+          Share
+        </button>
+        <button
+          type="button"
+          data-testid="favorite-btn"
+        >
+          Favorite
+        </button>
         <button
           type="button"
           data-testid="finish-recipe-btn"
