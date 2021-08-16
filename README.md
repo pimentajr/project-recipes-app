@@ -1,7 +1,7 @@
 ### Termos de uso
 
 Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
-Abemos Grupo 28 \o/ =]!!!
+Abemos Grupo 28 \o/ =]!!! Criada minha branch main-group-28-MarcosMantovani
 ---
 
 # Boas vindas ao repositório do projeto de Receitas!

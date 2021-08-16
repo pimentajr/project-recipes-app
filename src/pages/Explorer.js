@@ -23,6 +23,7 @@ export default function Explorer() {
         name="comidas"
         id="themealdb"
         type="button"
+        data-testid="explore-food"
         onClick={ (e) => explorerOnClickBtn(e) }
       >
         Explorar Comidas
@@ -31,6 +32,7 @@ export default function Explorer() {
         name="bebidas"
         id="thecocktaildb"
         type="button"
+        data-testid="explore-drinks"
         onClick={ (e) => explorerOnClickBtn(e) }
       >
         Explorar Bebidas

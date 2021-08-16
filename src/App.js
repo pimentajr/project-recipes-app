@@ -21,7 +21,7 @@ import DrinksDetails from './pages/DrinksDetails';
 
 import Favorites from './pages/Favorites';
 import RecipesByLocation from './pages/RecipesByLocation';
-import DoRecipes from './pages/DoRecipes';
+import DoneRecipes from './pages/DoneRecipes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -31,19 +31,35 @@ function App() {
         <Route exact path="/" component={ Login } />
         <Route exact path="/comidas" component={ Foods } />
         <Route exact path="/bebidas" component={ Drinks } />
-        <Route path="/perfil" component={ Profile } />
+        <Route exact path="/perfil" component={ Profile } />
         <Route exact path="/explorar" component={ Explorer } />
         <Route exact path="/explorar/comidas" component={ ExplorerFoods } />
         <Route exact path="/explorar/bebidas" component={ ExplorerDrinks } />
-        <Route path="/explorar/comidas/ingredientes" component={ FoodsIngredients } />
-        <Route path="/explorar/bebidas/ingredientes" component={ DrinksIngredients } />
-        <Route path="/receitas-favoritas" component={ Favorites } />
-        <Route path="/explorar/comidas/area" component={ RecipesByLocation } />
-        <Route path="/receitas-feitas" component={ DoRecipes } />
-        <Route path="/comidas/:id" component={ FoodsDetails } />
-        <Route path="/bebidas/:id" component={ DrinksDetails } />
-        <Route path="/comidas/:id/in-progress" component={ FoodsRecipiesInProcess } />
-        <Route path="/bebidas/:id/in-progress" component={ DrinksRecipiesInProcess } />
+        <Route
+          exact
+          path="/explorar/comidas/ingredientes"
+          component={ FoodsIngredients }
+        />
+        <Route
+          exact
+          path="/explorar/bebidas/ingredientes"
+          component={ DrinksIngredients }
+        />
+        <Route exact path="/receitas-favoritas" component={ Favorites } />
+        <Route exact path="/explorar/comidas/area" component={ RecipesByLocation } />
+        <Route exact path="/receitas-feitas" component={ DoneRecipes } />
+        <Route exact path="/comidas/:id" component={ FoodsDetails } />
+        <Route exact path="/bebidas/:id" component={ DrinksDetails } />
+        <Route
+          exact
+          path="/comidas/:id/in-progress"
+          component={ FoodsRecipiesInProcess }
+        />
+        <Route
+          exact
+          path="/bebidas/:id/in-progress"
+          component={ DrinksRecipiesInProcess }
+        />
       </BrowserRouter>
     </Provider>
   );

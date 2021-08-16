@@ -25,7 +25,7 @@ export default function SearchBar({ searchTrigger }) {
     if (searchTrigger === 'thecocktaildb') {
       mealOrDrink = 'drinks';
     }
-    if (results[mealOrDrink] === null) {
+    if (results[mealOrDrink] === null || results[mealOrDrink] === undefined) {
       return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
     dispatch({

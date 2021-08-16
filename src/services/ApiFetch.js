@@ -12,10 +12,21 @@ const FetchApi = async (trigger, radioOption, inputValue, list) => {
   if (list === 'list') {
     url = 'list.php?c=list';
   }
+  if (Array.isArray(list)) {
+    const catName = list[0];
+    const details = list[0];
+    url = `filter.php?c=${catName}`;
+    if (details === 'details') {
+      url = `lookup.php?i=${list[1]}`;
+    }
+  } if (radioOption === 'random') {
+    url = 'random.php';
+  } if (radioOption === 'listIngredients') {
+    url = 'list.php?i=list';
+  }
   try {
     const feth = await fetch(`https://www.${trigger}.com/api/json/v1/1/${url}`);
     const feth2 = await feth.json();
-    // console.log(feth2[mealOrDrink]);
     return feth2;
   } catch (error) {
     return error.message;

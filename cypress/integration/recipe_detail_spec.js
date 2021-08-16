@@ -103,7 +103,8 @@ describe('35 - Desenvolva a tela de forma que contenha uma imagem da receita, o 
     cy.get('[data-testid="6-ingredient-name-and-measure"]').contains('6 leaves');
     cy.get('[data-testid="7-ingredient-name-and-measure"]').contains('Parmigiano-Reggiano');
     cy.get('[data-testid="7-ingredient-name-and-measure"]').contains('spinkling');
-
+    const teste = cy.get('[data-testid="instructions"]');
+console.log('log do teste', teste);
     cy.get('[data-testid="instructions"]').contains('Bring a large pot of water to a boil. Add kosher salt to the boiling water, then add the pasta. Cook according to the package instructions, about 9 minutes.\r\nIn a large skillet over medium-high heat, add the olive oil and heat until the oil starts to shimmer. Add the garlic and cook, stirring, until fragrant, 1 to 2 minutes. Add the chopped tomatoes, red chile flakes, Italian seasoning and salt and pepper to taste. Bring to a boil and cook for 5 minutes. Remove from the heat and add the chopped basil.\r\nDrain the pasta and add it to the sauce. Garnish with Parmigiano-Reggiano flakes and more basil and serve warm.');
 
     cy.get('[data-testid="video"]').should('exist');
@@ -175,9 +176,9 @@ describe('37 - Implemente os cards de recomendação, onde serão 6 cards, mas m
 
     cy.get('[data-testid*="recomendation-card"]').should('have.length', 6);
 
-    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="0-recomendation-title"]').contains('GG');
-    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="1-recomendation-title"]').contains('A1');
 
     cy.get('[data-testid="2-recomendation-card"]').should('exist').and('not.visible');
@@ -199,9 +200,9 @@ describe('37 - Implemente os cards de recomendação, onde serão 6 cards, mas m
 
     cy.get('[data-testid*="recomendation-card"]').should('have.length', 6);
 
-    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="0-recomendation-title"]').contains('Corba');
-    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="1-recomendation-title"]').contains('Kumpir');
 
     cy.get('[data-testid="2-recomendation-card"]').should('exist');
