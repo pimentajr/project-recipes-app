@@ -9,6 +9,7 @@ import FavoriteButton from '../components/FavoriteButton';
 import '../styles/Details.css';
 import RecipeButton from '../components/RecipeButton';
 import DetailsProvider from '../context/detailsProvider';
+import { Container } from '../styles';
 
 export default function Details({ type }) {
   const [recipe, setRecipe] = useState(null);
@@ -97,7 +98,14 @@ export default function Details({ type }) {
       </DetailsProvider>
     );
   }
-  return <p>Loading ...</p>;
+  return (
+    <Container white>
+      <div className="spinner-border" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </Container>
+
+  );
 }
 
 Details.propTypes = {

@@ -1,22 +1,3 @@
-.carousel {
-  display: flex;
-  min-width: 95vw;
-  overflow-x: auto;
-  padding: 10px;
-  scroll-snap-type: x mandatory;
-}
-
-.carouselItem {
-  flex: none;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-align: start;
-  width: 55vw;
-}
-
-.carouselItem img {
-  width: 45vw;
-}
-
 .startButton {
   background-color: #f8f9fa;
   border: 1px solid gray;
@@ -26,7 +7,7 @@
 }
 
 .details-img {
-  height: 25vh;
+  height: 32vh;
   object-fit: cover;
   width: 100%;
 }

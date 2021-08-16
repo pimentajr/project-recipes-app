@@ -11,15 +11,11 @@ export const Underline = styled.p`
 export const Container = styled.div`
   height: 100vh;
   padding: 10px;
-  background-color: #fcdc4d;
+  background-color: ${({ white }) => (white ? 'white' : '#fcdc4d')};
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-`;
-
-export const Title = styled.h1`
-  font-family: 'Libre Baskerville', Helvetica, Arial, sans-serif;
 `;
 
 export const HeaderNavBar = styled.div`
