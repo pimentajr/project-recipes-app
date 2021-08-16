@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import '../styles/mainRecipes.css';
 
 function MainRecipes({ foodOrDrink }) {
   const { mainItems,
@@ -25,7 +26,7 @@ function MainRecipes({ foodOrDrink }) {
         to={ foodOrDrink === 'Comidas' ? `/comidas/${item.idMeal}`
           : `/bebidas/${item.idDrink}` }
       >
-        <div data-testid={ `${index}-recipe-card` } key={ index }>
+        <div data-testid={ `${index}-recipe-card` } key={ index } className="itemCard">
           <img
             src={ foodOrDrink === 'Comidas' ? item.strMealThumb : item.strDrinkThumb }
             alt="food_image"
@@ -64,10 +65,10 @@ function MainRecipes({ foodOrDrink }) {
   }, []);
 
   return (
-    <div>
+    <div className="mainRecipes">
       {loadingMainRecipes ? <span>Carregando...</span> : (
         <div>
-          <div>
+          <div className="buttnCarosel">
             {(
               categories.filter((item, index) => index < maxLengthCategories)
                 .map((item, index) => (
@@ -77,6 +78,7 @@ function MainRecipes({ foodOrDrink }) {
                     data-testid={ `${item.strCategory}-category-filter` }
                     value={ item.strCategory }
                     onClick={ (e) => handleClick(e) }
+                    className="category"
                   >
                     { item.strCategory }
                   </button>
@@ -87,11 +89,12 @@ function MainRecipes({ foodOrDrink }) {
               value="all"
               onClick={ (e) => handleClick(e) }
               data-testid="All-category-filter"
+              className="category"
             >
               All
             </button>
           </div>
-          <div>
+          <div className="flexMainCard">
             {mainItems && mainItems
               .filter((item, index) => index < maxLengthItems).map(renderRecipes) }
           </div>

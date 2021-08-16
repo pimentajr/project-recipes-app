@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import AppContext from '../context/AppContext';
+import '../styles/searchBarHeader.css';
 
 function SearchBarHeader({ foodOrDrink }) {
   const { filterRadio,
@@ -49,54 +50,57 @@ function SearchBarHeader({ foodOrDrink }) {
 
   return (
     <main>
-
       <form id="form">
-        <input
-          type="text"
-          placeholder="Buscar Receita"
-          data-testid="search-input"
-          onChange={ (e) => setFilterText(e.target.value) }
-        />
-        <label htmlFor="ingredient">
+        <div className="inputAndBttn">
           <input
-            type="radio"
-            id="ingredient"
-            name="radiosFilter"
-            data-testid="ingredient-search-radio"
-            value="i"
-            onClick={ (e) => setFilterRadio(e.target.value) }
+            type="text"
+            placeholder="Pesquisar Receita"
+            data-testid="search-input"
+            onChange={ (e) => setFilterText(e.target.value) }
           />
-          Ingrediente
-        </label>
-        <label htmlFor="name">
-          <input
-            type="radio"
-            id="name"
-            name="radiosFilter"
-            data-testid="name-search-radio"
-            value="s"
-            onClick={ (e) => setFilterRadio(e.target.value) }
-          />
-          Nome
-        </label>
-        <label htmlFor="firstLetter">
-          <input
-            type="radio"
-            id="firstLetter"
-            name="radiosFilter"
-            data-testid="first-letter-search-radio"
-            value="f"
-            onClick={ (e) => setFilterRadio(e.target.value) }
-          />
-          Primeira letra
-        </label>
-        <button
-          type="button"
-          data-testid="exec-search-btn"
-          onClick={ foodOrDrink === 'Comidas' ? fetchFood : fetchDrink }
-        >
-          Buscar
-        </button>
+          <button
+            type="button"
+            data-testid="exec-search-btn"
+            onClick={ foodOrDrink === 'Comidas' ? fetchFood : fetchDrink }
+          >
+            Buscar
+          </button>
+        </div>
+        <div className="radioInputs">
+          <label htmlFor="ingredient">
+            <input
+              type="radio"
+              id="ingredient"
+              name="radiosFilter"
+              data-testid="ingredient-search-radio"
+              value="i"
+              onClick={ (e) => setFilterRadio(e.target.value) }
+            />
+            Ingrediente
+          </label>
+          <label htmlFor="name">
+            <input
+              type="radio"
+              id="name"
+              name="radiosFilter"
+              data-testid="name-search-radio"
+              value="s"
+              onClick={ (e) => setFilterRadio(e.target.value) }
+            />
+            Nome
+          </label>
+          <label htmlFor="firstLetter">
+            <input
+              type="radio"
+              id="firstLetter"
+              name="radiosFilter"
+              data-testid="first-letter-search-radio"
+              value="f"
+              onClick={ (e) => setFilterRadio(e.target.value) }
+            />
+            Primeira letra
+          </label>
+        </div>
       </form>
       <div>
         {filteredItem.length > 1 && (

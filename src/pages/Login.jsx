@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import '../styles/login.css';
+import emailIcon from '../images/email.svg';
+import passwordIcon from '../images/senha.svg';
 
 function Login() {
   const { email,
@@ -27,19 +30,26 @@ function Login() {
   };
 
   return (
-    <section>
-      <input
-        type="email"
-        data-testid="email-input"
-        placeholder="E-mail"
-        onChange={ (e) => setEmail(e.target.value) }
-      />
-      <input
-        type="password"
-        data-testid="password-input"
-        placeholder="Senha"
-        onChange={ (e) => setPassword(e.target.value) }
-      />
+    <section className="login">
+      <p>Login</p>
+      <div>
+        <img src={ emailIcon } alt="iconeEmail" className="emailIcon" />
+        <input
+          type="email"
+          data-testid="email-input"
+          placeholder="E-mail"
+          onChange={ (e) => setEmail(e.target.value) }
+        />
+      </div>
+      <div>
+        <img src={ passwordIcon } alt="iconePassword" className="passwordIcon" />
+        <input
+          type="password"
+          data-testid="password-input"
+          placeholder="Senha"
+          onChange={ (e) => setPassword(e.target.value) }
+        />
+      </div>
       <Link to="/comidas">
         <button
           type="button"

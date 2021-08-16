@@ -1,0 +1,110 @@
+.login{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-image: url(https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8&w=1000&q=80) ;
+  background-size: cover;
+  background-color: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(142, 142, 142, 0) 100%);
+}
+
+.login p{
+/* position: absolute; */
+width: 82px;
+height: 57px;
+left: 138px;
+top: 172px;
+
+font-family: Sofia;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 57px;
+/* identical to box height */
+
+display: flex;
+align-items: flex-end;
+
+/* Pure White */
+
+color: #FFFFFF;
+}
+
+.login input{
+width: 328px;
+height: 48px;
+border: none;
+margin: 10px 0;
+padding-left: 55px;
+color: #344052;
+font-family: Open sans;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+
+background: #FFFFFF;
+border-radius: 30px;
+}
+
+.login input::placeholder{
+  padding: 10px;
+  color: #344052;
+  font-family: Open sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.login button{
+  height: 48px;
+  width: 328px;
+  left: 0px;
+  top: 0px;
+  border-radius: 30px;
+  background: #40CC8B;
+  border-radius: 30px;
+  border: none;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-top: 30px;
+}
+
+.login button:disabled{
+  color: #344052;
+  background: #B0BED3;
+  opacity: 0.7;
+}
+
+.login div{
+  position: relative;
+}
+
+.login .emailIcon{
+  width: 16px;
+  position: absolute;
+  top: calc(50% - 6px);
+  left: 10%;
+}
+
+.login .passwordIcon{
+  width: 14px;
+  position: absolute;
+  top: calc(50% - 8px);
+  left: 10%;
+}
+

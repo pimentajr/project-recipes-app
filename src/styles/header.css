@@ -1,0 +1,28 @@
+.header .headerContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  margin: 0 18px;
+}
+
+.header .headerContainer p{
+  margin: auto 0;
+  padding: none;
+  font-family: Sofia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 38px;
+  color: #344052;
+}
+
+.header .headerContainer button{
+  border: none;
+  background-color: transparent;
+}
+
+.header .headerContainer .buttnInvisible{
+  display: none;
+}
+
