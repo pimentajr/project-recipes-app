@@ -31,21 +31,21 @@ function CardRecipeList() {
     filterType = filteredDrink;
   }
 
-  async function getInitialItensDrinkAndFood() {
-    if (filterType === filteredFood) {
-      setInitialItensFood([]);
-      const itemsFood = await searchFoodsAll();
-      setInitialItensFood(itemsFood);
-    } else if (filterType === filteredDrink) {
-      setInitialItensDrink([]);
-      const itemsDrink = await searchDrinksAll();
-      setInitialItensDrink(itemsDrink);
-    }
-  }
-
   useEffect(() => {
+    async function getInitialItensDrinkAndFood() {
+      if (filterType === filteredFood) {
+        setInitialItensFood([]);
+        const itemsFood = await searchFoodsAll();
+        setInitialItensFood(itemsFood);
+      } else if (filterType === filteredDrink) {
+        setInitialItensDrink([]);
+        const itemsDrink = await searchDrinksAll();
+        setInitialItensDrink(itemsDrink);
+      }
+    }
     getInitialItensDrinkAndFood();
-  }, []);
+  }, [filterType, filteredDrink, filteredFood,
+    setInitialItensDrink, setInitialItensFood]);
 
   return (
     <div>

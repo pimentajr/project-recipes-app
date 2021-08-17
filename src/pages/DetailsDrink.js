@@ -14,20 +14,20 @@ function DetailsDrink(props) {
   const [initialItemApi, setInitialItemApi] = useState([]);
   const limitItensRecomend = 6;
 
-  async function getDetailsById() {
-    const itemsDrink = await searchId(id);
-    setInitialItemApi(itemsDrink);
-  }
-
-  async function getAllCategories() {
-    const items = await searchFoodsAll();
-    setInitialItensFood(items);
-  }
-
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsDrink = await searchId(id);
+      setInitialItemApi(itemsDrink);
+    }
+
+    async function getAllCategories() {
+      const items = await searchFoodsAll();
+      setInitialItensFood(items);
+    }
+
     getDetailsById();
     getAllCategories();
-  }, []);
+  }, [id, setInitialItensFood]);
 
   function renderIngrediente(drink) {
     const array = [];

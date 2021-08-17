@@ -33,13 +33,13 @@ function HeaderDrink({ title, search }) {
     case (nameSearch):
       setFilteredDrink(filterByNameDrink(inputTextSearch));
       if (filteredDrink.length < 1) {
-        alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+        global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         break;
       }
       break;
     case (firstLetter):
       if (inputTextSearch.length > 1) {
-        alert('Sua busca deve conter somente 1 (um) caracter');
+        global.alert('Sua busca deve conter somente 1 (um) caracter');
         break;
       }
       setFilteredDrink(filterByFirstLetterDrink(inputTextSearch));
@@ -48,7 +48,7 @@ function HeaderDrink({ title, search }) {
       setFilteredDrink(filterByIngredientDrink(inputTextSearch));
       break;
     default:
-      alert('Escolha uma opção de filtro!');
+      global.alert('Escolha uma opção de filtro!');
     }
   }
 

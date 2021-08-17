@@ -10,14 +10,14 @@ function RecipeProgressFood(props) {
   const [changeInputFood, setChangeInputFood] = useState(false);
   const [changeInputFoodChecked, setchangeInputFoodChecked] = useState('');
 
-  async function getDetailsById() {
-    const itemsFood = await searchById(id);
-    setInitialItemApi(itemsFood);
-  }
-
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsFood = await searchById(id);
+      setInitialItemApi(itemsFood);
+    }
+
     getDetailsById();
-  }, []);
+  }, [id]);
 
   function isCheckedFood(numero) {
     setChangeInputFood(() => !changeInputFood);

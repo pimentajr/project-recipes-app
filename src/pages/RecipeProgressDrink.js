@@ -11,14 +11,14 @@ function RecipeProgressDrink(props) {
   const [changeInput, setChangeInput] = useState(true);
   const [changeInputDrinkChecked, setchangeInputDrinkChecked] = useState('');
 
-  async function getDetailsById() {
-    const itemsDrink = await searchId(id);
-    setInitialItemApi(itemsDrink);
-  }
-
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsDrink = await searchId(id);
+      setInitialItemApi(itemsDrink);
+    }
+
     getDetailsById();
-  }, []);
+  }, [id]);
 
   function isChecked(numero) {
     setChangeInput(() => !changeInput);

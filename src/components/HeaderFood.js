@@ -33,13 +33,13 @@ function HeaderFood({ title, search }) {
     case (nameSearch):
       setFilteredFood(filterByNameFood(inputTextSearch));
       if (filteredFood.length < 1) {
-        alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+        global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         break;
       }
       break;
     case (firstLetter):
       if (inputTextSearch.length > 1) {
-        alert('Sua busca deve conter somente 1 (um) caracter');
+        global.alert('Sua busca deve conter somente 1 (um) caracter');
         break;
       }
       setFilteredFood(filterByFirstLetterFood(inputTextSearch));
@@ -48,7 +48,7 @@ function HeaderFood({ title, search }) {
       setFilteredFood(filterByIngredientFood(inputTextSearch));
       break;
     default:
-      alert('Escolha uma opção de filtro!');
+      global.alert('Escolha uma opção de filtro!');
     }
   }
 

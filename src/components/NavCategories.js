@@ -26,7 +26,7 @@ function NavCategories() {
       }
     }
     getAllCategories();
-  }, []);
+  }, [local, setInitialItensDrink, setInitialItensFood]);
 
   async function searchByCategoryDrinkAndFood(text) {
     if (local === url) {
