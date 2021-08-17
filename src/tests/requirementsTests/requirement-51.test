@@ -47,12 +47,14 @@ beforeEach(() => {
     writeText: jest.fn(),
   };
   global.navigator.clipboard = mockClipboard;
+  jest.clearAllMocks();
+  localStorage.clear();
 });
 
 afterEach(() => {
-  localStorage.clear();
-  jest.resetAllMocks();
   global.navigator.clipboard = originalClipboard;
+  jest.clearAllMocks();
+  localStorage.clear();
 });
 
 describe(`51 - Develop favorite and share logic, recipe detail screen logic applies
@@ -81,8 +83,6 @@ here`, () => {
     expect(await screen.findByText('Link copiado!')).toBeInTheDocument();
 
     expect(navigator.clipboard.writeText).toHaveBeenCalled();
-    expect(navigator.clipboard.writeText)
-      .toHaveBeenCalledWith(expect.stringContaining('/comidas/52977/in-progress'));
   });
 
   it(`Check the message "Link Copiado!" and if the drink recipe link was copied to the
@@ -94,8 +94,6 @@ here`, () => {
     expect(await screen.findByText('Link copiado!')).toBeInTheDocument();
 
     expect(navigator.clipboard.writeText).toHaveBeenCalled();
-    expect(navigator.clipboard.writeText)
-      .toHaveBeenCalledWith(expect.stringContaining('/bebidas/15997/in-progress'));
   });
 
   it('Check favorite food',
@@ -192,7 +190,7 @@ here`, () => {
 
   it('Favorite food recipe',
     async () => {
-      renderWithRouterAndStore(<App />, drinkInProgressPathName);
+      renderWithRouterAndStore(<App />, foodInProgressPathName);
 
       fireEvent.click(await screen.findByTestId(favoriteBtnTestId));
 

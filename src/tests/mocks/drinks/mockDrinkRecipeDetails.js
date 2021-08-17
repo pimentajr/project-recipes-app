@@ -10,9 +10,8 @@ const drinkRecipeDetails = {
       strIBA: null,
       strAlcoholic: 'Optional alcohol',
       strGlass: 'Collins Glass',
-      strInstructions: `Pour the Galliano liqueur over ice. Fill the remainder of the 
-      glass with ginger ale and thats all there is to it. You now have a your very own 
-      GG.`,
+      strInstructions:
+      'I needed to mock the instructions for exceeding the lines allowed by ESLint :)',
       strInstructionsES: null,
       strInstructionsDE: `Den Galliano-Likör über Eis gießen. Füllen Sie den Rest des 
       Glases mit Ginger Ale und das ist alles, was dazu gehört. Du hast jetzt ein 

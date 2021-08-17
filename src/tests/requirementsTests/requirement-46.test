@@ -24,7 +24,10 @@ jest
   .spyOn(requestMenu, 'drinksRecipeDetails')
   .mockImplementation(() => Promise.resolve(drinkRecipeDetails));
 
-afterEach(() => jest.clearAllMocks());
+afterEach(() => {
+  jest.clearAllMocks();
+  localStorage.clear();
+});
 beforeEach(() => jest.clearAllMocks());
 
 describe('46 - Save favorite recipes in localStorage under favoriteRecipes key', () => {
