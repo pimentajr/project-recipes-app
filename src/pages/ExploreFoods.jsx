@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Header from '../components/Header';
 import LowerMenu from '../components/LowerMenu';
+import '../styles/Explore.css';
 
 function ExploreFoods() {
   const [food, setFood] = useState();
@@ -22,9 +23,10 @@ function ExploreFoods() {
   return (
     <>
       <Header />
-      <div>
+      <div className="explore">
         <button
           type="button"
+          className="button-categories"
           data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explorar/comidas/ingredientes') }
         >
@@ -33,6 +35,7 @@ function ExploreFoods() {
 
         <button
           type="button"
+          className="button-categories"
           data-testid="explore-by-area"
           onClick={ () => history.push('/explorar/comidas/area') }
         >
@@ -41,6 +44,7 @@ function ExploreFoods() {
 
         <button
           type="button"
+          className="button-categories"
           data-testid="explore-surprise"
           onClick={ () => history.push(`/comidas/${food}`) }
         >

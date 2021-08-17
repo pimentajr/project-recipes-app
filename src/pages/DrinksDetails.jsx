@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap';
 import { fetchDrinksDetails, fetchFoods } from '../services/API';
 import '../styles/DrinksDetails.css';
-import ingredientsDrinkDetails from '../helpers/ingredientsDrinkDetails';
+import ingredientsDetails from '../helpers/ingredientsDetails';
 import FoodsRecomendations from '../components/FoodsRecomendations';
 import { getStorage } from '../helpers/Storage';
 import ShareAndFavButtons from '../components/subcomponents/ShareAndFavButtons';
@@ -45,7 +45,7 @@ function DrinksDetails() {
   }, [id]);
 
   const ingredientsAndMeasures = details.idDrink
-    ? ingredientsDrinkDetails(details) : [];
+    ? ingredientsDetails(details) : [];
 
   return (
     <div className="details-container">
@@ -92,6 +92,7 @@ function DrinksDetails() {
         <button
           data-testid="start-recipe-btn"
           type="button"
+          className="button-categories"
           onClick={ () => history.push(`/bebidas/${id}/in-progress`) }
         >
           {inProgressRecipe ? 'Continuar Receita' : 'Iniciar Receita'}

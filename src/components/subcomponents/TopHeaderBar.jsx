@@ -11,6 +11,15 @@ function TopHeaderBar(props) {
   const { location: { pathname } } = history;
   const [pageTitle, searchButton] = headerBarByPathname(pathname);
   const { toggleSearchBar: { searchBar, setSearchBar } } = props;
+  const { toggleDropDown: { dropDown, setDropDown } } = props;
+
+  function validToggle() {
+    if (pathname.includes('area')) {
+      setDropDown(!dropDown);
+    } else {
+      setSearchBar(!searchBar);
+    }
+  }
 
   return (
     <div className="top-header-bar">
@@ -24,15 +33,15 @@ function TopHeaderBar(props) {
       >
         <img className="altSvg" src={ profileIcon } alt="Ir para perfil" />
       </button>
-      <span data-testid="page-title">
+      <h5 data-testid="page-title">
         {pageTitle}
-      </span>
+      </h5>
       { searchButton
         ? (
           <button
             type="button"
             data-testid="search-top-btn"
-            onClick={ () => setSearchBar(!searchBar) }
+            onClick={ () => validToggle() }
             src={ searchIcon }
           >
             <img className="altSvg" src={ searchIcon } alt="Abrir busca" />

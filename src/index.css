@@ -13,7 +13,34 @@ code {
 }
 
 .spinner-border {
-  color: orange;
+  color: #ffc107;
   position: relative;
   top: 150px;
+}
+
+.button-categories {
+  background-color: #ffc107;
+  border:#ffc107;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  height: 35px;
+  margin-top: 5px;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.button-categories:focus {
+  background-color: rgb(54, 211, 14);
+  border:#ffc107;
+  color: white;
+  outline: none;
+  font-weight: 900;
+}
+
+.altSvg {
+  filter: invert(100%);
 }

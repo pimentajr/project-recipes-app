@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import LowerMenu from '../components/LowerMenu';
+import DropdownAreas from '../components/subcomponents/DropdownAreas';
+import RecipesContext from '../context/RecipesContext';
 import { exploreFoodsByArea, exploreArea, fetchFoods } from '../services/API';
 
 function ExploreFoodsArea() {
   const [totalAreas, setTotalAreas] = useState([]);
   const [areaToRender, setAreaToRender] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const { dropDown } = useContext(RecipesContext);
 
   const MAX = 12;
   useEffect(() => {
@@ -39,30 +43,8 @@ function ExploreFoodsArea() {
   return (
     <>
       <Header />
-      <label htmlFor="area">
-        <select
-          name="area"
-          id="area"
-          data-testid="explore-by-area-dropdown"
-          onChange={ ({ target: { value } }) => fetchAreasToFilter(value) }
-        >
-          <option
-            data-testid="All-option"
-            value="All"
-          >
-            All
-          </option>
-          { totalAreas.map(({ strArea }) => (
-            <option
-              value={ strArea }
-              data-testid={ `${strArea}-option` }
-              key={ strArea }
-            >
-              { strArea }
-            </option>)) }
-
-        </select>
-      </label>
+      {dropDown ? null
+        : <DropdownAreas fetchAreas={ fetchAreasToFilter } totalAreas={ totalAreas } />}
       <section className="recipes-container">
         {loading ? <ReactBootStrap.Spinner animation="border" />
           : areaToRender.map((food, index) => (

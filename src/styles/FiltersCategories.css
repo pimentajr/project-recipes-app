@@ -3,31 +3,3 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
-.button-categories {
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  margin-top: 5px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 110px;
-}
-
-.button-categories:hover {
-  background-color: rgb(54, 211, 14);
-  color: white;
-  font-weight: 900;
-}
-
-.button-categories:focus {
-  background-color: rgb(54, 211, 14);
-  border: none;
-  color: white;
-  font-weight: 900;
-}
-
-.altSvg {
-  filter: invert(100%);
-}

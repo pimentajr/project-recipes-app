@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import * as ReactBootStrap from 'react-bootstrap';
 import '../styles/FiltersCategories.css';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
@@ -54,17 +53,14 @@ function FiltersCategories() {
     if (resetFilter === target.name && pathname === '/comidas') {
       setResetFilter('');
       setDataFilter([]);
-      console.log('entrei1');
     }
     if (resetFilter === target.name && pathname === '/bebidas') {
       setResetFilter('');
       setDataFilter([]);
-      console.log('entrei1');
     }
     if (resetFilter !== target.name) {
       setResetFilter(target.name);
       categoryFilter(target);
-      console.log('entrei2');
     }
   }
 
@@ -74,18 +70,16 @@ function FiltersCategories() {
 
   return (
     <div className="container-categories">
-      <ReactBootStrap.Button
-        variant="warning"
+      <button
         data-testid="All-category-filter"
         onClick={ () => returnAll() }
         className="button-categories"
         type="button"
       >
         All
-      </ReactBootStrap.Button>
+      </button>
       { categories.map((category, index) => (
-        <ReactBootStrap.Button
-          variant="warning"
+        <button
           data-testid={ `${category.strCategory}-category-filter` }
           className="button-categories"
           type="button"
@@ -94,7 +88,7 @@ function FiltersCategories() {
           onClick={ (e) => resetSetFilter(e) }
         >
           {category.strCategory.split(/[ /]/, 1)}
-        </ReactBootStrap.Button>))}
+        </button>))}
     </div>
   );
 }

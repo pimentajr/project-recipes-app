@@ -4,6 +4,7 @@ import { setStorage, newDoneRecipe, getStorage } from '../helpers/Storage';
 import ReturnRecipe from '../helpers/ReturnRecipe';
 import ShareAndFavButtons from '../components/subcomponents/ShareAndFavButtons';
 import { storageMeals, storageCocktails } from '../helpers/LocalStorageIngredients';
+import '../styles/RecipesInProgress.css';
 
 function RecipesInProgress() {
   const { id } = useParams();
@@ -17,6 +18,9 @@ function RecipesInProgress() {
   const [inProgressRecipes, setInprogressRecipes] = useState();
   const [btnDoneRecipe, setBtnDoneRecipe] = useState(true);
   const [checkedIngredients, setCheckedIngredients] = useState([]);
+
+  const food = pathname.includes('comida');
+  const drink = pathname.includes('bebida');
 
   const addDoneRecipe = () => {
     const newDoneRecip = newDoneRecipe(returnedDetail, typeFoods);
@@ -32,32 +36,31 @@ function RecipesInProgress() {
   }, []);
 
   useEffect(() => {
-    async function testtee() {
+    async function recipesReturn() {
       const { fetchDetails, typeFood,
-        recipeType, ingredientsList } = await ReturnRecipe(id, pathname);
+        recipeType, ingredientsList } = await ReturnRecipe(id, food, drink);
       setReturnedDetail(fetchDetails);
       console.log(fetchDetails);
       setTypeFoods(typeFood);
       setRecipe(recipeType);
       setArrayIngredients(ingredientsList);
     }
-    testtee();
-  }, [pathname, id]);
+    recipesReturn();
+  }, [food, drink, id]);
 
   if (!localStorage.inProgressRecipes) {
-    localStorage.setItem('inProgressRecipes',
-      JSON.stringify({
+    setStorage('inProgressRecipes', ({
         cocktails: {},
         meals: {},
       }));
   }
 
   function valueIngredients({ target }) {
-    if (pathname.includes('comida')) {
-      const savedata = ((storageMeals(pathname, target.id, id)));
+    if (food) {
+      const savedata = ((storageMeals(food, target.id, id)));
       setCheckedIngredients(savedata);
     } else {
-      const savedata = ((storageCocktails(pathname, target.id, id)));
+      const savedata = ((storageCocktails(drink, target.id, id)));
       setCheckedIngredients(savedata);
     }
   }
@@ -116,8 +119,9 @@ function RecipesInProgress() {
       <Link to="/receitas-feitas">
         <button
           type="button"
+          className="button-finish"
           alt="Finish-Recipe"
-          onClick={ addDoneRecipe }
+          onClick={ () => { addDoneRecipe(); history.push('/receitas-feitas'); } }
           data-testid="finish-recipe-btn"
           disabled={ btnDoneRecipe }
         >

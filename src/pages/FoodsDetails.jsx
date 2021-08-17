@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap';
 import { fetchFoodDetails, fetchDrinks } from '../services/API';
 import '../styles/FoodsDetails.css';
-import ingredientsMealDetails from '../helpers/ingredientsMealDetails';
+import ingredientsDetails from '../helpers/ingredientsDetails';
 import DrinksRecomendations from '../components/DrinksRecomendations';
 import { getStorage } from '../helpers/Storage';
 import ShareAndFavButtons from '../components/subcomponents/ShareAndFavButtons';
@@ -45,7 +45,7 @@ function FoodsDetails() {
   }, [id]);
 
   const ingredientsAndMeasures = details.idMeal
-    ? ingredientsMealDetails(details)
+    ? ingredientsDetails(details)
     : [];
 
   function videoSrc(youtubeLink) {

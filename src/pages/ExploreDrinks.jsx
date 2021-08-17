@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Header from '../components/Header';
 import LowerMenu from '../components/LowerMenu';
+import '../styles/Explore.css';
 
 function ExploreDrinks() {
   const [drink, setDrink] = useState();
@@ -22,8 +23,9 @@ function ExploreDrinks() {
   return (
     <>
       <Header />
-      <div>
+      <div className="explore">
         <button
+          className="button-categories"
           type="button"
           data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explorar/bebidas/ingredientes') }
@@ -32,6 +34,7 @@ function ExploreDrinks() {
         </button>
 
         <button
+          className="button-categories"
           type="button"
           data-testid="explore-surprise"
           onClick={ () => history.push(`/bebidas/${drink}`) }

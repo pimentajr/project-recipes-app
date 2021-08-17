@@ -1,20 +1,19 @@
 import { fetchFoodDetails, fetchDrinksDetails } from '../services/API';
-import ingredientsMealDetails from './ingredientsMealDetails';
-import ingredientsDrinksDetails from './ingredientsDrinkDetails';
+import ingredientsDetails from './ingredientsDetails';
 
-const ReturnRecipe = async (id, pathname) => {
-  if (pathname.includes('comidas')) {
+const ReturnRecipe = async (id, food, drink) => {
+  if (food) {
     const fetchDetails = await fetchFoodDetails(id);
     const typeFood = 'comida';
     const recipeType = 'meals';
-    const ingredientsList = ingredientsMealDetails(fetchDetails);
+    const ingredientsList = ingredientsDetails(fetchDetails);
     return { fetchDetails, typeFood, recipeType, ingredientsList };
   }
-  if (pathname.includes('bebidas')) {
+  if (drink) {
     const fetchDetails = await fetchDrinksDetails(id);
     const typeFood = 'bebida';
     const recipeType = 'cocktails';
-    const ingredientsList = ingredientsDrinksDetails(fetchDetails);
+    const ingredientsList = ingredientsDetails(fetchDetails);
     return { fetchDetails, typeFood, recipeType, ingredientsList };
   }
 };

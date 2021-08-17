@@ -22,35 +22,6 @@
   justify-content: space-around;
 }
 
-.btn-filter {
-  background-color: #ffc107;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  font-weight: 600;
-  height: 30px;
-  justify-content: center;
-  margin-top: 5px;
-  white-space: nowrap;
-  width: 110px;
-}
-
-.btn-filter:hover {
-  background-color: rgb(54, 211, 14);
-  color: white;
-  font-weight: 900;
-  outline: none;
-}
-
-.btn-filter:focus {
-  background-color: rgb(54, 211, 14);
-  border: none;
-  color: white;
-  font-weight: 900;
-}
-
 .infos {
   margin: 0 auto;
   text-align: center;

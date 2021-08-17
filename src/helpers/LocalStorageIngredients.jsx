@@ -1,7 +1,9 @@
-export function storageCocktails(pathname, ingredient, id) {
-  if (pathname.includes('bebidas')) {
+import { getStorage, setStorage } from './Storage';
+
+export function storageCocktails(drink, ingredient, id) {
+  if (drink) {
     let newLocalStorageDrinks;
-    const saveLocalStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const saveLocalStorage = getStorage('inProgressRecipes');
     if (saveLocalStorage.cocktails[id]) {
       if (saveLocalStorage.cocktails[id].includes(ingredient)) {
         newLocalStorageDrinks = { cocktails: { ...saveLocalStorage.cocktails,
@@ -10,7 +12,7 @@ export function storageCocktails(pathname, ingredient, id) {
         },
         meals: { ...saveLocalStorage.meals },
         };
-        localStorage.setItem('inProgressRecipes', JSON.stringify(newLocalStorageDrinks));
+        setStorage('inProgressRecipes', (newLocalStorageDrinks));
         return ([...saveLocalStorage.cocktails[id]
           .filter((removeItem) => removeItem !== ingredient)]);
       }
@@ -19,7 +21,7 @@ export function storageCocktails(pathname, ingredient, id) {
       },
       meals: { ...saveLocalStorage.meals },
       };
-      localStorage.setItem('inProgressRecipes', JSON.stringify(newLocalStorageDrinks));
+      setStorage('inProgressRecipes', (newLocalStorageDrinks));
       return ([...saveLocalStorage.cocktails[id], ingredient]);
     }
     newLocalStorageDrinks = { cocktails: { ...saveLocalStorage.cocktails,
@@ -27,15 +29,15 @@ export function storageCocktails(pathname, ingredient, id) {
     },
     meals: { ...saveLocalStorage.meals },
     };
-    localStorage.setItem('inProgressRecipes', JSON.stringify(newLocalStorageDrinks));
+    setStorage('inProgressRecipes', (newLocalStorageDrinks));
     return ([ingredient]);
   }
 }
 
-export function storageMeals(pathname, ingredient, id) {
-  if (pathname.includes('comidas')) {
+export function storageMeals(food, ingredient, id) {
+  if (food) {
     let newLocalStorageMeals;
-    const saveLocalStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const saveLocalStorage = getStorage('inProgressRecipes');
     if (saveLocalStorage.meals[id]) {
       if (saveLocalStorage.meals[id].includes(ingredient)) {
         newLocalStorageMeals = { meals: { ...saveLocalStorage.meals,
@@ -44,7 +46,7 @@ export function storageMeals(pathname, ingredient, id) {
         },
         cocktails: { ...saveLocalStorage.cocktails },
         };
-        localStorage.setItem('inProgressRecipes', JSON.stringify(newLocalStorageMeals));
+        setStorage('inProgressRecipes', (newLocalStorageMeals));
         return ([...saveLocalStorage.meals[id]
           .filter((removeItem) => removeItem !== ingredient)]);
       }
@@ -55,14 +57,14 @@ export function storageMeals(pathname, ingredient, id) {
         meals: { ...saveLocalStorage.meals,
           [id]: [...saveLocalStorage.meals[id], ingredient] },
       };
-      localStorage.setItem('inProgressRecipes', JSON.stringify(newLocalStorageMeals));
+      setStorage('inProgressRecipes', (newLocalStorageMeals));
       return ([...saveLocalStorage.meals[id], ingredient]);
     }
     newLocalStorageMeals = { cocktails: {
       ...saveLocalStorage.cocktails },
     meals: { ...saveLocalStorage.meals,
       [id]: [ingredient] } };
-    localStorage.setItem('inProgressRecipes', JSON.stringify(newLocalStorageMeals));
+    setStorage('inProgressRecipes', (newLocalStorageMeals));
     return ([ingredient]);
   }
 }

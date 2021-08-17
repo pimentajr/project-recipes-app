@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import * as ReactBootStrap from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
 import '../../styles/SearchBar.css';
@@ -62,15 +61,15 @@ function SearchBar() {
           </label>
         </div>
         <section>
-          <ReactBootStrap.Button
-            className="search-btn"
+          <button
+            className="button-categories"
             data-testid="exec-search-btn"
             type="button"
             onClick={ () => { handleClick(pathname); } }
             variant="warning"
           >
             Buscar
-          </ReactBootStrap.Button>
+          </button>
         </section>
       </form>
     </section>
