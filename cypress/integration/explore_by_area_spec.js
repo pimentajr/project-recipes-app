@@ -91,7 +91,7 @@ describe('79 - Desenvolva as mesmas especificações da tela de receitas princip
   });
 });
 
-describe.skip('80 - Implemente o dropdown de maneira que devem estar disponíveis todas as áreas retornadas da API, incluindo a opção "All", que retorna as receitas sem nenhum filtro', () => {
+describe('80 - Implemente o dropdown de maneira que devem estar disponíveis todas as áreas retornadas da API, incluindo a opção "All", que retorna as receitas sem nenhum filtro', () => {
   it('No dropdown devem estar disponíveis todas as áreas retornadas da API, incluindo a opção "All"', () => {
     cy.visit('http://localhost:3000/explorar/comidas/area', {
       onBeforeLoad(win) {

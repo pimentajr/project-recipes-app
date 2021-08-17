@@ -17,7 +17,7 @@ function ExploreLocation({
   loading,
   error,
 }) {
-  const [filterArea, setFilterArea] = useState('American');
+  const [filterArea, setFilterArea] = useState('');
   const [filteredRecipes, setFilteredRecipes] = useState([]);
 
   useEffect(() => {
@@ -30,10 +30,9 @@ function ExploreLocation({
     const cardsQuantity = 12;
     fetch(urlFilterByArea)
       .then((response) => response.json())
-      .then(({ meals }) => setFilteredRecipes(
-        getXFirstElementsFromArray(meals, cardsQuantity),
-      ));
-  }, [filterArea]);
+      .then((data) => (!filterArea ? setFilteredRecipes(recipes)
+        : setFilteredRecipes(getXFirstElementsFromArray((data.meals), cardsQuantity))));
+  }, [filterArea, recipes]);
 
   function handleFilterChange({ target }) {
     const { value } = target;
@@ -51,12 +50,13 @@ function ExploreLocation({
             onChange={ handleFilterChange }
             data-testid="explore-by-area-dropdown"
           >
+            <option data-testid="All-option" value="">All</option>
             { areas.map(({ strArea: area }, index) => (
               <option data-testid={ `${area}-option` } key={ index }>{ area }</option>
             ))}
           </select>
         </label>
-        { recipes && filteredRecipes.map((recipe, index) => (
+        { filteredRecipes.map((recipe, index) => (
           <section key={ index }>
             <button
               type="button"
