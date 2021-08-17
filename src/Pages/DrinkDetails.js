@@ -73,14 +73,6 @@ function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
     return 'Iniciar Receita';
   };
 
-  // function verifyrecipeisdone() {
-  //   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
-  //   if (doneRecipes.length > 0) {
-  //     return doneRecipes.some((recipe) => recipe.id === id);
-  //   }
-  //   return false;
-  // }
-
   return (
     <div>
       <img
@@ -115,6 +107,8 @@ function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
             </li>)) }
       </ul>
       <h3 data-testid="instructions">{recipes.strInstructions}</h3>
+      <br />
+      <h3>Recomendations:</h3>
       <div id="recommended"><RecomendedRecipes origem={ essaPagina } /></div>
       <div>
         <Link to={ `/bebidas/${recipes.idDrink}/in-progress` } params={ recipes.idDrink }>

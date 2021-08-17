@@ -5,7 +5,7 @@ import { getDrink, getFood } from '../Services/FetchApi';
 import MyContext from '../Context/MyContext';
 import CardRecipes from './CardRecipes';
 import './Recomended.css';
-// eslint-disable-next-line react/prop-types
+
 function RecomendedRecipes({ origem }) {
   const { cards, setCards } = useContext(MyContext);
   const busca = async () => {

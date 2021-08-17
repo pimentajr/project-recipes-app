@@ -10,7 +10,7 @@ function Profile() {
   const history = useHistory();
 
   const userEmail = JSON.parse(localStorage.getItem('user')).email;
-  console.log(userEmail);
+  // console.log(userEmail);
 
   return (
     <div>
@@ -58,8 +58,8 @@ function Profile() {
               Sair
             </Button>
           </Link>
-          <Footer />
         </main>
+        <Footer />
       </div>
     </div>
   );
