@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import useFavoriteRecipies from '../../../hooks/useFavoriteRecipies';
 import shareIcon from '../../../images/shareIcon.svg';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
@@ -39,7 +39,8 @@ const HeaderDetails = (
   }, [history.location.pathname, setFavoriteTrue]);
 
   const handleClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard
+      .writeText(window.location.href.split('/in-progress')[0]);
     setMenssage('Link copiado!');
     const time = 3000;
     setTimeout(() => {
