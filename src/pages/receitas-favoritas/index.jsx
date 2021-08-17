@@ -83,22 +83,19 @@ function ReceitasFavoritas(props) {
           formatedCategory = `${area} - ${category}`;
         }
         return (
-          <div key={ index } className="d-flex mx-0 mb-3 bg-light rounded shadow-lg">
-            <Link to={ `/${type}s/${id}` } key={ index }>
-              <Image
-                style={ { maxWidth: '160px' } }
-                className="ml-0 rounded-left"
-                data-testid={ `${index}-horizontal-image` }
-                src={ item.image }
-                fluid
-              />
-            </Link>
+          <div key={ index } className="d-flex mx-0 my-3 bg-light rounded shadow-lg">
+            <Image
+              style={ { maxWidth: '160px' } }
+              className="ml-0 rounded-left"
+              onClick={ () => handleRedirect(type, id) }
+              data-testid={ `${index}-horizontal-image` }
+              src={ item.image }
+              fluid
+            />
             <div className="d-flex flex-column">
-              <Link to={ `/${type}s/${id}` } key={ index }>
-                <Col onClick={ () => handleRedirect(type, id) }>
-                  <span data-testid={ `${index}-horizontal-name` }>{name}</span>
-                </Col>
-              </Link>
+              <Col onClick={ () => handleRedirect(type, id) }>
+                <span data-testid={ `${index}-horizontal-name` }>{name}</span>
+              </Col>
               <Col>
                 <span data-testid={ `${index}-horizontal-top-text` }>
                   {formatedCategory}
