@@ -14,7 +14,15 @@ export function RecipesContextProvider({ children }) {
     if (filter === 'firstLetter' && searchText.length > 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');
     }
-  }, [filter, searchText]);
+    if (format !== '') {
+      (async function loadRecipesInPage() {
+        const url = `https://www.the${category}db.com/api/json/v1/1/search.php?s=`;
+        const request = await fetch(url);
+        const data = await request.json();
+        setRecipes(data[format]);
+      }());
+    }
+  }, [filter, searchText, category, format]);
 
   async function submitSearch(event) {
     event.preventDefault();
