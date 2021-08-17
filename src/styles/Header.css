@@ -2,6 +2,7 @@
   align-items: flex-start;
   display: flex;
   justify-content: space-between;
+  background-image: radial-gradient( rgb(250, 250, 250),rgba(41, 41, 41, 0.322));
 }
 
 .header-div * {
