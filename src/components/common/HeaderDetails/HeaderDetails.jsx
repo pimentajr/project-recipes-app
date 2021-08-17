@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import useFavoriteRecipies from '../../../hooks/useFavoriteRecipies';
 import shareIcon from '../../../images/shareIcon.svg';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
