@@ -73,34 +73,35 @@ export default function Foods() {
   }
 
   return (
-    <div>
+    <div className="container-recipes">
       <Header
         title="Comidas"
         haveSearchBtn
         searchTrigger="themealdb"
       />
-      <div className="catBtns">
+      <div className="catBtns btn-group btn-group-toggle" data-toggle="buttons">
         {
           catItens.map((item) => (
             <button
               key={ item.strCategory }
               type="button"
               id="catBtn"
-              className="catBtn"
+              className="catBtn btn btn-secondary active"
               data-testid={ `${item.strCategory}-category-filter` }
               onClick={ (e) => categoryOnClickBtn(e) }
             >
               {item.strCategory}
             </button>))
         }
+        <button
+          type="button"
+          className="btn btn-secondary active"
+          onClick={ (event) => categoryOnClickBtn(event) }
+          data-testid="All-category-filter"
+        >
+          All
+        </button>
       </div>
-      <button
-        type="button"
-        onClick={ (event) => categoryOnClickBtn(event) }
-        data-testid="All-category-filter"
-      >
-        All
-      </button>
       <div>
         {
           recipes.meals !== null && recipes.meals !== undefined

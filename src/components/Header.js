@@ -7,24 +7,27 @@ import ProfileIcon from '../images/profileIcon.svg';
 
 export default function Header({ title, haveSearchBtn, searchTrigger }) {
   return (
-    <header>
+    <header className="header-menu">
       <h1 data-testid="page-title">{title}</h1>
-      <Link to="/perfil">
-        <button
-          alt="Incone do profile"
-          type="button"
-        >
-          <img
-            src={ ProfileIcon }
-            alt="Icone do profile"
-            data-testid="profile-top-btn"
-          />
-        </button>
-      </Link>
-      <SearchBarBtn
-        haveSearchBtn={ haveSearchBtn }
-        searchTrigger={ searchTrigger }
-      />
+      <div className="flex header-menu">
+        <Link to="/perfil">
+          <button
+            className="btn btn-outline-secondary"
+            alt="Incone do profile"
+            type="button"
+          >
+            <img
+              src={ ProfileIcon }
+              alt="Icone do profile"
+              data-testid="profile-top-btn"
+            />
+          </button>
+        </Link>
+        <SearchBarBtn
+          haveSearchBtn={ haveSearchBtn }
+          searchTrigger={ searchTrigger }
+        />
+      </div>
     </header>
   );
 }

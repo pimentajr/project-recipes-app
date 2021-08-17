@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function Login() {
   const [isDisabled, setIsDisable] = useState(true);
@@ -22,28 +23,35 @@ export default function Login() {
 
   function emailInputRender() {
     return (
-      <label htmlFor="email">
-        Email:
-        <input
+      <FormGroup>
+        <Label for="exampleEmail">Email</Label>
+        <Input
           type="email"
+          name="email"
           id="email"
+          placeholder="Email"
           data-testid="email-input"
           onChange={ () => handleOnChangeInputValidate() }
         />
-      </label>
+      </FormGroup>
+
     );
   }
 
   function passwordInputRender() {
     return (
-      <label htmlFor="password">
-        <input
+      <FormGroup>
+        <Label for="examplePassword">Password</Label>
+        <Input
           type="password"
+          name="password"
           id="password"
+          placeholder="Password"
           data-testid="password-input"
           onChange={ () => handleOnChangeInputValidate() }
         />
-      </label>
+      </FormGroup>
+
     );
   }
 
@@ -61,24 +69,27 @@ export default function Login() {
 
   function buttonLoginRender() {
     return (
-      <label htmlFor="button-login">
-        <input
-          id="button-login"
-          data-testid="login-submit-btn"
-          type="button"
-          value="login"
-          disabled={ isDisabled }
-          onClick={ () => ButtonLoginHandler() }
-        />
-      </label>
+      <Button
+        id="button-login"
+        data-testid="login-submit-btn"
+        type="button"
+        value="login"
+        disabled={ isDisabled }
+        onClick={ () => ButtonLoginHandler() }
+      >
+        Login
+      </Button>
     );
   }
 
   return (
-    <main>
-      { emailInputRender() }
-      { passwordInputRender() }
-      { buttonLoginRender() }
+    <main className="main-login">
+      <Form className="container-fluid container-login">
+        <h1 className="header-menu">Receitas</h1>
+        { emailInputRender() }
+        { passwordInputRender() }
+        { buttonLoginRender() }
+      </Form>
 
     </main>
   );

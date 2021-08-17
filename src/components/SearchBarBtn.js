@@ -13,6 +13,7 @@ export default function SearchBarBtn({ haveSearchBtn, searchTrigger }) {
       && (
         <div>
           <button
+            className="btn btn-outline-secondary"
             type="button"
             onClick={ () => (isHidden ? setHidden(false) : setHidden(true)) }
           >

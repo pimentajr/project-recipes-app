@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
 .footer {
   bottom: 0;
   position: fixed;
@@ -46,4 +48,31 @@
 
 .imageDoneRecipe {
   width: 100%;
+}
+
+.main-login {
+  display: flex;
+  width: 100%;
+}
+
+.container-login {
+  max-width: 30%;
+  height: 100%;
+  margin-top: 20%;
+}
+
+.flex {
+  display: flex;
+}
+
+.header-menu {
+  font-family: 'Style Script', cursive;
+  text-align: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.container-recipes {
+  overflow: scroll;
+  text-align: center;
 }
