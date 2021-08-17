@@ -12,25 +12,30 @@ import nonFavoriteIcon from '../images/whiteHeartIcon.svg';
 
 const copy = require('clipboard-copy');
 
-const getIngredients2 = (obj, type) => {
-  const keys = Object.keys(obj);
-  const values = Object.values(obj);
+const getIngredientsAndMeasures = (type, recipe) => {
+  const keys = Object.keys(recipe);
+  const values = Object.values(recipe);
   const indexes = keys.reduce(((arr, key, index) => {
     if (key.includes(type)) return [...arr, index];
     return arr;
   }), []);
-  const response = [];
-  indexes.forEach((ind, index) => {
-    if (!['', ' ', null].includes(values[ind])) {
-      const tag = (
-        <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-          { values[ind] }
-        </li>
-      );
-      response.push(tag);
-    }
-  });
-  return response;
+  const result = indexes.reduce(((arr, index) => {
+    if (!['', ' ', null].includes(values[index])) return [...arr, values[index]];
+    return arr;
+  }), []);
+  return result;
+};
+
+const getIngredients2 = (recipe) => {
+  const ingredients = getIngredientsAndMeasures('strIngredient', recipe);
+  console.log(ingredients);
+  const measure = getIngredientsAndMeasures('strMeasure', recipe);
+  console.log(measure);
+  return ingredients.map((ingredient, index) => (
+    <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+      { `${ingredient} ${measure[index] || ''}` }
+    </li>
+  ));
 };
 
 const deleteFavorite = (idRecipe) => {
@@ -109,7 +114,7 @@ function DetalhesComidas() {
         src={ recipe.strMealThumb }
         alt={ recipe.strMeal }
         data-testid="recipe-photo"
-        width="30px"
+        width="100%"
       />
       <h3 data-testid="recipe-title">{ recipe.strMeal }</h3>
       <button
@@ -135,10 +140,7 @@ function DetalhesComidas() {
       </button>
       <h5 data-testid="recipe-category">{ recipe.strCategory }</h5>
       <ol>
-        { getIngredients2(recipe, 'strIngredient') }
-      </ol>
-      <ol>
-        { getIngredients2(recipe, 'strMeasure') }
+        { getIngredients2(recipe) }
       </ol>
       <p data-testid="instructions">{ recipe.strInstructions }</p>
       <section data-testid="video">
