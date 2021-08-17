@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../images/black/shareIcon.svg';
 
 function ShareButton({ link, index }) {
   const [copy, setCopy] = useState(false);
@@ -22,6 +22,7 @@ function ShareButton({ link, index }) {
         src={ shareIcon }
         alt="Compartilhar"
         data-testid={ `${index}-horizontal-share-btn` }
+        className="share-btn"
       />)}
     </button>
   );

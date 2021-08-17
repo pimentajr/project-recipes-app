@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MainContext from '../context/MainContext';
-import ProfileIcon from '../images/profileIcon.svg';
-import SearchIcon from '../images/searchIcon.svg';
+import ProfileIcon from '../images/white/profileIcon.svg';
+import SearchIcon from '../images/white/searchIcon.svg';
 import SearchBar from './SearchBar';
 
 function Header({ title, isButtonVisible }) {
@@ -45,6 +45,7 @@ function Header({ title, isButtonVisible }) {
             data-testid="search-top-btn"
             src={ SearchIcon }
             alt="search icon"
+            className="search-icon"
           />
         </button>
       );
@@ -61,6 +62,7 @@ function Header({ title, isButtonVisible }) {
             data-testid="profile-top-btn"
             src={ ProfileIcon }
             alt="user profile"
+            className="profile-icon"
           />
         </a>
         <h3 data-testid="page-title">{ title }</h3>

@@ -37,13 +37,6 @@
 */
 
 /* https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6 */
-.start-btn {
-  bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
-}
-
 .recommendations-box {
   display: flex;
   flex-wrap: nowrap;
@@ -77,9 +70,9 @@
 }
 
 .recommended-box-name {
-  color: black;
+  color: #333;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 900;
   margin: 0 5px;
 }
 
@@ -174,6 +167,11 @@
   width: 50%;
 }
 
+.login-btn:disabled {
+  background-color: rgb(133, 133, 133);
+  opacity: 70%;
+}
+
 /* Rodape */
 .footer {
   align-items: center;
@@ -211,6 +209,14 @@
   letter-spacing: 1px;
   padding: 2vh;
   text-transform: uppercase;
+}
+
+.search-icon {
+  width: 30px;
+}
+
+.profile-icon {
+  width: 30px;
 }
 
 .search-btn {
@@ -611,3 +617,173 @@
   margin: 5px;
   text-align: center;
 } */
+
+/* Página de detalhes  */
+.detail-page {
+  margin-bottom: 50px;
+}
+
+.detail-img {
+  height: 25vh;
+  margin: 0;
+  object-fit: cover;
+  width: 100vw;
+}
+
+.food-detail {
+  background-color: #e34f5e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 2vh;
+  width: 100vw;
+}
+
+.drink-detail {
+  background-color: #fac065;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 2vh;
+  width: 100vw;
+}
+
+.detail-header-btn {
+  align-items: center;
+  display: flex;
+}
+
+.detail-infos {
+  margin: 4vh 2vh;
+}
+
+.detail-ingredients {
+  margin: 3vh;
+}
+
+.detail-ingredients li {
+  list-style-type: none;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+
+.detail-ingredients li:before {
+  color: #8b8b8b;
+  content: '•';
+  display: inline-block;
+  left: -1em;
+  position: absolute;
+}
+
+.div-start-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.div-start-btn a {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+
+.start-btn {
+  background-color: #bee34f;
+  border-radius: 28px;
+  border-style: none;
+  bottom: 0;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 10px;
+  padding: 7px;
+  position: fixed;
+  text-transform: uppercase;
+}
+
+.continue-btn {
+  background-color: #fac065;
+  border-radius: 28px;
+  border-style: none;
+  bottom: 0;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 10px;
+  padding: 7px;
+  position: fixed;
+  text-transform: uppercase;
+}
+
+/* Página de Progresso */
+.progress-page {
+  margin-bottom: 50px;
+}
+
+.detail-infos form {
+  display: flex;
+  flex-direction: column;
+  margin: 2vh 0;
+}
+
+.detail-infos label {
+  margin-top: 1vh;
+}
+
+.progress-checklist {
+  margin-right: 1vh;
+}
+
+.progress-instructions {
+  margin-bottom: 1vh;
+}
+
+.finish-food-btn {
+  background-color: #e34f5e;
+  border-radius: 28px;
+  border-style: none;
+  bottom: 0;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 10px;
+  padding: 7px;
+  position: fixed;
+  text-transform: uppercase;
+}
+
+.finish-drink-btn {
+  background-color: #fac065;
+  border-radius: 28px;
+  border-style: none;
+  bottom: 0;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 10px;
+  padding: 7px;
+  position: fixed;
+  text-transform: uppercase;
+}
+
+.finish-food-btn:disabled {
+  background-color: rgb(133, 133, 133);
+  opacity: 70%;
+}
+
+.finish-drink-btn:disabled {
+  background-color: rgb(133, 133, 133);
+  opacity: 70%;
+}
+
+
+/* Icons */
+.share-btn {
+  width: 30px;
+}

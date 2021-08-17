@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getDrinkDetail, getDrinkRecomendations } from '../services/theCockTailAPI';
 import { getMealDetail, getMealRecomendations } from '../services/theMealAPI';
 import Recommendations from '../components/Recommendations';
+import selectDetailClass from '../helpers/detailClass';
 import VerifyStart from '../components/VerifyStart';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
@@ -76,28 +77,48 @@ function RecipeDetails({ match: { params: { id } } }) {
 
   function renderDetails() {
     return (
-      <section>
-        <img data-testid="recipe-photo" src={ thumb } alt={ title } />
-        <h2 data-testid="recipe-title">{ title }</h2>
-        <ShareButton link={ window.location.href } />
-        <FavoriteButton recipeData={ recipeData } type={ recipeType } />
-        <RecipeDetailsCategory
-          strAlcoholic={ strAlcoholic }
-          strCategory={ strCategory }
+      <section className="detail-page">
+        <img
+          data-testid="recipe-photo"
+          src={ thumb }
+          alt={ title }
+          className="detail-img"
         />
-        <ol>
-          {
-            listIngredients().map((ingredient, index) => (
-              <li
-                key={ index }
-                data-testid={ `${index}-ingredient-name-and-measure` }
-              >
-                { `${ingredient}` }
-              </li>
-            ))
-          }
-        </ol>
-        <p data-testid="instructions">{strInstructions}</p>
+        <div className={ selectDetailClass(strMeal) }>
+          <div className="detail-header-info">
+            <h2 data-testid="recipe-title">{ title }</h2>
+            <RecipeDetailsCategory
+              strAlcoholic={ strAlcoholic }
+              strCategory={ strCategory }
+            />
+          </div>
+          <div className="detail-header-btn">
+            <ShareButton link={ window.location.href } />
+            <FavoriteButton recipeData={ recipeData } type={ recipeType } />
+          </div>
+        </div>
+        <div className="detail-infos">
+          <h3>Ingredientes</h3>
+          <ul className="detail-ingredients">
+            {
+              listIngredients().map((ingredient, index) => (
+                <li
+                  key={ index }
+                  data-testid={ `${index}-ingredient-name-and-measure` }
+                >
+                  { `${ingredient}` }
+                </li>
+              ))
+            }
+          </ul>
+          <h3>Instruções</h3>
+          <p
+            data-testid="instructions"
+            className="detail-description"
+          >
+            {strInstructions}
+          </p>
+        </div>
         <RecipeDetailsIframe recipeType={ recipeType } strYoutube={ strYoutube } />
         <Recommendations recommendations={ recomendedRecipe.slice(0, MAX_RESULTS) } />
         <VerifyStart id={ id } />

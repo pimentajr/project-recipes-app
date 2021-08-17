@@ -11,8 +11,8 @@ function RecipeDetailsIframe({ recipeType, strYoutube }) {
   if (recipeType === 'comida') {
     return (
       <iframe
-        width="560"
-        height="315"
+        width="100%"
+        // height="315"
         src={ `https://www.youtube.com/embed/${getVideoTag()}` }
         title="YouTube video player"
         frameBorder="0"

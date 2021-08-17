@@ -12,32 +12,36 @@ function VerifyStart({ id }) {
     && ((Object.keys(cocktails)).includes(id)
       || (Object.keys(meals)).includes(id))) {
     return (
-      <Link
-        to={ `${window.location.pathname}/in-progress` }
-      >
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-          className="start-btn"
+      <div className="div-start-btn">
+        <Link
+          to={ `${window.location.pathname}/in-progress` }
         >
-          Continuar Receita
-        </button>
-      </Link>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+            className="continue-btn"
+          >
+            Continuar Receita
+          </button>
+        </Link>
+      </div>
     );
   }
   if (doneRecipes.length === 0 || doneRecipes.find((recipe) => id !== recipe.id)) {
     return (
-      <Link
-        to={ `${window.location.pathname}/in-progress` }
-      >
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-          className="start-btn"
+      <div className="div-start-btn">
+        <Link
+          to={ `${window.location.pathname}/in-progress` }
         >
-          Iniciar Receita
-        </button>
-      </Link>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+            className="start-btn"
+          >
+            Iniciar Receita
+          </button>
+        </Link>
+      </div>
     );
   }
   return null;

@@ -90,48 +90,68 @@ function FoodRecipeInProgress({ match: { params: { id } } }) {
   };
 
   return (
-    <div>
-      <img src={ strMealThumb } data-testid="recipe-photo" alt={ strMeal } />
-      <h3 data-testid="recipe-title">{ strMeal }</h3>
-      <ShareButton link={ window.location.href.slice(0, SLICE_NUMBER) } />
-      <FavoriteButton recipeData={ recipe } type="comida" />
-      <p data-testid="recipe-category">{ strCategory }</p>
-      <form>
-        {
-          listIngredients().map((ingredient, index) => (
-            <label
-              className={
-                usedIngredients.includes(ingredient) ? 'ingredient-checked' : ''
-              }
-              htmlFor={ index }
-              data-testid={ `${index}-ingredient-step` }
-              key={ index }
-            >
-              <input
-                checked={ usedIngredients.includes(ingredient) }
-                value={ ingredient }
-                type="checkbox"
-                id={ index }
-                name="ingredients"
-                onClick={ lineThroughUsedIngredients }
-              />
-              { ingredient }
+    <div className="progress-page">
+      <img
+        src={ strMealThumb }
+        data-testid="recipe-photo"
+        alt={ strMeal }
+        className="detail-img"
+      />
+      <div className="food-detail">
+        <div className="detail-header-info">
+          <h3 data-testid="recipe-title">{ strMeal }</h3>
+          <p data-testid="recipe-category">{ strCategory }</p>
+        </div>
+        <div className="detail-header-btn">
+          <ShareButton link={ window.location.href.slice(0, SLICE_NUMBER) } />
+          <FavoriteButton recipeData={ recipe } type="comida" />
+        </div>
+      </div>
+      <div className="detail-infos">
+        <form>
+          <h3>CheckList de Ingredientes</h3>
+          {
+            listIngredients().map((ingredient, index) => (
+              <label
+                className={
+                  usedIngredients.includes(ingredient) ? 'ingredient-checked' : ''
+                }
+                htmlFor={ index }
+                data-testid={ `${index}-ingredient-step` }
+                key={ index }
+              >
+                <input
+                  checked={ usedIngredients.includes(ingredient) }
+                  value={ ingredient }
+                  type="checkbox"
+                  id={ index }
+                  className="progress-checklist"
+                  name="ingredients"
+                  onClick={ lineThroughUsedIngredients }
+                />
+                { ingredient }
 
-            </label>
-          ))
-        }
-      </form>
-      <p data-testid="instructions">{ strInstructions }</p>
-      <Link to="/receitas-feitas">
-        <button
-          type="button"
-          data-testid="finish-recipe-btn"
-          disabled={ listIngredients().length !== usedIngredients.length }
-          onClick={ () => saveDoneRecipes(saveDone, setDoneRecipes) }
-        >
-          Finalizar Receita
-        </button>
-      </Link>
+              </label>
+            ))
+          }
+        </form>
+        <h3 className="progress-instructions">Instruções</h3>
+        <p data-testid="instructions">{ strInstructions }</p>
+
+      </div>
+      <div className="div-start-btn">
+        <Link to="/receitas-feitas">
+          <button
+            type="button"
+            data-testid="finish-recipe-btn"
+            disabled={ listIngredients().length !== usedIngredients.length }
+            onClick={ () => saveDoneRecipes(saveDone, setDoneRecipes) }
+            className="finish-food-btn"
+          >
+            Finalizar Receita
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
