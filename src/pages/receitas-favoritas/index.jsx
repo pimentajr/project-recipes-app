@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 import CopyButton from '../../components/Details/CopyButton';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
@@ -34,6 +34,12 @@ function ReceitasFavoritas(props) {
   } else {
     filtered = favorites;
   }
+
+  const history = useHistory();
+
+  const handleRedirect = (type, id) => {
+    history.push(`/${type}s/${id}`);
+  };
 
   return (
     <div>
@@ -88,16 +94,16 @@ function ReceitasFavoritas(props) {
               />
             </Link>
             <div className="d-flex flex-column">
+              <Link to={ `/${type}s/${id}` } key={ index }>
+                <Col onClick={ () => handleRedirect(type, id) }>
+                  <span data-testid={ `${index}-horizontal-name` }>{name}</span>
+                </Col>
+              </Link>
               <Col>
                 <span data-testid={ `${index}-horizontal-top-text` }>
                   {formatedCategory}
                 </span>
               </Col>
-              <Link to={ `/${type}s/${id}` } key={ index }>
-                <Col>
-                  <span data-testid={ `${index}-horizontal-name` }>{name}</span>
-                </Col>
-              </Link>
               <Col className="pb-2 justify-items-end">
                 <CopyButton
                   testId={ `${index}-horizontal-share-btn` }
