@@ -1,3 +1,4 @@
+/* Fonte: https://wallpaperbat.com/phone-hd-food-wallpapers */
 .back-ground-food {
   background-image: url('./explorefood.jpg');
   background-repeat: no-repeat;
@@ -58,4 +59,17 @@
   justify-content: center;
   margin-bottom: 10px;
   width: 250px;
+}
+
+/* https://mobile.alphacoders.com/wallpapers/view/812618/Food-Drink-Phone-Wallpaper */
+.back-ground-drink {
+  background-image: url('./drink.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }

@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { randomFoodId } from '../redux/actions/foodActions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../ExplorebyFood.css';
+import '../ExplorebyFoodandDrink.css';
 
 class ExploreFoods extends Component {
   constructor() {
@@ -53,9 +53,9 @@ class ExploreFoods extends Component {
             >
               Me Surpreenda!
             </Button>
-            <Footer />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
