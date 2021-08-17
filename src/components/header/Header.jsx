@@ -2,16 +2,23 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 
+import { useRecipes } from '../../contexts/RecipesContext';
+
 import ProfileIcon from '../../images/profileIcon.svg';
 import SearchIcon from '../../images/searchIcon.svg';
 
 import './Header.css';
 
 export default function Header({ pageTitle, itHasNotSearchButton }) {
-  const [searchText, setSearchText] = useState('');
-  // const [filter, setFilter] = useState('');
   const [searchFormHidden, setSearchFormHidden] = useState(false);
+  const {
+    setFilter,
+    searchText,
+    setSearchText,
+    submitSearch,
+  } = useRecipes();
   const history = useHistory();
+
   return (
     <div className="HeaderContainer">
       <div className="topBar">
@@ -44,6 +51,7 @@ export default function Header({ pageTitle, itHasNotSearchButton }) {
         && (
           <form
             className="searchBarSection"
+            onSubmit={ (event) => submitSearch(event) }
           >
             <input
               type="text"
@@ -60,7 +68,8 @@ export default function Header({ pageTitle, itHasNotSearchButton }) {
                 type="radio"
                 name="filter"
                 id="ingredients"
-                // onClick={ () => setFilter('ingredients') }
+                data-testid="ingredient-search-radio"
+                onClick={ () => setFilter('ingredients') }
               />
             </label>
 
@@ -70,7 +79,8 @@ export default function Header({ pageTitle, itHasNotSearchButton }) {
                 type="radio"
                 name="filter"
                 id="name"
-                // onClick={ () => setFilter('name') }
+                data-testid="name-search-radio"
+                onClick={ () => setFilter('name') }
               />
             </label>
 
@@ -80,13 +90,15 @@ export default function Header({ pageTitle, itHasNotSearchButton }) {
                 type="radio"
                 name="filter"
                 id="firstLetter"
-                // onClick={ () => setFilter('firstLetter') }
+                data-testid="first-letter-search-radio"
+                onClick={ () => setFilter('firstLetter') }
               />
             </label>
 
             <input
               type="submit"
               value="Buscar"
+              data-testid="exec-search-btn"
             />
           </form>
         )
