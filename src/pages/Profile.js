@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 
 function Profile({ history: { push } }) {
   function getUserEmail() {
-    const { email } = JSON.parse(localStorage.getItem('user')) || {};
-    return email;
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    return user.email;
   }
 
   function toFavoriteRecipes() {
