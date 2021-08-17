@@ -1,33 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
-import RecipeCard from '../components/RecipeCard';
 import { fetchRecipes } from '../actions';
 import { fetchAreas } from '../actions/areas';
+import { getXFirstElementsFromArray } from '../helpers/utils';
 
 function ExploreLocation({
-  history: { location: { pathname } },
-  dispatchFetchRecipes,
+  history,
   dispatchFetchArea,
+  dispatchFetchRecipes,
   areas,
   recipes,
   loading,
   error,
 }) {
-  useEffect(() => {
-    if (pathname.includes('comidas')) {
-      dispatchFetchRecipes('meals');
-    } else {
-      dispatchFetchRecipes('drinks');
-    }
-  }, [pathname, dispatchFetchRecipes]);
+  const [filterArea, setFilterArea] = useState('American');
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
   useEffect(() => {
     dispatchFetchArea();
-  }, [dispatchFetchArea]);
+    dispatchFetchRecipes('meals');
+  }, [dispatchFetchArea, dispatchFetchRecipes]);
+
+  useEffect(() => {
+    const urlFilterByArea = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${filterArea}`;
+    const cardsQuantity = 12;
+    fetch(urlFilterByArea)
+      .then((response) => response.json())
+      .then(({ meals }) => setFilteredRecipes(
+        getXFirstElementsFromArray(meals, cardsQuantity),
+      ));
+  }, [filterArea]);
+
+  function handleFilterChange({ target }) {
+    const { value } = target;
+    setFilterArea(value);
+  }
 
   return !loading ? (
     <>
@@ -35,17 +46,33 @@ function ExploreLocation({
       <main>
         { error && `${error}` }
         <label htmlFor="area">
-          <select name="area" data-testid="explore-by-area-dropdown">
+          <select
+            name="area"
+            onChange={ handleFilterChange }
+            data-testid="explore-by-area-dropdown"
+          >
             { areas.map(({ strArea: area }, index) => (
               <option data-testid={ `${area}-option` } key={ index }>{ area }</option>
             ))}
           </select>
         </label>
-        <section>
-          { recipes.map((recipe, index) => (
-            <RecipeCard recipe={ recipe } index={ index } key={ index } />
-          )) }
-        </section>
+        { recipes && filteredRecipes.map((recipe, index) => (
+          <section key={ index }>
+            <button
+              type="button"
+              onClick={ () => history.push(`/comidas/${recipe.idMeal}`) }
+              data-testid={ `${index}-recipe-card` }
+            >
+              <img
+                src={ recipe.strMealThumb }
+                alt={ recipe.strMeal }
+                width="200px"
+                data-testid={ `${index}-card-img` }
+              />
+              <h1 data-testid={ `${index}-card-name` }>{recipe.strMeal}</h1>
+            </button>
+          </section>
+        ))}
       </main>
       <Footer />
     </>
@@ -57,9 +84,9 @@ const mapStateToProps = ({
   areasReducer: { areas },
 }) => ({
   recipes,
+  areas,
   loading,
   error,
-  areas,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -69,9 +96,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 ExploreLocation.propTypes = {
   history: PropTypes.shape({
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
     recipes: PropTypes.arrayOf(PropTypes.object),
     area: PropTypes.arrayOf(PropTypes.object),
     dispatchFetchRecipes: PropTypes.func,
