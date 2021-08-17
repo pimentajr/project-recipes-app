@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Context from '../../Context_Configs/Context';
+import '../../styles/foods.css';
 
 export default function FoodsCards() {
   const { dataFood } = useContext(Context);
@@ -14,7 +15,7 @@ export default function FoodsCards() {
               className="col-6 d-inline-block flex-column align-items-center mt-3 mb-3"
             >
               <img
-                className="w-100 rounded-circle p-2"
+                className="food-card w-100 rounded-circle p-2"
                 src={ strMealThumb }
                 data-testid={ `${index}-card-img` }
                 alt="Imagem de comida"

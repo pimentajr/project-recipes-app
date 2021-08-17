@@ -59,12 +59,12 @@ function Foods() {
             <button
               onClick={ () => setShowSearch(!showSearch) }
               type="button"
+              className="search-icon-button"
             >
               <img
                 data-testid="search-top-btn"
                 className="search-icon"
                 src={ searchIcon }
-                // onClick={ () => setShowSearch(!showSearch) }
                 alt="Botão com imagem de uma lupa: abre uma barra de pesquisa"
               />
             </button>
