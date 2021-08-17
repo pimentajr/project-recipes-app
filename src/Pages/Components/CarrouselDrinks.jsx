@@ -22,7 +22,7 @@ export default function CarrouselDrinks() {
   return (
     <>
       <h2>Recomendações de acompanhamentos</h2>
-      <section className="scroll-recomendation">
+      <section className="scroll-recomendation mb-2">
         { drinkRecomendations.map(({ strDrink, strDrinkThumb }, i) => (
           <div data-testid={ `${i}-recomendation-card` } key={ `${strDrink} ${i}` }>
             <h3 data-testid={ `${i}-recomendation-title` }>{strDrink}</h3>

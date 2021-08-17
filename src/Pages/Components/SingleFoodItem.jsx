@@ -7,6 +7,7 @@ import '../../styles/detail-screen.css';
 import { manageDetailAPI } from '../../Helpers/convertUrlToID';
 import embedYouTubeVideo from '../../Helpers/embedYouTubeVideo';
 import FavoriteButton from './FavoriteButton';
+import '../../styles/singleFood.css';
 
 function SingleFoodItem() {
   const { id } = useParams();
@@ -54,16 +55,18 @@ function SingleFoodItem() {
 
   const { meals } = itemDetail;
   return itemDetail.meals !== null && (
-    <div>
+    <div className="d-flex flex-column container">
       <h1 data-testid="recipe-title">{meals[0].strMeal}</h1>
       <img
-        width="350"
+        width="100%"
         src={ meals[0].strMealThumb }
         alt={ `Foto da comida chamada ${meals[0].strMeal}` }
         data-testid="recipe-photo"
       />
-      <FavoriteButton currentItem={ meals[0] } typeOf="Meal" />
-      <ShareButton />
+      <div>
+        <FavoriteButton currentItem={ meals[0] } typeOf="Meal" />
+        <ShareButton />
+      </div>
       <p data-testid="recipe-category">{meals[0].strCategory}</p>
       <section>
         <h2>Ingredientes</h2>
@@ -85,13 +88,13 @@ function SingleFoodItem() {
       </section>
       <section>
         <h2>Instruções em vídeo</h2>
-        <embed data-testid="video" src={ embedYouTubeVideo(meals[0].strYoutube) } />
+        <embed width="100%" data-testid="video" src={ embedYouTubeVideo(meals[0].strYoutube) } />
       </section>
       <CarrouselDrinks />
       <button
         data-testid="start-recipe-btn"
         type="button"
-        className="start-recipe-button"
+        className="align-self-center start-recipe-button"
         onClick={ () => history
           .push(`/comidas/${id}/in-progress`) }
       >

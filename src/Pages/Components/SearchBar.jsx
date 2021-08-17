@@ -37,7 +37,7 @@ function SearchBar({ value }) {
             />
           </label>
         </div>
-        <div className="col-5 pl-2">
+        <div className="col-5 pl-3">
           <button
             type="button"
             data-testid="exec-search-btn"
