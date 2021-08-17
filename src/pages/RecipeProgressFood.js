@@ -8,7 +8,7 @@ function RecipeProgressFood(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
   const [changeInputFood, setChangeInputFood] = useState(false);
-  const [changeInputFoodChecked, setchangeInputFoodChecked] = useState('noChecked');
+  const [changeInputFoodChecked, setchangeInputFoodChecked] = useState('');
 
   async function getDetailsById() {
     const itemsFood = await searchById(id);
@@ -19,12 +19,14 @@ function RecipeProgressFood(props) {
     getDetailsById();
   }, []);
 
-  function isCheckedFood() {
+  function isCheckedFood(numero) {
     setChangeInputFood(() => !changeInputFood);
     if (changeInputFood === false) {
       setchangeInputFoodChecked('checked');
+      localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
     } else {
-      setchangeInputFoodChecked('noChecked');
+      setchangeInputFoodChecked('');
+      localStorage.removeItem('inProgressRecipes');
     }
   }
 
@@ -39,7 +41,7 @@ function RecipeProgressFood(props) {
             <label
               htmlFor={ numero }
               data-testid={ `${numero}-ingredient-step` }
-              onChange={ () => isCheckedFood() }
+              onChange={ () => isCheckedFood(`${numero - 1}-ingredient-step`) }
               className={ changeInputFoodChecked }
             >
               <input

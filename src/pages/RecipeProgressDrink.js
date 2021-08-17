@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 import { searchId } from '../services/RequestDrinks';
 import '../styles/drink.css';
+// import Clipboard from '../components/Clipboard';
 
 function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
-  const [changeInput, setChangeInput] = useState(false);
+  const [changeInput, setChangeInput] = useState(true);
   const [changeInputDrinkChecked, setchangeInputDrinkChecked] = useState('');
 
   async function getDetailsById() {
@@ -19,13 +20,16 @@ function RecipeProgressDrink(props) {
     getDetailsById();
   }, []);
 
-  function isChecked() {
+  function isChecked(numero) {
     setChangeInput(() => !changeInput);
-    if (changeInput === false) {
+    if (changeInput === true) {
       setchangeInputDrinkChecked('checked');
+      localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
     } else {
       setchangeInputDrinkChecked('');
+      localStorage.removeItem('inProgressRecipes');
     }
+    console.log(numero);
   }
 
   function renderIngrediente(drink) {
@@ -39,11 +43,12 @@ function RecipeProgressDrink(props) {
             <label
               htmlFor={ numero }
               data-testid={ `${numero}-ingredient-step` }
-              onChange={ () => isChecked() }
+              onChange={ () => isChecked(`${numero - 1}-ingredient-step`) }
               className={ changeInputDrinkChecked }
             >
               <input
                 type="checkbox"
+                data-testid={ `${numero}-ingredient-step` }
               />
               { `${drink[`strIngredient${numero}`]} ` }
               { (drink[`strMeasure${numero}`] !== null
@@ -77,8 +82,18 @@ function RecipeProgressDrink(props) {
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ drink.strInstructions }</p>
-        <button type="button" data-testid="share-btn">Share</button>
-        <button type="button" data-testid="favorite-btn">Favorite</button>
+        <button
+          type="button"
+          data-testid="share-btn"
+        >
+          Share
+        </button>
+        <button
+          type="button"
+          data-testid="favorite-btn"
+        >
+          Favorite
+        </button>
         <button
           type="button"
           data-testid="finish-recipe-btn"
