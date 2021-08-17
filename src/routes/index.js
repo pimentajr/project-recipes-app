@@ -11,6 +11,7 @@ import ExploreLocation from '../pages/ExploreLocation';
 import Profile from '../pages/Profile';
 import RecipesDone from '../pages/RecipesDone';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
+import NotFound from '../pages/NotFound';
 
 class Routes extends React.Component {
   render() {
@@ -37,6 +38,7 @@ class Routes extends React.Component {
           component={ ExploreIngredients }
         />
         <Route exact path="/explorar/comidas/area" component={ ExploreLocation } />
+        <Route exact path="/explorar/bebidas/area" component={ NotFound } />
         <Route exact path="/perfil" component={ Profile } />
         <Route exact path="/receitas-feitas" component={ RecipesDone } />
         <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
