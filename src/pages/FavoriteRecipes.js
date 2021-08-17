@@ -10,7 +10,7 @@ import DrinkShareButton from '../components/DrinkShareButton';
 import FavoriteButton from '../components/FavoriteButton';
 import ShareButton from '../components/ShareButton';
 import { saveFavoritesRedux } from '../redux/actions/foodActions';
-import '../FoodsAndDrinks.css';
+import '../Favorities.css';
 
 class FavoriteRecipes extends Component {
   constructor() {
