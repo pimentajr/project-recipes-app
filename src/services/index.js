@@ -168,6 +168,31 @@ export const fetchAPI = {
   },
 };
 
+function getIngredients(recipe) {
+  const ingredientsKeys = Object.keys(recipe).reduce((acc, cur) => {
+    if (cur.includes('strIngredient')) {
+      return [...acc, cur];
+    }
+    return acc;
+  }, []);
+  const measureKeys = Object.keys(recipe).reduce((acc, cur) => {
+    if (cur.includes('strMeasure')) {
+      return [...acc, cur];
+    }
+    return acc;
+  }, []);
+  const newIngredients = measureKeys.reduce((acc, cur, index) => {
+    if (recipe[cur] && recipe[cur].length > 1) {
+      const obj = {
+        name: recipe[ingredientsKeys[index]], measure: recipe[cur], checked: false,
+      };
+      return [...acc, obj];
+    }
+    return acc;
+  }, []);
+  return newIngredients;
+}
+
 export function getIds(type, recipe) {
   const verify = type.includes('omida') || type === 'food';
   return {
@@ -182,5 +207,6 @@ export function getIds(type, recipe) {
     instructions: recipe.strInstructions,
     similarName: verify ? 'meals' : 'cocktails',
     tags: (recipe.strTags) ? recipe.strTags.split(',').slice(0, 2) : null,
+    ingredients: getIngredients(recipe),
   };
 }

@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect } from 'react';
-import DetailsContext from '../context/detailsContext';
-import { getIds } from '../services';
+import React from 'react';
 
 const onChecked = {
   textDecoration: 'line-through',
@@ -13,51 +11,7 @@ const offChecked = {
   fontSize: '25px',
 };
 
-export default function Ingredients({ recipe, inProgress, type }) {
-  const { ingredients, setIngredients } = useContext(DetailsContext);
-  const { id, similarName } = getIds(type, recipe);
-
-  useEffect(() => {
-    const storage = JSON.parse(localStorage.inProgressRecipes)[similarName][id];
-    if (storage) {
-      setIngredients(storage);
-    } else {
-      const ingredientsKeys = Object.keys(recipe).reduce((acc, cur) => {
-        if (cur.includes('strIngredient')) {
-          return [...acc, cur];
-        }
-        return acc;
-      }, []);
-      const measureKeys = Object.keys(recipe).reduce((acc, cur) => {
-        if (cur.includes('strMeasure')) {
-          return [...acc, cur];
-        }
-        return acc;
-      }, []);
-      const newIngredients = measureKeys.reduce((acc, cur, index) => {
-        if (recipe[cur] && recipe[cur].length > 1) {
-          const obj = {
-            name: recipe[ingredientsKeys[index]], measure: recipe[cur], checked: false,
-          };
-          return [...acc, obj];
-        }
-        return acc;
-      }, []);
-      setIngredients(newIngredients);
-    }
-  }, [recipe, id, setIngredients, similarName]);
-
-  function setLocalStorage(teste) {
-    const initialInProgress = JSON.stringify({ cocktails: {}, meals: {} });
-    if (!localStorage.inProgressRecipes) {
-      localStorage.setItem('inProgressRecipes', initialInProgress);
-    }
-    const storage = JSON.parse(localStorage.inProgressRecipes);
-    const typeStorage = storage[similarName];
-    typeStorage[id] = teste;
-    localStorage.setItem('inProgressRecipes', JSON.stringify(storage));
-  }
-
+export default function Ingredients({ ingredients, inProgress, setIngredients }) {
   function checkedIngredient(ingredientName) {
     const newIngredients = ingredients.map(({ name, measure, checked }) => {
       if (name === ingredientName) {
@@ -66,14 +20,13 @@ export default function Ingredients({ recipe, inProgress, type }) {
       return { name, measure, checked };
     });
     setIngredients(newIngredients);
-    setLocalStorage(newIngredients);
   }
 
   return (
-    <div className="bg-light pt-2 m-3 rounded border">
+    <div className="bg-light pt-2 mx-3 rounded border">
       <ol className="d-flex flex-column">
         {
-          (ingredients) && ingredients.map(({ name, measure, checked }, index) => (
+          ingredients.map(({ name, measure, checked }, index) => (
             (inProgress) ? (
               <div className="d-flex align-items-center">
                 <label
@@ -109,12 +62,10 @@ export default function Ingredients({ recipe, inProgress, type }) {
 
 Ingredients.propTypes = {
   inProgress: PropTypes.string,
-  recipe: PropTypes.shape({}).isRequired,
-  type: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setIngredients: PropTypes.func.isRequired,
 };
 
 Ingredients.defaultProps = {
   inProgress: undefined,
 };
-
-// data-testid*="ingredient-step";

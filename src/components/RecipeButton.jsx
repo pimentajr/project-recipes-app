@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import DetailsContext from '../context/detailsContext';
 
-export default function RecipeButton({ state, recipe }) {
+export default function RecipeButton({ state, recipe, ingredients, setIngredients }) {
   const history = useHistory();
-  const { ingredients } = useContext(DetailsContext);
   const { pathname } = history.location;
   const verify = (ingredients) ? ingredients.some((e) => e.checked === false) : false;
   function setDoneRecipe() {
@@ -28,20 +26,19 @@ export default function RecipeButton({ state, recipe }) {
     const doneRecipes = JSON.parse(localStorage.doneRecipes);
     localStorage.setItem('doneRecipes', JSON.stringify([...doneRecipes, obj]));
   }
-  if (!state) {
-    return (
-      <button
-        type="button"
-        className="startButton"
-        data-testid="start-recipe-btn"
-        onClick={ () => history.push(`${pathname}/in-progress`) }
-      >
-        Iniciar Receita
-      </button>
+  function restartRecipe() {
+    const newIngredients = ingredients.map(({ name, measure }) => (
+      { name, measure, checked: false }
+    ));
+    setIngredients(newIngredients);
+    const doneRecipes = JSON.parse(localStorage.doneRecipes);
+    const filterRecipes = doneRecipes.filterRecipes(
+      (element) => element.id !== recipe.id,
     );
+    localStorage.setItem('doneRecipes', JSON.stringify(filterRecipes));
   }
-  if (state === 'inProgress') {
-    console.log(state);
+  switch (state) {
+  case 'started':
     return (
       <button
         type="button"
@@ -52,8 +49,7 @@ export default function RecipeButton({ state, recipe }) {
         Continuar Receita
       </button>
     );
-  }
-  if (state === 'in-progress') {
+  case 'inProgress':
     return (
       <Link to="/receitas-feitas">
         <button
@@ -67,17 +63,28 @@ export default function RecipeButton({ state, recipe }) {
         </button>
       </Link>
     );
-  }
-  return (
-    <Link to="/receitas-feitas">
+  case 'restart':
+    return (
       <button
         type="button"
         className="startButton"
+        onClick={ () => { restartRecipe(); history.push(`${pathname}/in-progress`); } }
       >
-        Receita Finalizada
+        Refazer Receita
       </button>
-    </Link>
-  );
+    );
+  default:
+    return (
+      <button
+        type="button"
+        className="startButton"
+        data-testid="start-recipe-btn"
+        onClick={ () => history.push(`${pathname}/in-progress`) }
+      >
+        Iniciar Receita
+      </button>
+    );
+  }
 }
 
 RecipeButton.propTypes = {
@@ -91,6 +98,8 @@ RecipeButton.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   state: PropTypes.string,
+  ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setIngredients: PropTypes.func.isRequired,
 };
 
 RecipeButton.defaultProps = {

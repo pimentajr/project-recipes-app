@@ -4,10 +4,11 @@
   bottom: 0;
   position: fixed;
   width: 100%;
+  font-size: 1.2rem;
 }
 
 .details-img {
-  height: 32vh;
+  height: 40vh;
   object-fit: cover;
   width: 100%;
 }
