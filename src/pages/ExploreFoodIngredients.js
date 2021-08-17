@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { foodIngredient, renderFoodIngredient } from '../redux/actions/foodActions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../ExploreIngredients.css';
 
 class ExploreFoodIngredients extends Component {
   componentDidMount() {
@@ -26,7 +27,8 @@ class ExploreFoodIngredients extends Component {
         <ul>
           { fetchFoodIngredient.map((item, index) => (
             <Button
-              type="button"
+              className="ingredient-buttons"
+              variant="outline-dark"
               key={ item.idIngredient }
               data-testid={ `${index}-ingredient-card` }
               onClick={ () => this.redirectFoodIngredient(item.strIngredient) }

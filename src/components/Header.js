@@ -45,7 +45,7 @@ class Header extends Component {
         </Link>
         <h1
           data-testid="page-title"
-          className="title-header favorities-title"
+          className="title-header"
         >
           { title }
         </h1>
