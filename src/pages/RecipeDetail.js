@@ -12,7 +12,6 @@ function RecipeDetail({ history: { push, location: { pathname } },
   dispatchFetchDetail, dispatchFetchRecommended, recipeDetail, recipesRecommended }) {
   const { id } = useParams();
   const type = pathname.includes('comidas') ? 'comidas' : 'bebidas';
-  const recipesDone = getFromStorage('doneRecipes') || [];
 
   function verifyRecipeInProgress() {
     const inProgressRecipes = getFromStorage('inProgressRecipes') || [];
@@ -39,6 +38,7 @@ function RecipeDetail({ history: { push, location: { pathname } },
   }, [dispatchFetchDetail, type, id]);
 
   function verifyRecipeDone() {
+    const recipesDone = getFromStorage('doneRecipes') || [];
     return recipesDone.some((item) => (item.id === id));
   }
 
