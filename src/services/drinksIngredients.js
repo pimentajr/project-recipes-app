@@ -40,20 +40,23 @@ function drinksIngredients({ drinkDetails }) {
   ];
 
   const newIngredients = oldIngredients.filter((ingredient) => ingredient !== null);
-  const newMeasures = oldMeasures.filter((measure) => measure !== null);
 
   return (
     <ul>
       {
         drinkDetails
           ? newIngredients.map((element, index) => {
-            if (newMeasures[index] === undefined) return null;
+            if (oldMeasures[index] === undefined) return null;
             return (
               <li
                 key={ index }
                 data-testid={ `${index}-ingredient-name-and-measure` }
               >
-                {`${newMeasures[index]} - ${element}`}
+                {
+                  (oldMeasures[index])
+                    ? `${oldMeasures[index]} - ${element}`
+                    : element
+                }
               </li>);
           })
           : <h1>Carregando</h1>

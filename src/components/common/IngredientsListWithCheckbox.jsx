@@ -15,6 +15,7 @@ const IngredientsListWithCheckbox = (props) => {
   } = props;
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (!inProgressRecipes) return (<span>Carregando ingredients...</span>);
+  if (!inProgressRecipes[recipeType]) return (<span>Carregando Ingredientes...</span>);
   if (inProgressRecipes[recipeType][id] === undefined
       || inProgressRecipes[recipeType][id] === []
       || inProgressRecipes[recipeType][id] === null) {

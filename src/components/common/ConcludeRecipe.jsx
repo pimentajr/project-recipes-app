@@ -15,6 +15,7 @@ const ConcludeRecipe = ({
   resetProgress }) => {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (!inProgressRecipes) return (<span>Carregando botão...</span>);
+  if (!inProgressRecipes[recipeType]) return (<span>Carregando botão...</span>);
   if (inProgressRecipes[recipeType][id] === undefined
         || inProgressRecipes[recipeType][id] === []
         || inProgressRecipes[recipeType][id] === null) {
