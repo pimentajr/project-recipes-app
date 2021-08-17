@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 
-import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
 
 export default function Profile() {
   const [userEmail, setUserEmail] = useState();
@@ -10,7 +10,9 @@ export default function Profile() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    setUserEmail(user.email);
+    if (user !== null) {
+      setUserEmail(user.email);
+    }
   }, [setUserEmail]);
 
   function logoutHandler() {
