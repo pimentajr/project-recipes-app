@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+import { Button, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { executeFoodSearch, updateQuery, executeDrinkSearch,
   updateSelectedFilter } from '../redux/actions/searchBarActions';
 import { foodListSuccess } from '../redux/actions/foodActions';
 import { drinkListSuccess } from '../redux/actions/drinkActions';
+import '../SearchBar.css';
 
 class SearchBar extends Component {
   constructor() {
@@ -70,55 +72,64 @@ class SearchBar extends Component {
     const { queryAction, selectedFilterAction, query, history } = this.props;
     console.log(history.location.pathname.includes('comidas'));
     return (
-      <div>
-        <input
-          type="text"
-          data-testid="search-input"
-          placeholder="Faça sua pequisa"
-          value={ query }
-          onChange={ ({ target }) => queryAction(target.value) }
-        />
-        <label htmlFor="search-ingredient">
-          <input
-            name="filter"
-            id="search-ingredient"
-            value="ingredient"
-            type="radio"
-            data-testid="ingredient-search-radio"
-            onChange={ () => selectedFilterAction('ingredient') }
+      <Form className="searchBar">
+        <Form.Group class="mb-3">
+          <Form.Control
+            type="text"
+            data-testid="search-input"
+            placeholder="Faça sua pequisa"
+            value={ query }
+            onChange={ ({ target }) => queryAction(target.value) }
           />
-          Ingrediente
-        </label>
-        <label htmlFor="search-nome">
-          <input
-            name="filter"
-            id="search-nome"
-            value="name"
-            type="radio"
-            data-testid="name-search-radio"
-            onChange={ () => selectedFilterAction('name') }
-          />
-          Nome
-        </label>
-        <label htmlFor="search-first-letter">
-          <input
-            name="filter"
-            id="search-first-letter"
-            value="firstLetter"
-            type="radio"
-            data-testid="first-letter-search-radio"
-            onChange={ () => selectedFilterAction('firstLetter') }
-          />
-          Primeira Letra
-        </label>
-        <button
-          type="button"
-          data-testid="exec-search-btn"
-          onClick={ () => this.handleSearchClick() }
-        >
-          Buscar
-        </button>
-      </div>
+          <label htmlFor="search-ingredient">
+            <input
+              className="input"
+              name="filter"
+              id="search-ingredient"
+              value="ingredient"
+              type="radio"
+              data-testid="ingredient-search-radio"
+              onChange={ () => selectedFilterAction('ingredient') }
+            />
+            Ingrediente
+          </label>
+          <label htmlFor="search-nome">
+            <input
+              className="input"
+              name="filter"
+              id="search-nome"
+              value="name"
+              type="radio"
+              data-testid="name-search-radio"
+              onChange={ () => selectedFilterAction('name') }
+            />
+            Nome
+          </label>
+          <label htmlFor="search-first-letter">
+            <input
+              className="input"
+              name="filter"
+              id="search-first-letter"
+              value="firstLetter"
+              type="radio"
+              data-testid="first-letter-search-radio"
+              onChange={ () => selectedFilterAction('firstLetter') }
+            />
+            Primeira Letra
+          </label>
+          <Button
+            className="searchBar-button"
+            variant="outline-dark"
+            type="button"
+            data-testid="exec-search-btn"
+            onClick={ () => this.handleSearchClick() }
+          >
+            Buscar
+          </Button>
+
+        </Form.Group>
+
+      </Form>
     );
   }
 }

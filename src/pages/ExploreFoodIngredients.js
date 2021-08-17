@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { foodIngredient, renderFoodIngredient } from '../redux/actions/foodActions';
 import Header from '../components/Header';
@@ -24,7 +25,7 @@ class ExploreFoodIngredients extends Component {
         <Header title="Explorar Ingredientes" search={ false } />
         <ul>
           { fetchFoodIngredient.map((item, index) => (
-            <button
+            <Button
               type="button"
               key={ item.idIngredient }
               data-testid={ `${index}-ingredient-card` }
@@ -38,7 +39,7 @@ class ExploreFoodIngredients extends Component {
                 width="200px"
               />
               <p data-testid={ `${index}-card-name` }>{ item.strIngredient }</p>
-            </button>
+            </Button>
           ))}
         </ul>
         <Footer />

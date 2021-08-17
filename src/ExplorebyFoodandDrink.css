@@ -1,6 +1,6 @@
-/* Fonte: https://wallpaperbat.com/phone-hd-food-wallpapers */
+/* Fonte: https://unsplash.com/photos/R18ecx07b3c */
 .back-ground-food {
-  background-image: url('./explorefood.jpg');
+  background-image: url('./food.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
@@ -61,9 +61,9 @@
   width: 250px;
 }
 
-/* https://mobile.alphacoders.com/wallpapers/view/812618/Food-Drink-Phone-Wallpaper */
+/* Fonte: https://unsplash.com/photos/HjWzkqW1dgI */
 .back-ground-drink {
-  background-image: url('./drink.jpg');
+  background-image: url('./brooke-lark.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;

@@ -1,0 +1,29 @@
+.searchBar {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Lemonada , cursive;
+  font-size: 2.5vh;
+  justify-content: space-around;
+
+}
+
+.searchBar-button {
+  align-items: center;
+  background-color: rgb(92, 10, 39);
+  border: solid rgb(92, 10, 39);
+  border-radius: 5px;
+  color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  font-family: Lemonada , cursive;
+  font-weight: 500;
+  height: 5vh;
+  justify-content: center;
+  margin-bottom: 1px;
+  width: 30vw;
+}
+
+.input {
+  margin-left: 5px;
+  margin-top: 10px;
+}
