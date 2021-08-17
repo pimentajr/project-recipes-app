@@ -16,7 +16,7 @@ function MadeFoodRecipeCard({ recipe, index }) {
 
   return (
     <div>
-      <Link to="/comidas/:id">
+      <Link to={ `/comidas/${id}` }>
         <img
           src={ image }
           data-testid={ `${index}-horizontal-image` }
