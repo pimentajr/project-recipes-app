@@ -4,8 +4,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FetchApi from '../services/ApiFetch';
 
-//
-
 export default function RecipesByLocation() {
   const [recipesFiltered, setrecipesFiltered] = useState([]);
   const [location, setLocation] = useState();
@@ -80,7 +78,7 @@ export default function RecipesByLocation() {
 
   return (
     <main>
-      <Header haveSearchBtn={ false } title="Explorar Ingredientes" />
+      <Header haveSearchBtn title="Explorar Origem" />
       <Footer />
       {location ? renderIngredientsCard() : 'loading...'}
     </main>
