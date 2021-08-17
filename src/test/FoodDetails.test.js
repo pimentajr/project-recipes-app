@@ -39,6 +39,16 @@ describe('Testa a página de detalhes da receita', () => {
   const mockOneMeal = jest.spyOn(global, 'fetch');
   mockOneMeal.mockResolvedValueOnce(mealResponse);
 
+  // const favoriteMeal = [{
+  //   id: '52978',
+  //   type: 'comida',
+  //   area: 'Turkish',
+  //   category: 'Side',
+  //   alcoholicOrNot: '',
+  //   name: 'Kumpir',
+  //   image: 'https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg',
+  // }];
+
   const mealInProgress = {
     cocktails: {},
     meals: {
@@ -151,4 +161,17 @@ describe('Testa a página de detalhes da receita', () => {
     fireEvent.click(startBtn);
     expect(history.location.pathname).toEqual(IN_PROGRESS_PATH);
   });
+
+  // it('Testa o botão de copiar e favoritar', async () => {
+  //   localStorage.clear();
+  //   const {
+  //     findByTestId,
+  //     history,
+  //   } = renderWithRouter(<FoodDetails match={ match } />, testHistory);
+  //   console.log(window.location.hostname);
+  //   // const favBtn = await findByTestId(FAV_BTN);
+  //   const shareBtn = await findByTestId(SHARE_BTN);
+  //   fireEvent.click(shareBtn);
+  //   // fireEvent.click(favBtn);
+  // });
 });

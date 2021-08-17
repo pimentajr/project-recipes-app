@@ -41,7 +41,7 @@ export default function DoneRecipesCard({ filter }) {
           formatedCategory = `${area} - ${category}`;
         }
         return (
-          <div key={ index } className="d-flex mx-0 mb-3 bg-light rounded shadow-lg">
+          <div key={ id } className="d-flex mx-0 mb-3 bg-light rounded shadow-lg">
             <Image
               style={ { maxWidth: '160px' } }
               onClick={ () => handleRedirect(type, id) }

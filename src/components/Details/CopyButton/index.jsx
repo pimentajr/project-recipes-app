@@ -13,6 +13,10 @@ export default function CopyButton({ testId, id, selector }) {
       copy(`http://localhost:3000/bebidas/${id}`);
     } else {
       copy(`http://localhost:3000/comidas/${id}`);
+      // console.log(window.location.pathname);
+      // const path = window.location.href;
+      // navigator.clipboard.writeText(path)
+      //   .then(() => setIsMessageShowing(true));
     }
   };
 
