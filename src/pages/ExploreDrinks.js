@@ -29,6 +29,7 @@ class ExploreDrinks extends Component {
           <div className="div-explore">
             <Link to="/explorar/bebidas/ingredientes">
               <Button
+                variant="outline-dark"
                 className="explore-buttons"
                 type="button"
                 data-testid="explore-by-ingredient"
@@ -37,6 +38,7 @@ class ExploreDrinks extends Component {
               </Button>
             </Link>
             <Button
+              variant="outline-dark"
               className="explore-buttons"
               type="button"
               data-testid="explore-surprise"
