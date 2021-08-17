@@ -79,7 +79,6 @@ class SearchBar extends Component {
           onChange={ ({ target }) => queryAction(target.value) }
         />
         <label htmlFor="search-ingredient">
-          Ingrediente:
           <input
             name="filter"
             id="search-ingredient"
@@ -88,9 +87,9 @@ class SearchBar extends Component {
             data-testid="ingredient-search-radio"
             onChange={ () => selectedFilterAction('ingredient') }
           />
+          Ingrediente
         </label>
         <label htmlFor="search-nome">
-          Nome:
           <input
             name="filter"
             id="search-nome"
@@ -99,9 +98,9 @@ class SearchBar extends Component {
             data-testid="name-search-radio"
             onChange={ () => selectedFilterAction('name') }
           />
+          Nome
         </label>
         <label htmlFor="search-first-letter">
-          Primeira Letra:
           <input
             name="filter"
             id="search-first-letter"
@@ -110,6 +109,7 @@ class SearchBar extends Component {
             data-testid="first-letter-search-radio"
             onChange={ () => selectedFilterAction('firstLetter') }
           />
+          Primeira Letra
         </label>
         <button
           type="button"

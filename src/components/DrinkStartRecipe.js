@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 import '../StartRecipe.css';
 
 class DrinkStartRecipe extends Component {
@@ -16,25 +17,25 @@ class DrinkStartRecipe extends Component {
       && Object.prototype.hasOwnProperty.call(recipesInProgress.cocktails, id)) {
       return (
         <Link to={ `/bebidas/${id}/in-progress` }>
-          <button
+          <Button
             className="start-recipe"
-            type="button"
             data-testid="start-recipe-btn"
+            variant="warning"
           >
             Continuar Receita
-          </button>
+          </Button>
         </Link>
       );
     }
     return (
       <Link to={ `/bebidas/${id}/in-progress` }>
-        <button
+        <Button
           className="start-recipe"
-          type="button"
           data-testid="start-recipe-btn"
+          variant="warning"
         >
           Iniciar Receita
-        </button>
+        </Button>
       </Link>
     );
   }

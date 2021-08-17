@@ -64,6 +64,7 @@ class FavoriteButton extends Component {
     const { test } = this.props;
     return (
       <button
+        className="button"
         type="button"
         onClick={ () => this.handleFavoriteClick() }
       >
@@ -71,6 +72,7 @@ class FavoriteButton extends Component {
           data-testid={ test }
           src={ whiteHeart ? whiteHeartIcon : blackHeartIcon }
           alt="favorite food button"
+          width="120%"
         />
       </button>
     );

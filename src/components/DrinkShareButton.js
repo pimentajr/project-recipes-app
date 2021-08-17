@@ -28,10 +28,16 @@ class DrinkShareButton extends Component {
       <>
         <p>{ clipboardMessage ? 'Link copiado!' : '' }</p>
         <button
+          className="button"
           type="button"
           onClick={ () => this.clipBoard() }
         >
-          <img data-testid={ test } src={ shareIcon } alt="share icon" />
+          <img
+            data-testid={ test }
+            src={ shareIcon }
+            alt="share icon"
+            width="120%"
+          />
         </button>
       </>
     );

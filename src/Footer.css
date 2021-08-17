@@ -13,17 +13,3 @@
   background-color: transparent;
   border: none;
 }
-
-/* classes da página de receita em progresso */
-.checked-button {
-  text-decoration: line-through;
-}
-
-.not-checked-button {
-  text-decoration: none;
-}
-
-.finish-recipe {
-  bottom: 0;
-  position: fixed;
-}

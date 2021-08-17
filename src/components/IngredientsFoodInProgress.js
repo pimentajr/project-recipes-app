@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import '../Footer.css';
+import '../RecipesInProgress.css';
+import Button from 'react-bootstrap/Button';
 import { saveDoneRecipe } from '../redux/actions/foodActions';
 
 class IngredientsFoodInProgress extends Component {
@@ -100,6 +101,7 @@ class IngredientsFoodInProgress extends Component {
                   data-testid={ `${index}-ingredient-step` }
                 >
                   <input
+                    className="checkbox"
                     type="checkbox"
                     checked={ ingredientsArrayList
                       .some((ingredient) => ingredient === index) }
@@ -114,16 +116,15 @@ class IngredientsFoodInProgress extends Component {
               : ''))}
         </ul>
         <Link to="/receitas-feitas">
-          <button
-            className="finish-recipe"
-            type="button"
+          <Button
+            className="finish-recipe btn btn-warning"
             data-testid="finish-recipe-btn"
             disabled={ ingredientsArrayList.length !== ingredients.length }
             onClick={ () => saveDoneRecipesAction(foodDetails.idMeal) }
           >
             {' '}
             Finalizar Receita
-          </button>
+          </Button>
         </Link>
       </>);
   }

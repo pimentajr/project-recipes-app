@@ -1,0 +1,45 @@
+.div-recipes-in-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+
+.recipes-in-progress {
+  border: solid 1px rgb(55, 6, 23);
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px 3px rgba(55, 6, 23, 0.2);
+  color: rgb(55, 6, 23);
+  font-family: Montserrat , sans-serif;
+}
+
+.recipe-in-progress-title {
+  font-size: 30pt;
+  font-weight: 580;
+}
+
+.checked-button {
+  text-decoration: line-through;
+}
+
+.not-checked-button {
+  text-decoration: none;
+}
+
+.finish-recipe {
+  align-items: center;
+  bottom: 0;
+  color: rgb(55, 6, 23);
+  display: flex;
+  font-family: Montserrat , sans-serif;
+  font-weight: 600;
+  height: 35px;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.checkbox {
+  margin-right: 5px;
+}

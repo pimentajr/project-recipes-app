@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Card from 'react-bootstrap/Card';
 import DrinkShareButton from './DrinkShareButton';
 import DrinkFavoriteButton from './DrinkFavoriteButton';
+import '../FoodAndDrinkDetails.css';
 
 class DrinkDetailsCard extends Component {
   render() {
@@ -17,31 +19,48 @@ class DrinkDetailsCard extends Component {
         .filter((item) => item[1]).map((item) => item[1]);
     }
     return (
-      <div>
-        <img
-          data-testid="recipe-photo"
-          alt="Foto do prato"
-          src={ drinkDetails.strDrinkThumb }
-          width="300px"
-          height="250px"
-        />
-        <h1 data-testid="recipe-title">{ drinkDetails.strDrink }</h1>
-        <DrinkShareButton test="share-btn" id={ drinkDetails.idDrink } />
-        <DrinkFavoriteButton test="favorite-btn" id={ drinkDetails.idDrink } />
-        <p data-testid="recipe-category">{ drinkDetails.strAlcoholic }</p>
-        <ul>
-          { ingredients
-            .map((item, index) => (item
-              ? (
-                <li
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                  key={ index }
-                >
-                  {`${item} - ${measurements[index]}`}
-                </li>)
-              : ''))}
-        </ul>
-        <p data-testid="instructions">{ drinkDetails.strInstructions }</p>
+      <div className="div-details">
+        <Card
+          style={ { width: '16rem' } }
+          className="drink-details-card"
+        >
+          <Card.Img
+            variant="top"
+            height="250px"
+            width="300px"
+            data-testid="recipe-photo"
+            src={ drinkDetails.strDrinkThumb }
+            alt="Foto do prato"
+          />
+          <Card.Body>
+            <Card.Title
+              className="recipe-title"
+              data-testid="recipe-title"
+            >
+              { drinkDetails.strDrink }
+            </Card.Title>
+            <DrinkShareButton test="share-btn" id={ drinkDetails.idDrink } />
+            <DrinkFavoriteButton test="favorite-btn" id={ drinkDetails.idDrink } />
+            <p data-testid="recipe-category">{ drinkDetails.strAlcoholic }</p>
+            <ul>
+              { ingredients
+                .map((item, index) => (item
+                  ? (
+                    <li
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                      key={ index }
+                    >
+                      {`${item} - ${measurements[index]}`}
+                    </li>)
+                  : ''))}
+            </ul>
+            <p
+              data-testid="instructions"
+            >
+              { drinkDetails.strInstructions }
+            </p>
+          </Card.Body>
+        </Card>
       </div>
     );
   }

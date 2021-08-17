@@ -5,6 +5,7 @@
   background-color: rgb(255, 197, 51);
   color: rgb(55, 6, 23);
   display: flex;
+  flex-wrap: wrap;
   font-family: Pacifico , cursive;
   justify-content: space-evenly;
 }

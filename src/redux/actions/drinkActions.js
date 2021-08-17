@@ -142,7 +142,7 @@ export const saveDoneRecipe = (id) => async () => {
     name: returnFetch[0].strDrink,
     image: returnFetch[0].strDrinkThumb,
     doneDate: date.toLocaleDateString('pt-BR'),
-    tags: returnFetch[0].strTags.split(','),
+    tags: returnFetch[0].strTags ? returnFetch[0].strTags.split(',') : '',
   };
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   if (doneRecipes === null) {

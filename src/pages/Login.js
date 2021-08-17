@@ -78,7 +78,6 @@ class Login extends Component {
           className="login-button btn btn-warning"
           type="submit"
           size="m"
-          variant="success"
           data-testid="login-submit-btn"
           disabled={ valid }
           onClick={ this.loginUser }

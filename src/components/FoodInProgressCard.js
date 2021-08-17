@@ -1,28 +1,48 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
 import IngredientesFoodInProgress from './IngredientsFoodInProgress';
+import '../RecipesInProgress.css';
 
 class FoodInProgressCard extends Component {
   render() {
     const { foodDetails } = this.props;
     return (
-      <div>
-        <img
-          data-testid="recipe-photo"
-          alt="imagem da receita"
-          src={ foodDetails.strMealThumb }
-          width="300px"
-          height="250px"
-        />
-        <p data-testid="recipe-title">{foodDetails.strMeal}</p>
-        <ShareButton test="share-btn" id={ foodDetails.idMeal } />
-        <FavoriteButton test="favorite-btn" id={ foodDetails.idMeal } />
-        <p data-testid="recipe-category">{ foodDetails.strCategory }</p>
-        <IngredientesFoodInProgress />
-        <p data-testid="instructions">{ foodDetails.strInstructions }</p>
+      <div className="div-recipes-in-progress">
+        <Card
+          style={ { width: '16rem' } }
+          className="recipes-in-progress"
+        >
+          <Card.Img
+            variant="top"
+            height="250px"
+            width="300px"
+            data-testid="recipe-photo"
+            src={ foodDetails.strMealThumb }
+            alt="imagem da receita"
+          />
+          <Card.Body>
+            <Card.Title
+              className="recipe-in-progress-title"
+              data-testid="recipe-title"
+            >
+              {foodDetails.strMeal}
+            </Card.Title>
+            <ShareButton test="share-btn" id={ foodDetails.idMeal } />
+            <FavoriteButton test="favorite-btn" id={ foodDetails.idMeal } />
+            <p data-testid="recipe-category">{ foodDetails.strCategory }</p>
+            <IngredientesFoodInProgress />
+            <p
+              data-testid="instructions"
+              className="instructions"
+            >
+              { foodDetails.strInstructions }
+            </p>
+          </Card.Body>
+        </Card>
       </div>
     );
   }
