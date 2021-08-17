@@ -22,7 +22,6 @@ function Drinks({ match: { params } }) {
       fetch(searchURL)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
           setCatalog(result);
         });
     }
