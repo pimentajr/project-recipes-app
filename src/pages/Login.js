@@ -11,7 +11,7 @@ export default function Login() {
   return (
     <div className="login-page">
       { redirect ? <Redirect to="/comidas" /> : null }
-      <h1 className="login-title">Login</h1>
+      <h1 className="login-title">Recipe App</h1>
       <form className="login-form">
         <input
           data-testid="email-input"
@@ -34,7 +34,7 @@ export default function Login() {
         <button
           data-testid="login-submit-btn"
           type="button"
-          className="btn"
+          className="btn btn-go"
           disabled={ !valid }
           onClick={ handleSubmit }
         >

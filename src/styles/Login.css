@@ -7,8 +7,9 @@
 }
 
 .login-title {
-  font-size: 3em;
-  padding-bottom: 50px;
+  font-size: 3.2em;
+  font-family: 'Style Script', cursive;
+  padding-bottom: 30px;
 }
 
 .login-form {
