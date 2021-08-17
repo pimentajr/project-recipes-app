@@ -133,7 +133,6 @@ export default function Recipes() {
   return (
     <div>
       <Header title={ title } setFoodFromSearch={ setFoodFromSearch } search />
-      <h1>Receitas</h1>
       {renderButtons()}
       {renderCards()}
       <Footer />

@@ -84,11 +84,15 @@ function SearchBar(props) {
 
   return (
     <div>
-      <div className="radios" onChange={ ({ target }) => setSelected(target.value) }>
-        <label htmlFor="radio">
+      <div
+        className="radios form-check form-check-inline"
+        onChange={ ({ target }) => setSelected(target.value) }
+      >
+        <label htmlFor="radio" className="form-check-label">
           {' '}
           Ingrediente
           <input
+            className="form-check-input"
             type="radio"
             data-testid="ingredient-search-radio"
             id="radio"
@@ -96,10 +100,14 @@ function SearchBar(props) {
             value="Ingrediente"
           />
         </label>
-        <label htmlFor="radio">
+        <label
+          htmlFor="radio"
+          className="form-check-label"
+        >
           {' '}
           Nome
           <input
+            className="form-check-input"
             type="radio"
             data-testid="name-search-radio"
             id="radio"
@@ -107,10 +115,14 @@ function SearchBar(props) {
             value="Nome"
           />
         </label>
-        <label htmlFor="radio">
+        <label
+          htmlFor="radio"
+          className="form-check-label"
+        >
           {' '}
           Primeira letra
           <input
+            className="form-check-input"
             type="radio"
             data-testid="first-letter-search-radio"
             id="radio"
@@ -119,7 +131,10 @@ function SearchBar(props) {
           />
         </label>
       </div>
-      <label htmlFor="search">
+      <label
+        htmlFor="search"
+        className="form-check-label"
+      >
         <input
           type="text"
           data-testid="search-input"
@@ -131,6 +146,7 @@ function SearchBar(props) {
         type="button"
         data-testid="exec-search-btn"
         onClick={ () => list(search, foodOrDrink, selected) }
+        className="btn btn-primary active"
       >
         Busca
       </button>

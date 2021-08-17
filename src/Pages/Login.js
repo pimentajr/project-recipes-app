@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -18,36 +19,47 @@ function Login() {
   };
 
   return (
-    <div>
-      <label htmlFor="email-input">
-        Email:
-        <input
-          type="email"
-          data-testid="email-input"
-          id="email-input"
-          onChange={ ({ target }) => setEmail(target.value) }
-        />
-      </label>
+    <form className="form-inline">
+      <div className="form-group">
+        <label htmlFor="email-input">
+          Email:
+          <input
+            className="form-control mx-sm-3"
+            aria-describedby="passwordHelpInline"
+            type="email"
+            data-testid="email-input"
+            id="email-input"
+            onChange={ ({ target }) => setEmail(target.value) }
+          />
+        </label>
 
-      <label htmlFor="password-input">
-        Senha:
-        <input
-          type="password"
-          data-testid="password-input"
-          onChange={ ({ target }) => setPassword(target.value) }
-        />
-      </label>
-      <Link to="/comidas">
-        <button
-          type="button"
-          data-testid="login-submit-btn"
-          disabled={ email && password ? !(checkEmailAndPass(email, password)) : true }
-          onClick={ () => setLocalStorage(email) }
-        >
-          Entrar
-        </button>
-      </Link>
-    </div>
+        <label htmlFor="password-input">
+          Senha:
+          <small id="passwordHelpInline" className="text-muted">
+            Deve ter no minimo 6 caracteres.
+          </small>
+          <input
+            className="form-control mx-sm-3"
+            aria-describedby="passwordHelpInline"
+            type="password"
+            data-testid="password-input"
+            onChange={ ({ target }) => setPassword(target.value) }
+          />
+
+        </label>
+        <Link to="/comidas">
+          <button
+            type="button"
+            data-testid="login-submit-btn"
+            disabled={ email && password ? !(checkEmailAndPass(email, password)) : true }
+            onClick={ () => setLocalStorage(email) }
+            className="btn btn-success"
+          >
+            Entrar
+          </button>
+        </Link>
+      </div>
+    </form>
   );
 }
 

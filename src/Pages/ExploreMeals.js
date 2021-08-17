@@ -17,6 +17,7 @@ function ExploreMeals() {
       <Header title="Explorar Comidas" />
       <Link to="/explorar/comidas/ingredientes">
         <button
+          className="btn btn-outline-dark"
           type="button"
           data-testid="explore-by-ingredient"
         >
@@ -26,6 +27,7 @@ function ExploreMeals() {
       </Link>
       <Link to="/explorar/comidas/area">
         <button
+          className="btn btn-outline-dark"
           type="button"
           data-testid="explore-by-area"
         >
@@ -34,6 +36,7 @@ function ExploreMeals() {
         </button>
       </Link>
       <button
+        className="btn btn-outline-dark"
         onClick={ callRandomMeal }
         type="button"
         data-testid="explore-surprise"

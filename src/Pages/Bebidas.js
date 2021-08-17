@@ -3,6 +3,7 @@ import Cards from '../components/Cards';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { fetchCocktailsCategorisAPI } from '../Services/Data';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 
 function Bebidas() {
@@ -34,6 +35,7 @@ function Bebidas() {
       return (
         <div>
           <button
+            className="btn btn-outline-dark"
             type="button"
             data-testid={ `${listCocktailsCategorie[0].strCategory}-category-filter` }
             onClick={ () => toggleButton(
@@ -44,6 +46,7 @@ function Bebidas() {
             {listCocktailsCategorie[0].strCategory}
           </button>
           <button
+            className="btn btn-outline-dark"
             type="button"
             data-testid={ `${listCocktailsCategorie[1].strCategory}-category-filter` }
             onClick={ () => toggleButton(
@@ -56,6 +59,7 @@ function Bebidas() {
           </button>
           <button
             type="button"
+            className="btn btn-outline-dark"
             data-testid={ `${listCocktailsCategorie[2].strCategory}-category-filter` }
             onClick={ () => toggleButton(
               listCocktailsCategorie,
@@ -67,6 +71,7 @@ function Bebidas() {
           </button>
           <button
             type="button"
+            className="btn btn-outline-dark"
             data-testid={ `${listCocktailsCategorie[3].strCategory}-category-filter` }
             onClick={ () => toggleButton(
               listCocktailsCategorie,
@@ -78,6 +83,7 @@ function Bebidas() {
           </button>
           <button
             type="button"
+            className="btn btn-outline-dark"
             data-testid={ `${listCocktailsCategorie[4].strCategory}-category-filter` }
             onClick={ () => toggleButton(
               listCocktailsCategorie,
@@ -89,6 +95,7 @@ function Bebidas() {
           </button>
           <button
             type="button"
+            className="btn btn-outline-dark"
             data-testid="All-category-filter"
             onClick={ () => setButtonCategorie(null) }
           >

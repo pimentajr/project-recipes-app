@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Redirect } from 'react-router-dom';
-
 function CardsExplore(props) {
   const { ingredientesList, drink } = props;
 
@@ -13,48 +11,63 @@ function CardsExplore(props) {
     const maxListRender = 12;
     if (drink) {
       return (
-        ingredientesListRender.filter((__, index) => index < maxListRender)
-          .map((ingrediente, index) => (
-            <div key={ index }>
-              <Redirect to="/comidas">
+        <div className="row row-cols-2 row-cols-sm-2 g-3">
+          {ingredientesListRender.filter((__, index) => index < maxListRender)
+            .map((ingrediente, index) => (
+              <div key={ index }>
+
                 <div
                   data-testid={ `${index}-ingredient-card` }
                   className="cards"
                 >
-                  <h5 data-testid={ `${index}-card-name` }>
-                    {ingrediente.strIngredient1}
-                  </h5>
-                  <img
-                    className="card-img"
-                    src={ `${imageDrink}${ingrediente.strIngredient1}-Small.png` }
-                    alt={ ingrediente.strIngredient1 }
-                    data-testid={ `${index}-card-img` }
-                  />
+                  <div className="card-body">
+                    <h5
+                      data-testid={ `${index}-card-name` }
+                      className="card-title"
+                    >
+                      {ingrediente.strIngredient1}
+                    </h5>
+                    <img
+                      className="card-img card-img-bottom"
+                      src={ `${imageDrink}${ingrediente.strIngredient1}-Small.png` }
+                      alt={ ingrediente.strIngredient1 }
+                      data-testid={ `${index}-card-img` }
+                    />
+                  </div>
                 </div>
-              </Redirect>
-            </div>
-          )));
+              </div>
+            ))}
+        </div>);
     }
     if (!drink) {
       return (
-        ingredientesListRender.filter((__, index) => index < maxListRender)
-          .map((ingrediente, index) => (
-            <div
-              key={ index }
-              data-testid={ `${index}-ingredient-card` }
-              className="cards"
-            >
-              <div>
-                <h5 data-testid={ `${index}-card-name` }>{ingrediente.strIngredient}</h5>
-                <img
-                  className="card-img"
-                  src={ `${imagemFood}${ingrediente.strIngredient}-Small.png` }
-                  alt={ ingrediente.strIngredient }
-                  data-testid={ `${index}-card-img` }
-                />
+        <div className="row row-cols-2 row-cols-sm-2 g-3">
+          {ingredientesListRender.filter((__, index) => index < maxListRender)
+            .map((ingrediente, index) => (
+              <div key={ index } className="col">
+                <div
+                  data-testid={ `${index}-ingredient-card` }
+                  className="cards"
+                >
+                  <div className="card-body">
+                    <h5
+                      data-testid={ `${index}-card-name` }
+                      className="card-title"
+                    >
+                      {ingrediente.strIngredient}
+                    </h5>
+                    <img
+                      className="card-img-bottom"
+                      src={ `${imagemFood}${ingrediente.strIngredient}-Small.png` }
+                      alt={ ingrediente.strIngredient }
+                      data-testid={ `${index}-card-img` }
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          )));
+            ))}
+
+        </div>);
     }
   };
 
