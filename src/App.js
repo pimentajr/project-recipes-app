@@ -18,7 +18,7 @@ import exploreFoodIngredients from './pages/ExploreFoodIngredients';
 import exploreDrinkIngredients from './pages/ExploreDrinkIngredients';
 import exploreByOrigin from './pages/ExploreByOrigin';
 import userProfile from './pages/UserProfile';
-import finishRecipe from './pages/FinishRecipe';
+import FinishRecipe from './pages/FinishRecipe';
 import favoriteRecipe from './pages/FavoriteRecipe';
 import DetailsFood from './pages/DetailsFood';
 import DetailsDrink from './pages/DetailsDrink';
@@ -64,7 +64,7 @@ function App() {
             />
             <Route exact path="/explorar/comidas/area" component={ exploreByOrigin } />
             <Route exact path="/perfil" component={ userProfile } />
-            <Route exact path="/receitas-feitas" component={ finishRecipe } />
+            <Route exact path="/receitas-feitas" component={ FinishRecipe } />
             <Route exact path="/receitas-favoritas" component={ favoriteRecipe } />
             <Route component={ NotFound } />
           </Switch>
