@@ -60,7 +60,7 @@ export default function Header({ pageTitle, itHasNotSearchButton }) {
                 type="radio"
                 name="filter"
                 id="ingredients"
-                onClick={ () => setFilter('ingredients') }
+                // onClick={ () => setFilter('ingredients') }
               />
             </label>
 
@@ -70,7 +70,7 @@ export default function Header({ pageTitle, itHasNotSearchButton }) {
                 type="radio"
                 name="filter"
                 id="name"
-                onClick={ () => setFilter('name') }
+                // onClick={ () => setFilter('name') }
               />
             </label>
 
@@ -80,7 +80,7 @@ export default function Header({ pageTitle, itHasNotSearchButton }) {
                 type="radio"
                 name="filter"
                 id="firstLetter"
-                onClick={ () => setFilter('firstLetter') }
+                // onClick={ () => setFilter('firstLetter') }
               />
             </label>
 
