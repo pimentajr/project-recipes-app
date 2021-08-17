@@ -32,7 +32,7 @@ export default function RecipeButton({ state, recipe, ingredients, setIngredient
     ));
     setIngredients(newIngredients);
     const doneRecipes = JSON.parse(localStorage.doneRecipes);
-    const filterRecipes = doneRecipes.filterRecipes(
+    const filterRecipes = doneRecipes.filter(
       (element) => element.id !== recipe.id,
     );
     localStorage.setItem('doneRecipes', JSON.stringify(filterRecipes));

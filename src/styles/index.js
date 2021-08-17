@@ -4,6 +4,12 @@ export const Button = styled.button`
   background-color: ${({ drink }) => (drink ? '#a73d7e' : '#fcdc4d')};
 `;
 
+export const transparentButton = styled.button`
+  border: none;
+  padding: none;
+  background-color: transparent;
+`;
+
 export const Underline = styled.p`
   text-decoration: underline;
 `;

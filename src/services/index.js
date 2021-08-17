@@ -175,12 +175,14 @@ function getIngredients(recipe) {
     }
     return acc;
   }, []);
+
   const measureKeys = Object.keys(recipe).reduce((acc, cur) => {
     if (cur.includes('strMeasure')) {
       return [...acc, cur];
     }
     return acc;
   }, []);
+
   const newIngredients = measureKeys.reduce((acc, cur, index) => {
     if (recipe[cur] && recipe[cur].length > 1) {
       const obj = {
@@ -190,6 +192,7 @@ function getIngredients(recipe) {
     }
     return acc;
   }, []);
+
   return newIngredients;
 }
 
