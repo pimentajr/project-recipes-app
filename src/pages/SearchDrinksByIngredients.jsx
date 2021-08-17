@@ -15,7 +15,7 @@ const SearchDrinksByIngredients = ({
 }) => {
   useEffect(() => {
     dispatch(requestDrinksOptions());
-  }, []);
+  }, [dispatch]);
 
   if (error) {
     return (

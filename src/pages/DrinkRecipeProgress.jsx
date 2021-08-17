@@ -8,8 +8,16 @@ import RecipeInstructions from '../components/common/RecipeInstructions';
 import filterDrinkMeasuresAndIngredients from
   '../helpers/filterDrinkMeasuresAndIngredients';
 import { requestDrinkDetails } from '../redux/actions/recipeDetailsActions';
+import HeaderDetails from '../components/common/HeaderDetails/HeaderDetails';
 
-const DrinkRecipeProgress = ({ dispatch, match, drinkDetails }) => {
+const DrinkRecipeProgress = ({
+  dispatch,
+  match,
+  drinkDetails,
+  thumbDrinks,
+  altDrinks,
+  categoryDetails,
+}) => {
   const { params: { id } } = match;
   useEffect(() => {
     dispatch(requestDrinkDetails(id));
@@ -53,6 +61,13 @@ const DrinkRecipeProgress = ({ dispatch, match, drinkDetails }) => {
   return (
     <>
       <div>Tela de receita em processo de bebida</div>
+      <HeaderDetails
+        thumb={ thumbDrinks.strDrinkThumb }
+        alt={ altDrinks.strDrink }
+        title={ altDrinks.strDrink }
+        category={ categoryDetails.strAlcoholic }
+        drinkOrFood="bebida"
+      />
       <IngredientsListWithCheckbox
         id={ drinkDetails.idDrink }
         ingredients={ measuresAndIngredients }
@@ -68,8 +83,11 @@ const DrinkRecipeProgress = ({ dispatch, match, drinkDetails }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  drinkDetails: state.recipeDetailsReducer.drink,
+const mapStateToProps = ({ recipeDetailsReducer }) => ({
+  drinkDetails: recipeDetailsReducer.drink,
+  thumbDrinks: recipeDetailsReducer.drink,
+  altDrinks: recipeDetailsReducer.drink,
+  categoryDetails: recipeDetailsReducer.drink,
 });
 
 DrinkRecipeProgress.propTypes = {

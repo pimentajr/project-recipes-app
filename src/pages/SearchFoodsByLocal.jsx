@@ -23,7 +23,7 @@ const SearchFoodsByLocal = ({ dispatch, areas, menu }) => {
 
   useEffect(() => {
     dispatch(requestMealsAreas());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

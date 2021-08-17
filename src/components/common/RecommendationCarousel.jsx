@@ -17,7 +17,7 @@ const RecommendationCarousel = ({ url, dispatch, menu, loading, error }) => {
     } else {
       dispatch(requestMealsMenu());
     }
-  }, []);
+  }, [dispatch, url]);
 
   if (error) {
     return <div>Erro</div>;

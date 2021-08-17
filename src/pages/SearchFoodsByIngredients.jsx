@@ -15,7 +15,7 @@ const SearchFoodsByIngredients = ({
 }) => {
   useEffect(() => {
     dispatch(requestMealsOptions());
-  }, []);
+  }, [dispatch]);
 
   if (error) {
     return (

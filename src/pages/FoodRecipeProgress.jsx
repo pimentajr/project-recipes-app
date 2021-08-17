@@ -6,8 +6,16 @@ import IngredientsListWithCheckbox from
   '../components/common/IngredientsListWithCheckbox';
 import RecipeInstructions from '../components/common/RecipeInstructions';
 import { requestMealDetails } from '../redux/actions/recipeDetailsActions';
+import HeaderDetails from '../components/common/HeaderDetails/HeaderDetails';
 
-const FoodRecipeProgress = ({ dispatch, match, mealDetails }) => {
+const FoodRecipeProgress = ({
+  dispatch,
+  match,
+  mealDetails,
+  thumbDetails,
+  altDetails,
+  categoryDetails,
+}) => {
   const { params: { id } } = match;
   useEffect(() => {
     dispatch(requestMealDetails(id));
@@ -73,6 +81,13 @@ const FoodRecipeProgress = ({ dispatch, match, mealDetails }) => {
   return (
     <>
       <div>Tela de receita em processo de comidas</div>
+      <HeaderDetails
+        thumb={ thumbDetails.strMealThumb }
+        alt={ altDetails.strMeal }
+        title={ altDetails.strMeal }
+        category={ categoryDetails.strCategory }
+        drinkOrFood="comida"
+      />
       <IngredientsListWithCheckbox
         id={ mealDetails.idMeal }
         ingredients={ ingredients }
@@ -87,8 +102,13 @@ const FoodRecipeProgress = ({ dispatch, match, mealDetails }) => {
     </>
   );
 };
-const mapStateToProps = ({ recipeDetailsReducer }) => ({
+const mapStateToProps = ({
+  recipeDetailsReducer,
+}) => ({
   mealDetails: recipeDetailsReducer.meal,
+  thumbDetails: recipeDetailsReducer.meal,
+  altDetails: recipeDetailsReducer.meal,
+  categoryDetails: recipeDetailsReducer.meal,
 });
 
 FoodRecipeProgress.propTypes = ({
