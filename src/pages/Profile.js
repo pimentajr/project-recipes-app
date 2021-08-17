@@ -9,8 +9,6 @@ function Profile({ history: { push } }) {
     return email.email;
   }
 
-  getUserEmail();
-
   function toFavoriteRecipes() {
     push('/receitas-favoritas');
   }
