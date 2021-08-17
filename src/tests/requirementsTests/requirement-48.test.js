@@ -19,7 +19,7 @@ describe('48 - Develop a checkbox for each item on the ingredient list', () => {
     async () => {
       renderWithRouterAndStore(<App />, { route: '/comidas/52977/in-progress' });
 
-      const ingredientStep = await screen.findAllByTestId('ingredient-step');
+      const ingredientStep = await screen.findAllByTestId('ingredient-checkbox-step');
 
       ingredientStep.forEach((input) => {
         expect(input).not.toBeChecked();
@@ -30,7 +30,7 @@ describe('48 - Develop a checkbox for each item on the ingredient list', () => {
     async () => {
       renderWithRouterAndStore(<App />, { route: '/bebidas/15997/in-progress' });
 
-      const ingredientStep = await screen.findAllByTestId('ingredient-step');
+      const ingredientStep = await screen.findAllByTestId('ingredient-checkbox-step');
 
       ingredientStep.forEach((input) => {
         expect(input).not.toBeChecked();

@@ -23,7 +23,7 @@ beforeEach(() => {
   localStorage.clear();
 });
 
-const ingredientStepTestId = 'ingredient-step';
+const ingredientStepTestId = 'ingredient-checkbox-step';
 const finishRecipeBtnTestId = 'finish-recipe-btn';
 
 describe(`52 - Implement the solution so that the finish recipe button can only be 

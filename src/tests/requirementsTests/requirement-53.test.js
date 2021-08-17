@@ -31,7 +31,7 @@ recipes made page, whose route should be /recipes-made`, () => {
         <App />, { route: '/comidas/52977/in-progress' },
       );
 
-      const ingredientStep = await screen.findAllByTestId('ingredient-step');
+      const ingredientStep = await screen.findAllByTestId('ingredient-checkbox-step');
 
       ingredientStep.forEach((input) => {
         fireEvent.click(input);
@@ -50,7 +50,7 @@ recipes made page, whose route should be /recipes-made`, () => {
         <App />, { route: '/bebidas/15997/in-progress' },
       );
 
-      const ingredientStep = await screen.findAllByTestId('ingredient-step');
+      const ingredientStep = await screen.findAllByTestId('ingredient-checkbox-step');
 
       ingredientStep.forEach((input) => {
         fireEvent.click(input);
