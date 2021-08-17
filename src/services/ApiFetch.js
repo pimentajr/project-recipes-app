@@ -12,6 +12,12 @@ const FetchApi = async (trigger, radioOption, inputValue, list) => {
   if (list === 'list') {
     url = 'list.php?c=list';
   }
+  if (list === 'locations') {
+    url = 'list.php?a=list';
+  }
+  if (list === 'location') {
+    url = `filter.php?a=${radioOption}`;
+  }
   if (Array.isArray(list)) {
     const catName = list[0];
     const details = list[0];

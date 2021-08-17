@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   recipeDetailsStore: [],
   recipeFoodMeasures: [],
   recipeByIngredientName: null,
+  recipeByLocation: null,
 };
 
 function Mechanics(state = INITIAL_STATE, action) {
