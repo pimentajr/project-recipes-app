@@ -8,6 +8,7 @@ import recommendedsReducer from './recommendedsReducer';
 import selectedRecipeReducer from './selectedRecipeReducer';
 import ingredientsReducer from './ingredientsReducer';
 import areasReducer from './areasReducer';
+import favoriteRecipesReducer from './favoriteRecipesReducer';
 
 const rootReducer = combineReducers({
   recipesReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   selectedRecipeReducer,
   ingredientsReducer,
   areasReducer,
+  favoriteRecipesReducer,
 });
 
 export default rootReducer;

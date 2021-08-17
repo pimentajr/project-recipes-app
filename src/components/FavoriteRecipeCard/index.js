@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ShareIcon from '../../images/shareIcon.svg';
-import BlackHeartIcon from '../../images/blackHeartIcon.svg';
+import FavoriteButton from '../FavoriteButton';
 
 class FavoriteRecipeCard extends React.Component {
   render() {
@@ -40,13 +40,7 @@ class FavoriteRecipeCard extends React.Component {
               data-testid={ `${count}-horizontal-share-btn` }
             />
           </button>
-          <button type="button">
-            <img
-              src={ BlackHeartIcon }
-              alt="Favoritar"
-              data-testid={ `${count}-horizontal-favorite-btn` }
-            />
-          </button>
+          <FavoriteButton recipe={ recipe } count={ count } />
         </section>
       </section>
     );
