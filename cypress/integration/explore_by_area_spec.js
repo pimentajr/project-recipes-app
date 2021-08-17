@@ -120,7 +120,7 @@ describe.skip('80 - Implemente o dropdown de maneira que devem estar disponívei
   });
 });
 
-describe.skip('81 - Implemente a rota que deve ser apenas `/explorar/comidas/area`', () => {
+describe('81 - Implemente a rota que deve ser apenas `/explorar/comidas/area`', () => {
   it('Ao acessar a rota ela retorna um erro de "Not Found"', () => {
     cy.visit('http://localhost:3000/explorar/bebidas/area');
 
