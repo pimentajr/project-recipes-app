@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap'); 
 
 .footer {
   bottom: 0;
@@ -56,8 +56,8 @@
 }
 
 .container-login {
-  max-width: 30%;
   height: 100%;
+  max-width: 30%;
   margin-top: 20%;
 }
 
@@ -66,9 +66,9 @@
 }
 
 .header-menu {
-  font-family: 'Style Script', cursive;
-  text-align: center;
+  font-family: 'Style Script' , cursive;
   justify-content: center;
+  text-align: center;
   margin: 5px;
 }
 
