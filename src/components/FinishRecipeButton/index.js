@@ -9,11 +9,11 @@ class FinishRecipeButton extends React.Component {
     super();
 
     this.handleRecipeDone = this.handleRecipeDone.bind(this);
+    this.removeStepFromStorage = this.removeStepFromStorage.bind(this); // Req 40
   }
 
   handleRecipeDone() {
     const { id, recipe, type, history } = this.props;
-
     const recipesDone = getFromStorage('doneRecipes') || [];
 
     const newDoneRecipe = {
@@ -29,8 +29,17 @@ class FinishRecipeButton extends React.Component {
     };
 
     setToStorage('doneRecipes', [...recipesDone, newDoneRecipe]);
-
+    this.removeStepFromStorage(id);
     history.push('/receitas-feitas');
+  }
+
+  removeStepFromStorage(id) {
+    const inProgressRecipes = getFromStorage('inProgressRecipes') || [];
+    delete inProgressRecipes[id];
+    setToStorage('inProgressRecipes', inProgressRecipes);
+    if (Object.keys(inProgressRecipes).length === 0) {
+      localStorage.removeItem('inProgressRecipes');
+    }
   }
 
   render() {

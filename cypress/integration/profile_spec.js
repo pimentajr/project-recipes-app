@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe.skip('Profile screen', () => {
+describe('Profile screen', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/perfil', {
       onBeforeLoad(win) {
@@ -57,7 +57,7 @@ describe.skip('Profile screen', () => {
     });
   });
 
-  describe('87 - Redirecione a pessoa usuária que, ao clicar no botão de "Sair", o `localStorage` deve ser limpo e a rota deve mudar para a tela de login', () => {
+  describe.skip('87 - Redirecione a pessoa usuária que, ao clicar no botão de "Sair", o `localStorage` deve ser limpo e a rota deve mudar para a tela de login', () => {
     it('Limpa todas as chaves da localStorage', () => {
       cy.window().then((win) => {
         expect(win.localStorage.getItem('user')).to.eq('{ "email": "email@mail.com" }');

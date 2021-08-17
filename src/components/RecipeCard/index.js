@@ -13,7 +13,6 @@ class RecipeCard extends React.Component {
   handleRecipeClick() {
     const { history, type, recipe } = this.props;
     const id = recipe.idMeal || recipe.idDrink;
-
     history.push(`/${type}/${id}`);
   }
 

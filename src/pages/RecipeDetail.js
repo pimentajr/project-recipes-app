@@ -6,11 +6,28 @@ import { fetchRecipeDetail, fetchRecommended } from '../actions/recipeDetail_act
 import RecipeDetailMain from '../components/RecipeDetailMain';
 import RecipesRecommended from '../components/RecipesRecommended';
 import '../index.css';
+import { getFromStorage, setToStorage } from '../helpers/utils';
 
 function RecipeDetail({ history: { push, location: { pathname } },
   dispatchFetchDetail, dispatchFetchRecommended, recipeDetail, recipesRecommended }) {
   const { id } = useParams();
   const type = pathname.includes('comidas') ? 'comidas' : 'bebidas';
+
+  function verifyRecipeInProgress() {
+    const inProgressRecipes = getFromStorage('inProgressRecipes') || [];
+    return Object.prototype.hasOwnProperty.call(inProgressRecipes, id);
+  }
+
+  const addStepToStorage = () => {
+    const recipesInProgress = getFromStorage('inProgressRecipes') || {};
+    const updatedItem = {
+      ...recipesInProgress,
+      [id]: [],
+    };
+    setToStorage('inProgressRecipes', updatedItem);
+  };
+
+  React.useEffect(addStepToStorage, [id]);
 
   React.useEffect(() => {
     dispatchFetchRecommended(type);
@@ -20,30 +37,45 @@ function RecipeDetail({ history: { push, location: { pathname } },
     dispatchFetchDetail(type, id);
   }, [dispatchFetchDetail, type, id]);
 
+  function verifyRecipeDone() {
+    const recipesDone = getFromStorage('doneRecipes') || [];
+    return recipesDone.some((item) => (item.id === id));
+  }
+
   function redrectToRecipeInProgress() {
     push(`${pathname}/in-progress`);
+  }
+
+  function handleStartContinueBtn() {
+    redrectToRecipeInProgress();
   }
 
   return (
     <div className="recipe-detail">
       <RecipeDetailMain
         recipeDetail={ recipeDetail }
+        id={ id }
+        type={ type }
       />
       <RecipesRecommended recipesRecommended={ recipesRecommended } />
       <button
         data-testid="start-recipe-btn"
+        className="fixedBottom"
         type="button"
-        onClick={ redrectToRecipeInProgress }
+        onClick={ handleStartContinueBtn }
+        hidden={ verifyRecipeDone() }
       >
-        Iniciar receita
+        { verifyRecipeInProgress() ? 'Continuar Receita' : 'Iniciar receita'}
       </button>
     </div>
   );
 }
 
-const mapStateToProps = ({ recipeDetailReducer, recommendedsReducer }) => ({
+const mapStateToProps = ({ recipeDetailReducer,
+  recommendedsReducer, selectedRecipeReducer: { inProgress } }) => ({
   recipeDetail: recipeDetailReducer.detail,
   recipesRecommended: recommendedsReducer.recommended,
+  inProgress,
 });
 
 const mapDispatchToProps = (dispatch) => ({

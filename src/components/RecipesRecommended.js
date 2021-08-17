@@ -8,8 +8,8 @@ const INCREMENT = 1;
 const INDEX = 5;
 
 class RecipesRecommended extends React.Component {
-  constructor({ recipesRecommended }) {
-    super({ recipesRecommended });
+  constructor() {
+    super();
 
     this.state = {
       slideIndex: 0,

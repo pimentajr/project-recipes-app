@@ -1,15 +1,99 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/shareIcon.svg';
+import { getFromStorage, setToStorage } from '../helpers/utils';
+
+const copy = require('clipboard-copy');
 
 class RecipeDetailMain extends Component {
   constructor() {
     super();
-
+    this.state = {
+      favoriteBtnSrc: whiteHeartIcon,
+      shareBtnStatus: '',
+    };
     this.main = this.main.bind(this);
+    this.handleFavoriteBtn = this.handleFavoriteBtn.bind(this);
+    this.changeFavoriteBtn = this.changeFavoriteBtn.bind(this);
+    this.handleShareBtn = this.handleShareBtn.bind(this);
+    this.addToLocalStorage = this.addToLocalStorage.bind(this);
+    this.removeFromLocalStorage = this.removeFromLocalStorage.bind(this);
+  }
+
+  componentDidMount() {
+    this.changeFavoriteBtn();
+  }
+
+  handleShareBtn() {
+    copy(window.location.href); // https://stackoverflow.com/questions/39823681/read-the-current-full-url-with-react
+    this.setState({
+      shareBtnStatus: 'Link copiado!',
+    });
+  }
+
+  handleFavoriteBtn() {
+    const { favoriteBtnSrc } = this.state;
+    if (favoriteBtnSrc === whiteHeartIcon) {
+      this.addToLocalStorage();
+      this.setState({
+        favoriteBtnSrc: blackHeartIcon,
+      });
+    } else {
+      this.removeFromLocalStorage();
+      this.setState({
+        favoriteBtnSrc: whiteHeartIcon,
+      });
+    }
+  }
+
+  addToLocalStorage() {
+    const { id, type, recipeDetail: { strArea, strCategory,
+      strAlcoholic, strDrink, strMeal, strMealThumb, strDrinkThumb } } = this.props;
+
+    const favoriteRecipes = getFromStorage('favoriteRecipes') || [];
+    const newFavoriteRecipe = [
+      ...favoriteRecipes,
+      {
+        id,
+        type: type.replace('s', ''),
+        area: strArea || '',
+        category: strCategory || '',
+        alcoholicOrNot: strAlcoholic || '',
+        name: strMeal || strDrink,
+        image: strDrinkThumb || strMealThumb,
+      },
+    ];
+    setToStorage('favoriteRecipes', newFavoriteRecipe);
+  }
+
+  removeFromLocalStorage() {
+    const { id } = this.props;
+    const favoriteRecipes = getFromStorage('favoriteRecipes') || [];
+    const newFavoriteRecipe = favoriteRecipes.filter((item) => (item.id !== id));
+
+    setToStorage('favoriteRecipes', newFavoriteRecipe);
+  }
+
+  changeFavoriteBtn() {
+    const { id } = this.props;
+    const favoriteRecipes = getFromStorage('favoriteRecipes') || [];
+    const hasId = favoriteRecipes.some((item) => (item.id === id));
+    if (hasId) {
+      this.setState({
+        favoriteBtnSrc: blackHeartIcon,
+      });
+    } else {
+      this.setState({
+        favoriteBtnSrc: whiteHeartIcon,
+      });
+    }
   }
 
   main(recipeDetail) {
+    const { favoriteBtnSrc, shareBtnStatus } = this.state;
     const { strMealThumb, strDrinkThumb, strDrink, strMeal,
       strCategory, strAlcoholic, strInstructions,
       strYoutube } = recipeDetail;
@@ -40,18 +124,30 @@ class RecipeDetailMain extends Component {
 
     return (
       <main data-testid="recipes-page" className="detailMain">
-        <h1>Conteúdo da tela de DETALHES de COMIDAS</h1>
         <br />
         <img data-testid="recipe-photo" alt="meal recipe" src={ strThumb } />
         <br />
         <h2 data-testid="recipe-title">{ str }</h2>
         <br />
-        <button data-testid="share-btn" type="button">
-          <img alt="" />
+        <button
+          data-testid="share-btn"
+          type="button"
+          onClick={ () => this.handleShareBtn() }
+        >
+          { shareBtnStatus !== '' ? 'Link copiado!'
+            : <img alt="Ícone do botão compartilhar" src={ shareIcon } /> }
         </button>
         &nbsp;  &nbsp;
-        <button data-testid="favorite-btn" type="button">
-          <img alt="" />
+        <button
+          type="button"
+          onClick={ () => this.handleFavoriteBtn() }
+          aria-label="Botão de favoritar"
+        >
+          <img
+            data-testid="favorite-btn"
+            alt="Imagem do botão de favoritar"
+            src={ favoriteBtnSrc }
+          />
         </button>
         <br />
         <br />
@@ -113,4 +209,6 @@ export default withRouter(RecipeDetailMain);
 
 RecipeDetailMain.propTypes = {
   recipeDetail: PropTypes.object,
+  id: PropTypes.string,
+  type: PropTypes.string,
 }.isRequired;
