@@ -1,0 +1,61 @@
+.back-ground-food {
+  background-image: url('./explorefood.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.div-explore {
+  align-content: center;
+  align-items: center;
+  background-color: rgb(245, 245, 245, 0.7);
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  margin-top: 35px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 120px;
+}
+
+.div-profile {
+  align-content: center;
+  align-items: center;
+  background-color: rgb(245, 245, 245, 0.7);
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  margin-top: 35px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 100px;
+}
+
+.user-email {
+  color: rgb(92, 10, 39);
+  font-family: Pacifico , cursive;
+}
+
+.explore-buttons, .profile-buttons {
+  align-items: center;
+  background-color: rgb(92, 10, 39);
+  border: solid rgb(92, 10, 39);
+  border-radius: 5px;
+  color: antiquewhite;
+  display: flex;
+  font-family: Lemonada , cursive;
+  font-weight: 500;
+  height: 50px;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 250px;
+}
