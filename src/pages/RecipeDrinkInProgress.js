@@ -4,7 +4,8 @@ import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 import DrinkFavoriteButton from '../components/DrinkFavoriteButton';
 import CheckboxDrink from '../components/CheckboxDrink';
-import '../components/css/RecipeDetails.css';
+// import '../components/css/RecipeDetails.css';
+import './css/RecipeDetails.css';
 
 function RecipeDrinkInProgress({ match, location }) {
   const [recipe, setRecipe] = useState('');
@@ -58,40 +59,55 @@ function RecipeDrinkInProgress({ match, location }) {
   function renderDrinkDetails() {
     if (recipe.drinks) {
       return (
-        <div className="supply-card">
-          <img
-            data-testid="recipe-photo"
-            src={ recipe.drinks[0].strDrinkThumb }
-            alt={ recipe.drinks[0].strDrink }
-          />
-          <h1 data-testid="recipe-title">{ recipe.drinks[0].strDrink }</h1>
-          <button
-            onClick={ () => {
-              alert('Link copiado!');
-              copy(`http://localhost:3000${pathURL}`);
-              setHidden(false);
-            } }
-            type="button"
-            data-testid="share-btn"
-          >
-            <img src={ shareIcon } alt="shareIcon" />
-          </button>
-          {!hidden && <div>Link copiado!</div>}
-          <DrinkFavoriteButton recipe={ recipe.drinks[0] } />
-          <h3 data-testid="recipe-category">
-            {recipe.drinks[0].strAlcoholic}
-          </h3>
-          <h2>Ingredientes</h2>
-          <CheckboxDrink
-            ingredients={ ingredients }
-            measures={ measures }
-            pathname={ pathname }
-            recipe={ recipe }
-          />
-          <h2>Instruções</h2>
-          <p data-testid="instructions">
-            {recipe.drinks[0].strInstructions}
-          </p>
+        <div className="supply-card-container">
+          <div className="supply-card">
+            <div className="title-container">
+              <h1 data-testid="recipe-title">{ recipe.drinks[0].strDrink }</h1>
+              <h3 data-testid="recipe-category">
+                {recipe.drinks[0].strAlcoholic}
+              </h3>
+            </div>
+            <div className="img-buttons-container">
+              <img
+                className="supply-img"
+                data-testid="recipe-photo"
+                src={ recipe.drinks[0].strDrinkThumb }
+                alt={ recipe.drinks[0].strDrink }
+              />
+              <button
+                onClick={ () => {
+                  alert('Link copiado!');
+                  copy(`http://localhost:3000${pathURL}`);
+                  setHidden(false);
+                } }
+                type="button"
+                data-testid="share-btn"
+              >
+                <img src={ shareIcon } alt="shareIcon" />
+              </button>
+              {!hidden && <div>Link copiado!</div>}
+              <DrinkFavoriteButton recipe={ recipe.drinks[0] } />
+            </div>
+            <div className="ingredients-container">
+              <div className="title-container">
+                <h3>Ingredientes</h3>
+              </div>
+              <CheckboxDrink
+                ingredients={ ingredients }
+                measures={ measures }
+                pathname={ pathname }
+                recipe={ recipe }
+              />
+            </div>
+            <div className="intructions-container">
+              <div className="title-container">
+                <h3>Instruções</h3>
+              </div>
+              <p data-testid="instructions">
+                {recipe.drinks[0].strInstructions}
+              </p>
+            </div>
+          </div>
         </div>
       );
     }

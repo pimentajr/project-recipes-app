@@ -3,6 +3,7 @@ import copy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
+import '../components/css/RecipeDetails.css';
 
 function Recipes() {
   const headerProps = {

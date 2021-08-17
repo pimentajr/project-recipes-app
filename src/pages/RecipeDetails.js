@@ -26,7 +26,6 @@ function RecipeDetails(props) {
       <p>{foodInfo.strCategory}</p>
       <ul>
         { entries.filter((entry) => {
-          console.log('iniciou');
           let count = 1;
           if (entry[0] === `strIngredient${count}`) {
             count += 1;
