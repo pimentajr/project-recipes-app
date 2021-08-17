@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { useRecipes } from '../contexts/RecipesContext';
 import Header from '../components/header/Header';
 import RecipeCard from '../components/recipecard/RecipeCard';
+import Footer from '../components/footer/Footer';
 
 export default function MealsRecipes() {
   const { recipes, setRecipes, setCategory, setFormat } = useRecipes();
@@ -11,7 +12,7 @@ export default function MealsRecipes() {
   useEffect(() => {
     setCategory('meal');
     setFormat('meals');
-  }, []);
+  }, [setCategory, setFormat]);
 
   useEffect(() => {
     const maximumArrayLength = 12;
@@ -46,6 +47,7 @@ export default function MealsRecipes() {
             )))
         }
       </main>
+      <Footer />
     </div>
   );
 }

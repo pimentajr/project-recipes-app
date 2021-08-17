@@ -1,0 +1,35 @@
+.footerContainer {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  left: 50%;
+  position: fixed;
+  transform: translateX(-50%);
+  width: 90%;
+}
+
+.footerContainer input {
+  background-color: transparent;
+  border: none;
+  height: 50px;
+  width: 50px;
+}
+
+.footerContainer input:first-child {
+  background-image: url('../../images/drinkIcon.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.footerContainer .explore {
+  background-image: url('../../images/exploreIcon.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.footerContainer input:last-child {
+  background-image: url('../../images/mealIcon.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
