@@ -1,0 +1,9 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 145px;
+}
+
+.cardContainer img {
+  width: 100%;
+}

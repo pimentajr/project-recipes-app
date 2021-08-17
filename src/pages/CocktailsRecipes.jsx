@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom';
 
 import { useRecipes } from '../contexts/RecipesContext';
 import Header from '../components/header/Header';
+import RecipeCard from '../components/recipecard/RecipeCard';
 
 export default function MealsRecipes() {
-  const { recipes, setCategory, setFormat } = useRecipes();
+  const { recipes, setRecipes, setCategory, setFormat } = useRecipes();
 
   useEffect(() => {
     setCategory('cocktail');
@@ -13,12 +14,20 @@ export default function MealsRecipes() {
   }, []);
 
   useEffect(() => {
+    const maximumArrayLength = 12;
     if (recipes === null) {
       alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      return;
     }
-  }, [recipes]);
+    if (recipes.length > maximumArrayLength) {
+      const maxRecipes = [];
+      for (let index = 0; index < maximumArrayLength; index += 1) {
+        maxRecipes.push(recipes[index]);
+      }
+      setRecipes(maxRecipes);
+    }
+  }, [recipes, setRecipes]);
 
-  console.log(recipes);
   return (
     <div>
       <Header pageTitle="Bebidas" itHasNotSearchButton={ false } />
@@ -28,7 +37,12 @@ export default function MealsRecipes() {
           && (recipes.length === 1
             ? <Redirect to={ `/bebidas/${recipes[0].idDrink}` } />
             : recipes.map((recipe, index) => (
-              <p key={ index }>olá</p>
+              <RecipeCard
+                key={ index }
+                index={ index }
+                recipeTitle={ recipe.strDrink }
+                imagePath={ recipe.strDrinkThumb }
+              />
             )))
         }
       </main>

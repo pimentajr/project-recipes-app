@@ -45,6 +45,7 @@ export function RecipesContextProvider({ children }) {
         recipes,
         searchText,
         setFilter,
+        setRecipes,
         setCategory,
         setSearchText,
         submitSearch,

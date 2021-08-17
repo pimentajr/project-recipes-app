@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom';
 
 import { useRecipes } from '../contexts/RecipesContext';
 import Header from '../components/header/Header';
+import RecipeCard from '../components/recipecard/RecipeCard';
 
 export default function MealsRecipes() {
-  const { recipes, setCategory, setFormat } = useRecipes();
+  const { recipes, setRecipes, setCategory, setFormat } = useRecipes();
 
   useEffect(() => {
     setCategory('meal');
@@ -13,10 +14,19 @@ export default function MealsRecipes() {
   }, []);
 
   useEffect(() => {
-    if (!recipes) {
+    const maximumArrayLength = 12;
+    if (recipes === null) {
       alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      return;
     }
-  }, [recipes]);
+    if (recipes.length > maximumArrayLength) {
+      const maxRecipes = [];
+      for (let index = 0; index < maximumArrayLength; index += 1) {
+        maxRecipes.push(recipes[index]);
+      }
+      setRecipes(maxRecipes);
+    }
+  }, [recipes, setRecipes]);
 
   return (
     <div>
@@ -27,7 +37,12 @@ export default function MealsRecipes() {
           && (recipes.length === 1
             ? <Redirect to={ `/comidas/${recipes[0].idMeal}` } />
             : recipes.map((recipe, index) => (
-              <p key={ index }>olá</p>
+              <RecipeCard
+                key={ index }
+                index={ index }
+                recipeTitle={ recipe.strMeal }
+                imagePath={ recipe.strMealThumb }
+              />
             )))
         }
       </main>
