@@ -172,6 +172,7 @@ export default function BebidasInProgress({ match: { params: { recipeId } } }) {
                     <Form.Check
                       type="checkbox"
                       defaultChecked={ ingredients.some((el) => el === index) }
+                      data-testid={ `${index}-checkbox` }
                       label={
                         `${details[key]} :${details[`strMeasure${index + 1}`] || ''}`
                       }
