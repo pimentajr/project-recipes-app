@@ -65,3 +65,13 @@ iframe {
   padding-bottom: 30px;
   padding-top: 10px;
 }
+
+.done-recipes-card {
+  border: solid 1px rgb(55, 6, 23);
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px 3px rgba(55, 6, 23, 0.2);
+  color: rgb(55, 6, 23);
+  font-family: Montserrat , sans-serif;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}

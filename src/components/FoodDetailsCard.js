@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
-import '../FoodAndDrinkDetails.css';
+// import '../FoodAndDrinkDetails.css';
 
 class FoodDetailsCard extends Component {
   render() {

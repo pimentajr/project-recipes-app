@@ -28,7 +28,7 @@ body {
 
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap') ;
 
-.category-buttons, .category-buttons-filter {
+.category-buttons {
   align-items: center;
   background-color: rgb(92, 10, 39);
   border: solid rgb(92, 10, 39);
@@ -66,4 +66,27 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 30px 10px;
+}
+
+.category-buttons-filter {
+  background-color: rgb(92, 10, 39);
+  border: solid rgb(92, 10, 39);
+  border-radius: 5px;
+  color: antiquewhite;
+  font-family: Lemonada , cursive;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.div-category-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.done-recipe-title {
+  font-size: 23pt;
+  font-weight: 400;
 }
