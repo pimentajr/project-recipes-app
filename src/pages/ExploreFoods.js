@@ -29,6 +29,7 @@ class ExploreFoods extends Component {
           <div className="div-explore">
             <Link to="/explorar/comidas/ingredientes">
               <Button
+                variant="outline-dark"
                 type="button"
                 data-testid="explore-by-ingredient"
                 className="explore-buttons"
@@ -38,6 +39,7 @@ class ExploreFoods extends Component {
             </Link>
             <Link to="/explorar/comidas/area">
               <Button
+                variant="outline-dark"
                 className="explore-buttons"
                 type="button"
                 data-testid="explore-by-area"
@@ -46,6 +48,7 @@ class ExploreFoods extends Component {
               </Button>
             </Link>
             <Button
+              variant="outline-dark"
               className="explore-buttons"
               type="button"
               data-testid="explore-surprise"
