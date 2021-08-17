@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 import CopyButton from '../../components/Details/CopyButton';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
