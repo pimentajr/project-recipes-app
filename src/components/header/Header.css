@@ -1,0 +1,34 @@
+.HeaderContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.topBar {
+  align-items: center;
+  display: flex;
+  width: 95%;
+}
+
+.topBar input {
+  background-color: white;
+  border: none;
+  height: 50px;
+  width: 50px;
+}
+
+.topBar input:first-child {
+  background-image: url('../../images/profileIcon.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-right: 50px;
+}
+
+.topBar input:last-child {
+  background-image: url('../../images/searchIcon.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-left: 50px;
+}
