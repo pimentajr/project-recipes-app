@@ -43,10 +43,10 @@ export default function Recommendations({ type }) {
           return (
             <Link to={ `/${drinkOrFood}s/${id}` } key={ index }>
               <CarouselItem
-                className="d-flex flex-column align-items-center p-3 my-2 bg-light"
+                className="p-3 my-2 bg-light rounded border"
                 data-testid={ `${index}-recomendation-card` }
               >
-                <img src={ image } alt={ name } className="m-2 border border-dark" />
+                <img src={ image } alt={ name } className="rounded border" />
                 <p data-testid={ `${index}-recomendation-title` }>{ name }</p>
               </CarouselItem>
             </Link>

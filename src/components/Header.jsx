@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import '../styles/Header.css';
-import { HeaderNavBar } from '../styles';
+import { HeaderNavBar, TransparentButton } from '../styles';
 
 function Header({ title, type, showSearchButton }) {
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -15,23 +14,21 @@ function Header({ title, type, showSearchButton }) {
   );
 
   const searchButton = (
-    <button
-      className="btn-search"
-      type="button"
+    <TransparentButton
       onClick={ showSearchBarHandler }
     >
       <img src={ searchIcon } alt="search icon" data-testid="search-top-btn" />
-    </button>);
+    </TransparentButton>);
 
   return (
     <HeaderNavBar drink={ type === 'drink' }>
-      <div className="btns">
+      <div className="d-flex justify-content-between align-items-center p-2 px-4">
         <Link to="/perfil">
-          <button className="btn-perfil" type="button">
+          <TransparentButton>
             <img src={ profileIcon } alt="Profile Icon" data-testid="profile-top-btn" />
-          </button>
+          </TransparentButton>
         </Link>
-        <h2 className="title" data-testid="page-title">{ title }</h2>
+        <h2 data-testid="page-title">{ title }</h2>
         { showSearchButton ? searchButton : null }
       </div>
       { showSearchBar ? <SearchBar type={ type } /> : null }

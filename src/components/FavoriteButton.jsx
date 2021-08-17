@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import { TransparentButton } from '../styles';
 
 export default function FavoriteButton({ recipe, dataTestid }) {
   const [isFavorite, setFavorite] = useState(false);
@@ -35,13 +36,13 @@ export default function FavoriteButton({ recipe, dataTestid }) {
 
   return (
     <div>
-      <button className="neutral-button" type="button" onClick={ () => handleHeart() }>
+      <TransparentButton onClick={ () => handleHeart() }>
         <img
           src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
           alt="Favourite Button"
           data-testid={ dataTestid }
         />
-      </button>
+      </TransparentButton>
     </div>);
 }
 

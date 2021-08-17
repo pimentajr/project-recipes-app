@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { fetchAPI } from '../services';
 import SearchBarContext from '../context/searchBarContext';
 
 export default function CategoriesButtons({ type }) {
   const [categories, setCategories] = useState([]);
-  const { setData, setKeyRedirect } = useContext(SearchBarContext);
+  const { setKeyRedirect } = useContext(SearchBarContext);
+  const dispatch = useDispatch();
   const six = 6;
-
   useEffect(() => {
     async function asyncFunc() {
       const newCategories = await fetchAPI[type].categories;
@@ -24,17 +25,15 @@ export default function CategoriesButtons({ type }) {
     if (!bool) {
       setKeyRedirect(false);
       if (value === 'All') {
-        setData(await fetchAPI[type].searchName(''));
+        dispatch({ type: 'SET_SEARCH', search: { type: 'searchName', key: '' } });
       } else {
-        setData(await fetchAPI[type].searchCategory(value));
+        dispatch({ type: 'SET_SEARCH', search: { type: 'searchCategory', key: value } });
       }
     } else {
-      setData(await fetchAPI[type].searchName(''));
+      dispatch({ type: 'SET_SEARCH', search: { type: 'searchName', key: '' } });
     }
     const newCategories = categories.map(({ category, checked }) => {
-      if (category === value) {
-        return { category, checked: !checked };
-      }
+      if (category === value) return { category, checked: !checked };
       return { category, checked: false };
     });
     setCategories(newCategories);

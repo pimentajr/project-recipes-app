@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import { RecipeStateButton } from '../styles';
 
 export default function RecipeButton({ state, recipe, ingredients, setIngredients }) {
   const history = useHistory();
@@ -40,49 +41,46 @@ export default function RecipeButton({ state, recipe, ingredients, setIngredient
   switch (state) {
   case 'started':
     return (
-      <button
+      <RecipeStateButton
         type="button"
         className="startButton"
         data-testid="start-recipe-btn"
         onClick={ () => history.push(`${pathname}/in-progress`) }
       >
         Continuar Receita
-      </button>
+      </RecipeStateButton>
     );
   case 'inProgress':
     return (
       <Link to="/receitas-feitas">
-        <button
-          type="button"
+        <RecipeStateButton
           data-testid="finish-recipe-btn"
           className="startButton"
           disabled={ verify }
           onClick={ () => setDoneRecipe() }
         >
           Finalizar receita
-        </button>
+        </RecipeStateButton>
       </Link>
     );
   case 'restart':
     return (
-      <button
-        type="button"
+      <RecipeStateButton
         className="startButton"
         onClick={ () => { restartRecipe(); history.push(`${pathname}/in-progress`); } }
       >
         Refazer Receita
-      </button>
+      </RecipeStateButton>
     );
   default:
     return (
-      <button
-        type="button"
+      <RecipeStateButton
         className="startButton"
         data-testid="start-recipe-btn"
         onClick={ () => history.push(`${pathname}/in-progress`) }
       >
         Iniciar Receita
-      </button>
+      </RecipeStateButton>
     );
   }
 }

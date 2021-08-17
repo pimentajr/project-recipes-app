@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
-import DetailsProvider from '../context/detailsProvider';
 
 export default function FavoriteCard({ recipe, index }) {
   if (recipe) {
@@ -10,7 +9,7 @@ export default function FavoriteCard({ recipe, index }) {
     const category = recipe.area
       ? (`${recipe.area} - ${recipe.category}`) : recipe.alcoholicOrNot;
     return (
-      <DetailsProvider>
+      <div>
         <div>
           <Link to={ path }>
             <img
@@ -37,7 +36,7 @@ export default function FavoriteCard({ recipe, index }) {
             dataTestid={ `${index}-horizontal-favorite-btn` }
           />
         </button>
-      </DetailsProvider>
+      </div>
     );
   }
 }

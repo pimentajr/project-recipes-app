@@ -3,6 +3,7 @@ import React from 'react';
 import copy from 'clipboard-copy';
 import { useAlert } from 'react-alert';
 import shareIcon from '../images/shareIcon.svg';
+import { TransparentButton } from '../styles';
 
 export default function ShareButton({ id, type, dataTestid }) {
   const alert = useAlert();
@@ -12,9 +13,9 @@ export default function ShareButton({ id, type, dataTestid }) {
   }
   return (
     <div className="d-flex">
-      <button className="neutral-button" type="button" onClick={ () => handleClick() }>
+      <TransparentButton onClick={ () => handleClick() }>
         <img src={ shareIcon } alt="Share Icon" data-testid={ dataTestid } />
-      </button>
+      </TransparentButton>
     </div>
   );
 }

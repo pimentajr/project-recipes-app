@@ -6,7 +6,6 @@ import Ingredients from '../components/Ingredients';
 import Recommendations from '../components/Recommendations';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
-import '../styles/Details.css';
 import RecipeButton from '../components/RecipeButton';
 import { Container } from '../styles';
 
@@ -72,6 +71,11 @@ export default function Details({ type }) {
           data-testid="recipe-photo"
           src={ image }
           alt={ name }
+          style={ {
+            height: '40vh',
+            objectFit: 'cover',
+            width: '100%',
+          } }
           className="details-img"
         />
         <div className="d-flex justify-content-between p-2">

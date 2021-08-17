@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { TransparentButton } from '../styles';
 import ShareButton from './ShareButton';
 
 export default function DoneRecipeCard({ recipe, index }) {
@@ -9,14 +10,12 @@ export default function DoneRecipeCard({ recipe, index }) {
   return (
     <div className="m-2 card">
       <div data-testid={ `${index}-recipe-card` } className="d-flex">
-        <button
+        <TransparentButton
           type="button"
           style={ {
             height: '100%',
             objectFit: 'cover',
             width: '45%',
-            backgroundColor: 'transparent',
-            border: 'none',
           } }
           onClick={ () => history.push(path) }
         >
@@ -30,7 +29,7 @@ export default function DoneRecipeCard({ recipe, index }) {
               width: '100%',
             } }
           />
-        </button>
+        </TransparentButton>
         <div className="d-flex flex-column align-items-center">
           <div className="d-flex">
             <p data-testid={ `${index}-horizontal-top-text` }>
@@ -43,16 +42,12 @@ export default function DoneRecipeCard({ recipe, index }) {
               id={ recipe.id }
             />
           </div>
-          <button
+          <TransparentButton
             type="button"
-            style={ {
-              backgroundColor: 'transparent',
-              border: 'none',
-            } }
             onClick={ () => history.push(path) }
           >
             <h4 data-testid={ `${index}-horizontal-name` }>{ recipe.name }</h4>
-          </button>
+          </TransparentButton>
           <span data-testid={ `${index}-horizontal-done-date` }>
             { recipe.doneDate }
           </span>
@@ -68,7 +63,6 @@ export default function DoneRecipeCard({ recipe, index }) {
               ))
             }
           </div>
-
         </div>
       </div>
     </div>

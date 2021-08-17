@@ -4,10 +4,11 @@ export const Button = styled.button`
   background-color: ${({ drink }) => (drink ? '#a73d7e' : '#fcdc4d')};
 `;
 
-export const transparentButton = styled.button`
+export const TransparentButton = styled.div`
   border: none;
-  padding: none;
+  padding: 0;
   background-color: transparent;
+  color: transparent;
 `;
 
 export const Underline = styled.p`
@@ -37,15 +38,28 @@ export const FooterBar = styled.footer`
   display: flex;
   justify-content: space-between;
   border-top: 1px solid;
-  padding: 8px;
   bottom: 0;
   position: fixed;
   width: 100%;
 `;
 
 export const CarouselItem = styled.div`
-  width: 55vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 46vw;
+  color: black;
+  margin: 2vw;
   img {
-    width: 45vw;
+    width: 42vw;
   }
+`;
+
+export const RecipeStateButton = styled.button`
+  background-color: #f8f9fa;
+  border: 1px solid gray;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  font-size: 1.2rem;
 `;
