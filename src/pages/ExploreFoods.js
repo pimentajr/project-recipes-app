@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Button from 'react-bootstrap/Button';
 import { randomFoodId } from '../redux/actions/foodActions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../ExplorebyFoodandDrink.css';
 
 class ExploreFoods extends Component {
   constructor() {
@@ -23,23 +25,39 @@ class ExploreFoods extends Component {
     return (
       <div>
         <Header title="Explorar Comidas" search={ false } />
-        <Link to="/explorar/comidas/ingredientes">
-          <button type="button" data-testid="explore-by-ingredient">
-            Por Ingredientes
-          </button>
-        </Link>
-        <Link to="/explorar/comidas/area">
-          <button type="button" data-testid="explore-by-area">
-            Por Local de Origem
-          </button>
-        </Link>
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ this.redirectRandomFood }
-        >
-          Me Surpreenda!
-        </button>
+        <div className="back-ground-food">
+          <div className="div-explore">
+            <Link to="/explorar/comidas/ingredientes">
+              <Button
+                variant="outline-dark"
+                type="button"
+                data-testid="explore-by-ingredient"
+                className="explore-buttons"
+              >
+                Por Ingredientes
+              </Button>
+            </Link>
+            <Link to="/explorar/comidas/area">
+              <Button
+                variant="outline-dark"
+                className="explore-buttons"
+                type="button"
+                data-testid="explore-by-area"
+              >
+                Por Local de Origem
+              </Button>
+            </Link>
+            <Button
+              variant="outline-dark"
+              className="explore-buttons"
+              type="button"
+              data-testid="explore-surprise"
+              onClick={ this.redirectRandomFood }
+            >
+              Me Surpreenda!
+            </Button>
+          </div>
+        </div>
         <Footer />
       </div>
     );

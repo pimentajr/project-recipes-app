@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Button from 'react-bootstrap/Button';
 import { randomDrinkId } from '../redux/actions/drinkActions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../ExplorebyFoodandDrink.css';
 
 class ExploreDrinks extends Component {
   constructor() {
@@ -23,18 +25,29 @@ class ExploreDrinks extends Component {
     return (
       <div>
         <Header title="Explorar Bebidas" search={ false } />
-        <Link to="/explorar/bebidas/ingredientes">
-          <button type="button" data-testid="explore-by-ingredient">
-            Por Ingredientes
-          </button>
-        </Link>
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ this.redirectRandomDrink }
-        >
-          Me Surpreenda!
-        </button>
+        <div className="back-ground-drink">
+          <div className="div-explore">
+            <Link to="/explorar/bebidas/ingredientes">
+              <Button
+                variant="outline-dark"
+                className="explore-buttons"
+                type="button"
+                data-testid="explore-by-ingredient"
+              >
+                Por Ingredientes
+              </Button>
+            </Link>
+            <Button
+              variant="outline-dark"
+              className="explore-buttons"
+              type="button"
+              data-testid="explore-surprise"
+              onClick={ this.redirectRandomDrink }
+            >
+              Me Surpreenda!
+            </Button>
+          </div>
+        </div>
         <Footer />
       </div>
     );

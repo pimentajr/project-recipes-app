@@ -30,7 +30,6 @@ export default class Explore extends Component {
               </Button>
             </Link>
           </div>
-
         </div>
         <Footer />
       </div>
