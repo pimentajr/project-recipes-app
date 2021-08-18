@@ -52,4 +52,5 @@ export default ShareButton;
 ShareButton.propTypes = {
   dataTestId: PropTypes.string,
   testLocation: PropTypes.string,
+  url: PropTypes.string,
 }.isRequired;
