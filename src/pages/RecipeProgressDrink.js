@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { searchId } from '../services/RequestDrinks';
 import '../styles/drink.css';
-// import Clipboard from '../components/Clipboard';
 
 function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
