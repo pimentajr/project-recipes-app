@@ -20,7 +20,7 @@ export default function FoodsCards() {
                 data-testid={ `${index}-card-img` }
                 alt="Imagem de comida"
               />
-              <h3 data-testid={ `${index}-card-name` } className="d-flex align-items-center justify-content-center">{strMeal}</h3>
+              <h3 data-testid={ `${index}-card-name` } className="overflow-hidden d-flex align-items-center justify-content-center">{strMeal}</h3>
             </div>
           </Link>
         ))

@@ -26,7 +26,7 @@ function Login() {
   return (
     <div className="container-fluid ">
       <img
-        className="img-fluid"
+        className="food-card w-100 rounded-circle mt-2 p-2"
         src={ chefImage }
         alt="Imagem de um chefe de cozinha com garfo e faca nas mãos"
       />

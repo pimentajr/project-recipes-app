@@ -73,7 +73,6 @@ function Foods() {
         { showSearch && <SearchBar value={ foods } /> }
       </div>
       <FoodCategoryButtons />
-      {console.log(renderCategory)}
       {
         renderCategory ? <FoodsCards /> : <FoodCategoryCards />
       }

@@ -1,0 +1,23 @@
+.bebidas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-icon {  
+  margin-right: 5px;
+  width: 30px;
+  background-color: white;  
+  border-radius: 50%;
+}
+
+.search-icon {    
+  width: 25px;
+  background-color: white;    
+}
+
+.search-icon-button{
+  background-color: white;  
+  border-radius: 50%;  
+  border: none;
+}
