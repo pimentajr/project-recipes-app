@@ -127,7 +127,7 @@ function DrinkRecipeInProgress({ match: { params: { id } } }) {
             <button
               type="button"
               data-testid="finish-recipe-btn"
-              disabled={ listIngredients().length !== usedIngredients.length }
+              disabled={ listIngredients(recipe).length !== usedIngredients.length }
               onClick={ () => saveDoneRecipes(saveDone, setDoneRecipes) }
               className="finish-drink-btn"
             >
