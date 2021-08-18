@@ -1,6 +1,8 @@
 import React from 'react';
 import './FoodLoader.css';
 
+// Loader retirado de https://codepen.io/inanikolina/pen/PVvryX
+
 export default function FoodLoader() {
   function pizza() {
     const ONE = 1;

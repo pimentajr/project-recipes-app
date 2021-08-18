@@ -22,20 +22,6 @@
   max-height: 80vh;
 }
 
-/*
-#iceLeft {
-  animation: clink .8s infinite ease;
-  opacity: 0.6;
-  transform-origin: 36px 66px;
-}
-
-#iceRight {
-  animation: clink .8s .2s infinite ease;
-  opacity: 0.6;
-  transform-origin: 60px 78px;
-}
-*/
-
 /* https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6 */
 .recommendations-box {
   display: flex;
@@ -176,7 +162,7 @@
 .footer {
   align-items: center;
   background-color: white;
-  bottom: 0;
+  bottom: -1px;
   display: flex;
   height: 8vh;
   justify-content: space-between;
@@ -359,13 +345,6 @@
   width: 100%;
 }
 
-/* .main-recipes-box-category {
-  color: darkgray;
-  font-size: 15px;
-  font-weight: 400;
-  margin: 0 5px;
-} */
-
 .main-recipes-box-div-name {
   align-items: center;
   display: flex;
@@ -537,15 +516,6 @@
   width: 96vw;
 }
 
-/* .done-recipes-box {
-  align-items: stretch;
-  display: flex;
-  flex: 1 0 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 9vh;
-} */
-
 .done-recipes-box-image {
   background-color: white;
   background-position: center;
@@ -556,13 +526,6 @@
   object-fit: cover;
   width: auto;
 }
-
-/* .main-recipes-box-category {
-  color: darkgray;
-  font-size: 15px;
-  font-weight: 400;
-  margin: 0 5px;
-} */
 
 .done-share {
   text-align: right;
@@ -601,24 +564,6 @@
   margin-right: 0.5em;
 }
 
-/* .done-recipes-box-div-name {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  max-height: 10vh;
-  text-align: center;
-}
-
-.done-recipes-box-name {
-  align-self: center;
-  color: white;
-  font-size: 0.7em;
-  font-weight: 900;
-  letter-spacing: 1px;
-  margin: 5px;
-  text-align: center;
-} */
-
 /* Página de detalhes  */
 .detail-page {
   margin-bottom: 50px;
@@ -628,6 +573,7 @@
   height: 25vh;
   margin: 0;
   object-fit: cover;
+  transform: scale(1.1);
   width: 100vw;
 }
 
@@ -809,16 +755,6 @@
 
 
 /* Página de Receitas Favoritas */
-
-/* .done-recipes-box {
-  align-items: stretch;
-  display: flex;
-  flex: 1 0 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 9vh;
-} */
-
 .favorite-recipes-box-image {
   background-color: white;
   background-position: center;
@@ -829,13 +765,6 @@
   object-fit: cover;
   width: auto;
 }
-
-/* .main-recipes-box-category {
-  color: darkgray;
-  font-size: 15px;
-  font-weight: 400;
-  margin: 0 5px;
-} */
 
 .div-buttons {
   display: flex;
