@@ -77,7 +77,7 @@ function ReceitasFavoritas(props) {
           formatedCategory = `${area} - ${category}`;
         }
         return (
-          <div key={ index } className="d-flex mx-0 mb-3 bg-light rounded shadow-lg">
+          <div key={ id } className="d-flex mx-0 mb-3 bg-light rounded shadow-lg">
             <Link to={ `/${type}s/${id}` } key={ index }>
               <Image
                 style={ { maxWidth: '160px' } }
