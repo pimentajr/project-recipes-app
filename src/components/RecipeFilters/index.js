@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class RecipeDoneFilters extends React.Component {
+class RecipeFilters extends React.Component {
   handleFilterSelect(filter) {
     const { setFilter } = this.props;
 
@@ -37,8 +37,8 @@ class RecipeDoneFilters extends React.Component {
   }
 }
 
-export default RecipeDoneFilters;
+export default RecipeFilters;
 
-RecipeDoneFilters.propTypes = {
+RecipeFilters.propTypes = {
   setFilter: PropTypes.func,
 }.isRequired;

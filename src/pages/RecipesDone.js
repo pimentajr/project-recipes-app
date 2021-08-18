@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import RecipeDoneCard from '../components/RecipeDoneCard';
-import RecipeDoneFilters from '../components/RecipeDoneFilters';
+import RecipeFilters from '../components/RecipeFilters';
 import { getFromStorage } from '../helpers/utils';
 
 function RecipesDone() {
@@ -19,7 +19,7 @@ function RecipesDone() {
     <>
       <Header withSearch={ false } pageTitle="Receitas Feitas" />
       <main>
-        <RecipeDoneFilters setFilter={ setFilter } />
+        <RecipeFilters setFilter={ setFilter } />
         <section>
           {
             recipesDone && filterRecipes(recipesDone).map((recipe, index) => (
