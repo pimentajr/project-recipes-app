@@ -1,12 +1,12 @@
 # Boas vindas ao repositório do projeto de Receitas!
 
-- Nesse projeto foi desenvolvido um app de receitas, utilizando o que há de mais moderno dentro do ecossistema React.
+Nesse projeto foi desenvolvido um app de receitas, utilizando o que há de mais moderno dentro do ecossistema React.
 
-- Nele é possível ver, buscar, filtrar, favoritar e acompanhar o processo de preparação de receitas e drinks!
+Nele é possível ver, buscar, filtrar, favoritar e acompanhar o processo de preparação de receitas e drinks!
 
-- A base de dados são 2 APIs distintas, uma para comidas e outra para bebidas.
+A base de dados são 2 APIs distintas, uma para comidas e outra para bebidas.
 
-- O layout tem como foco dispositivos móveis, então ele foi desenvolvido para telas menores.
+O layout tem como foco dispositivos móveis, então ele foi desenvolvido para telas menores.
 
 ---
 
