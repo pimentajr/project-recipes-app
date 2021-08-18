@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { updateFavoriteRecipes } from '../actions/favoriteRecipes';
 import { getFromStorage } from '../helpers/utils';
 import Header from '../components/Header';
-import RecipeDoneFilters from '../components/RecipeDoneFilters';
+import RecipeFilters from '../components/RecipeFilters';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
 
 function FavoriteRecipes({ favoriteRecipes, dispatchUpdateFavorites }) {
@@ -21,17 +21,25 @@ function FavoriteRecipes({ favoriteRecipes, dispatchUpdateFavorites }) {
     setLocalFavoriteRecipes(favoriteRecipes);
   }, [favoriteRecipes]);
 
+  const filterRecipes = (recipes) => recipes.filter(({ type }) => {
+    if (filter === 'all') return true;
+
+    return type === filter;
+  });
+
   return (
     <>
       <Header withSearch={ false } pageTitle="Receitas Favoritas" />
       <main>
-        <RecipeDoneFilters setFilter={ setFilter } />
+        <RecipeFilters setFilter={ setFilter } />
         <p>{ `Filtro selecionado: ${filter}` }</p>
         <section>
           {
-            localFavoriteRecipes && localFavoriteRecipes.map((recipe, index) => (
-              <FavoriteRecipeCard key={ index } recipe={ recipe } count={ index } />
-            ))
+            localFavoriteRecipes && filterRecipes(localFavoriteRecipes).map(
+              (recipe, index) => (
+                <FavoriteRecipeCard key={ index } recipe={ recipe } count={ index } />
+              ),
+            )
           }
         </section>
       </main>
