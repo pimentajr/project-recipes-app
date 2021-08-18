@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { useRecipes } from '../contexts/RecipesContext';
@@ -7,12 +7,14 @@ import RecipeCard from '../components/recipecard/RecipeCard';
 import Footer from '../components/footer/Footer';
 
 export default function MealsRecipes() {
-  const { recipes, setRecipes, setCategory, setFormat } = useRecipes();
+  const { recipes, categoryButtons, setRecipes, setCategory, setFormat } = useRecipes();
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     setCategory('cocktail');
     setFormat('drinks');
-  }, [setCategory, setFormat]);
+    setRecipes([]);
+  }, [setCategory, setFormat, setRecipes]);
 
   useEffect(() => {
     const maximumArrayLength = 12;
@@ -29,10 +31,34 @@ export default function MealsRecipes() {
     }
   }, [recipes, setRecipes]);
 
+  useEffect(() => {
+    if (filter) {
+      (async function filterByCategory() {
+        const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${filter}`;
+        const request = await fetch(url);
+        const data = await request.json();
+        setRecipes(data.drinks);
+      }());
+    }
+  }, [filter, setRecipes]);
+
   return (
     <div>
       <Header pageTitle="Bebidas" itHasNotSearchButton={ false } />
       <main>
+        {
+          categoryButtons.map((button, index) => (
+            <button
+              type="button"
+              key={ index }
+              data-testid={ `${button.strCategory}-category-filter` }
+              value={ button.strCategory }
+              onClick={ (event) => setFilter(event.target.value) }
+            >
+              {button.strCategory}
+            </button>
+          ))
+        }
         {
           recipes
           && (recipes.length === 1

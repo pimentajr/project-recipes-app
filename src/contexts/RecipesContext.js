@@ -9,6 +9,19 @@ export function RecipesContextProvider({ children }) {
   const [searchText, setSearchText] = useState('');
   const [category, setCategory] = useState('');
   const [format, setFormat] = useState('');
+  const [categoryButtons, setCategoryButtons] = useState([]);
+
+  useEffect(() => {
+    if (format !== '') {
+      (async function fetchCategories() {
+        const array = 5;
+        const url = `https://www.the${category}db.com/api/json/v1/1/list.php?c=list`;
+        const request = await fetch(url);
+        const data = await request.json();
+        setCategoryButtons(data[format].splice(0, array));
+      }());
+    }
+  }, [setCategoryButtons, category, format]);
 
   useEffect(() => {
     if (filter === 'firstLetter' && searchText.length > 1) {
@@ -52,6 +65,7 @@ export function RecipesContextProvider({ children }) {
       value={ {
         recipes,
         searchText,
+        categoryButtons,
         setFilter,
         setRecipes,
         setCategory,
