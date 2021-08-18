@@ -57,4 +57,5 @@ FavoriteRecipeCard.propTypes = {
     type: PropTypes.string,
     alcoholicOrNot: PropTypes.string,
   }),
+  count: PropTypes.number,
 }.isRequired;
