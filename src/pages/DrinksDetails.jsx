@@ -73,6 +73,9 @@ function DrinksDetails() {
             width="30px"
           />
         </button>
+        <h3 className="titles">
+          {details.strDrink}
+        </h3>
         <div className="share-heart">
           <ShareAndFavButtons details={ details } />
         </div>
@@ -119,14 +122,16 @@ function DrinksDetails() {
               <FoodsRecomendations recomendations={ recomendations } />
             </div>
           </>)}
-      {!doneRecipe && (
+      {!doneRecipe ? (
         <button
           className="btn-details"
           type="button"
           onClick={ () => history.push(`/bebidas/${id}/in-progress`) }
         >
           {inProgressRecipe ? 'Continuar Receita' : 'Iniciar Receita'}
-        </button>)}
+        </button>
+      ) : (
+        <h3 className="done-recep">Receita Feita!!</h3>)}
     </section>
   );
 }

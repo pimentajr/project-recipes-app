@@ -22,6 +22,7 @@ function RecipesInProgress() {
   const [inProgressRecipes, setInprogressRecipes] = useState();
   const [btnDoneRecipe, setBtnDoneRecipe] = useState(true);
   const [checkedIngredients, setCheckedIngredients] = useState([]);
+  const [dones, setDones] = useState(false);
 
   const { linkCopied } = useContext(RecipesContext);
 
@@ -38,8 +39,10 @@ function RecipesInProgress() {
 
   useEffect(() => {
     const saveLocalStorage = getStorage('inProgressRecipes');
+    const done = getStorage('doneRecipes');
+    done.forEach((recip) => { if (recip.id === id) { setDones(true); } });
     setInprogressRecipes(saveLocalStorage);
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     async function recipesReturn() {
@@ -75,7 +78,7 @@ function RecipesInProgress() {
     setBtnDoneRecipe(disable());
   }, [arrayIngredients, checkedIngredients]);
 
-  return (
+  const renderRecipe = () => (
     <section className="details-container">
       <div className="header-buttons">
         <button
@@ -91,6 +94,10 @@ function RecipesInProgress() {
             width="30px"
           />
         </button>
+        <h3 className="titles">
+          {pathname.includes('comidas') ? returnedDetail.strMeal
+            : returnedDetail.strDrink}
+        </h3>
         <div className="share-heart">
           <ShareAndFavButtons details={ returnedDetail } />
         </div>
@@ -153,17 +160,23 @@ function RecipesInProgress() {
               <p data-testid="instructions">{returnedDetail.strInstructions}</p>
             </div>
           </>)}
-      <button
-        type="button"
-        className="button-finish"
-        alt="Finish-Recipe"
-        onClick={ () => { addDoneRecipe(); history.push('/receitas-feitas'); } }
-        data-testid="finish-recipe-btn"
-        disabled={ btnDoneRecipe }
-      >
-        Finalizar Receita
-      </button>
+      {!dones ? (
+        <button
+          type="button"
+          className="button-finish"
+          alt="Finish-Recipe"
+          onClick={ () => { addDoneRecipe(); history.push('/receitas-feitas'); } }
+          data-testid="finish-recipe-btn"
+          disabled={ btnDoneRecipe }
+        >
+          Finalizar Receita
+        </button>
+      ) : (
+        <h3 className="done-recep">Receita Feita!!</h3>)}
     </section>
+  );
+  return (
+    renderRecipe()
   );
 }
 

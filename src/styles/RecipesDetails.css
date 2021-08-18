@@ -23,7 +23,7 @@
 .share-heart {
   filter: invert(100%);
   padding: 5px;
-  width: 120px;
+  width: 90px;
 }
 
 .header-buttons {
@@ -147,6 +147,15 @@
   background-color: #ffc107;
 }
 
+.done-recep {
+  background-color: rgb(54, 211, 14);
+  border-radius: 6px;
+  bottom: 10px;
+  color: white;
+  position: fixed;
+  width: 200px;
+}
+
 .button-finish:focus {
   background-color: rgb(54, 211, 14);
   border: #ffc107;
@@ -195,6 +204,15 @@
   text-align: left;
   transition: 0.5s linear;
   width: 320px;
+}
+
+.titles {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 900;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 5px;
 }
 
 @keyframes treme {
