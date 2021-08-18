@@ -2,81 +2,38 @@ import React from 'react';
 import './FoodLoader.css';
 
 export default function FoodLoader() {
+  function pizza() {
+    const ONE = 1;
+    const TWO = 2;
+    const TRHEE = 3;
+    const FOUR = 4;
+    const FIVE = 5;
+    const pizzaSlices = [ONE, TWO, TRHEE, FOUR, FIVE];
+    return (
+      pizzaSlices.map((index) => (
+        <div key={ index } className={ `pizza-slice slice-${index}` }>
+          <div className="border">
+            <div className="crust" />
+            <div className="cheese">
+              <div className="peperoni p-1" />
+              <div className="peperoni p-2" />
+              <div className="peperoni p-3" />
+              <div className="olive o-1" />
+              <div className="olive o-3" />
+              <div className="olive o-4" />
+              <div className="olive o-6" />
+              <div className="olive o-7" />
+            </div>
+          </div>
+        </div>
+      ))
+    );
+  }
+
   return (
     <div className="pizza-div">
       <div className="box">
-        <div className="pizza-slice slice-1">
-          <div className="border">
-            <div className="crust" />
-            <div className="cheese">
-              <div className="peperoni p-1" />
-              <div className="peperoni p-2" />
-              <div className="peperoni p-3" />
-              <div className="olive o-1" />
-              <div className="olive o-3" />
-              <div className="olive o-4" />
-              <div className="olive o-6" />
-              <div className="olive o-7" />
-            </div>
-          </div>
-        </div>
-        <div className="pizza-slice slice-2">
-          <div className="border">
-            <div className="crust" />
-            <div className="cheese">
-              <div className="peperoni p-1" />
-              <div className="peperoni p-2" />
-              <div className="peperoni p-3" />
-              <div className="olive o-1" />
-              <div className="olive o-2" />
-              <div className="olive o-3" />
-              <div className="olive o-6" />
-              <div className="olive o-7" />
-            </div>
-          </div>
-        </div>
-        <div className="pizza-slice slice-3">
-          <div className="border">
-            <div className="crust" />
-            <div className="cheese">
-              <div className="peperoni p-1" />
-              <div className="peperoni p-2" />
-              <div className="peperoni p-3" />
-              <div className="olive o-3" />
-              <div className="olive o-4" />
-              <div className="olive o-5" />
-              <div className="olive o-6" />
-            </div>
-          </div>
-        </div>
-        <div className="pizza-slice slice-4">
-          <div className="border">
-            <div className="crust" />
-            <div className="cheese">
-              <div className="peperoni p-1" />
-              <div className="peperoni p-2" />
-              <div className="peperoni p-3" />
-              <div className="olive o-1" />
-              <div className="olive o-2" />
-              <div className="olive o-3" />
-              <div className="olive o-4" />
-            </div>
-          </div>
-        </div>
-        <div className="pizza-slice slice-5">
-          <div className="border">
-            <div className="crust" />
-            <div className="cheese">
-              <div className="peperoni p-1" />
-              <div className="peperoni p-2" />
-              <div className="peperoni p-3" />
-              <div className="olive o-1" />
-              <div className="olive o-2" />
-              <div className="olive o-6" />
-              <div className="olive o-7"> </div>
-            </div>
-          </div>
-        </div>
+        { pizza() }
       </div>
     </div>
   );

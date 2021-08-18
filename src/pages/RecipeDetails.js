@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import MainContext from '../context/MainContext';
 import { getDrinkDetail, getDrinkRecomendations } from '../services/theCockTailAPI';
 import { getMealDetail, getMealRecomendations } from '../services/theMealAPI';
 import Recommendations from '../components/Recommendations';
@@ -10,6 +11,9 @@ import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
 import RecipeDetailsCategory from '../components/RecipeDetailsCategory';
 import RecipeDetailsIframe from '../components/RecipeDetailsIframe';
+import DrinkLoader from '../components/DrinkLoader';
+import FoodLoader from '../components/FoodLoader';
+import listIngredients from '../helpers/listIngredients';
 
 function RecipeDetails({ match: { params: { id } } }) {
   const [recipeData, setRecipeData] = useState({ strYoutube: '' });
@@ -27,11 +31,12 @@ function RecipeDetails({ match: { params: { id } } }) {
     strAlcoholic,
     strYoutube,
   } = recipeData;
-  const MAX_INGREDIENTS = 20;
   const thumb = strDrinkThumb || strMealThumb;
   const title = strDrink || strMeal;
+  const { loading, setLoading } = useContext(MainContext);
 
   useEffect(() => {
+    setLoading(true);
     if (recipeType === 'bebida') {
       const getDataDrinkDetail = async () => {
         const data = await getDrinkDetail(id);
@@ -45,34 +50,29 @@ function RecipeDetails({ match: { params: { id } } }) {
       };
       getFoodDetail();
     }
-  }, [id, recipeType]);
+  }, [id, recipeType, setLoading]);
 
   useEffect(() => {
     if (recipeType === 'bebida') {
       const fetchRecomended = async () => {
         const recomendedArray = await getMealRecomendations();
         setRecomendedRecipe(recomendedArray);
+        setLoading(false);
       };
       fetchRecomended();
     } else {
       const fetchRecomended = async () => {
         const recomendedArray = await getDrinkRecomendations();
         setRecomendedRecipe(recomendedArray);
+        setLoading(false);
       };
       fetchRecomended();
     }
-  }, [recipeType]);
+  }, [recipeType, setLoading]);
 
-  function listIngredients() {
-    const list = [];
-    for (let index = 1; index <= MAX_INGREDIENTS; index += 1) {
-      if (recipeData[`strIngredient${index}`]) {
-        list.push(
-          `${recipeData[`strIngredient${index}`]} - ${recipeData[`strMeasure${index}`]}`,
-        );
-      }
-    }
-    return list;
+  function loader() {
+    return recipeType === 'bebida'
+      ? <DrinkLoader /> : <FoodLoader />;
   }
 
   function renderDetails() {
@@ -101,7 +101,7 @@ function RecipeDetails({ match: { params: { id } } }) {
           <h3>Ingredientes</h3>
           <ul className="detail-ingredients">
             {
-              listIngredients().map((ingredient, index) => (
+              listIngredients(recipeData).map((ingredient, index) => (
                 <li
                   key={ index }
                   data-testid={ `${index}-ingredient-name-and-measure` }
@@ -127,7 +127,8 @@ function RecipeDetails({ match: { params: { id } } }) {
   }
 
   return (
-    <div>{ recipeData && renderDetails() }</div>
+    loading
+      ? loader() : <div>{ recipeData && renderDetails() }</div>
   );
 }
 

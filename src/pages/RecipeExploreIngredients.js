@@ -6,11 +6,13 @@ import Header from '../components/Header';
 import { getDrinksIngredients } from '../services/theCockTailAPI';
 import { getMealsIngredients } from '../services/theMealAPI';
 import RecipesCardsContainer from '../components/RecipesCardsContainer';
+import DrinkLoader from '../components/DrinkLoader';
+import FoodLoader from '../components/FoodLoader';
 
 const RecipeExploreIngredients = () => {
   const { pathname } = useLocation();
   const explorarComidas = '/explorar/comidas/ingredientes';
-  const { setData, setLoading } = useContext(MainContext);
+  const { setData, loading, setLoading } = useContext(MainContext);
 
   useEffect(() => {
     setLoading(true);
@@ -28,12 +30,20 @@ const RecipeExploreIngredients = () => {
         });
     }
   }, [pathname, setData, setLoading]);
+
+  function loader() {
+    return pathname.includes('bebidas')
+      ? <DrinkLoader /> : <FoodLoader />;
+  }
+
   return (
-    <>
-      <Header title="Explorar Ingredientes" />
-      <RecipesCardsContainer test="ingredient" />
-      <FooterMenu />
-    </>
+    loading ? loader() : (
+      <>
+        <Header title="Explorar Ingredientes" />
+        <RecipesCardsContainer test="ingredient" />
+        <FooterMenu />
+      </>
+    )
   );
 };
 

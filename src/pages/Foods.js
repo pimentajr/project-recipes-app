@@ -23,7 +23,6 @@ function Foods() {
     setCategorySelected,
   } = useContext(MainContext);
   const { location: { state } } = useHistory();
-  console.log(state);
 
   function filterByCategory({ target: { innerText } }) {
     if (innerText === categorySelected || innerText === 'All') {
@@ -76,24 +75,26 @@ function Foods() {
   }, [setData, setLoading, setCategoryList, state]);
 
   return (
-    <div>
-      <FoodLoader />
-      <Header title="Comidas" isButtonVisible />
-      <div className="meal-div-category">
-        <button
-          type="button"
-          data-testid="All-category-filter"
-          onClick={ filterByCategory }
-          className="meal-btn-category"
-        >
-          All
-        </button>
-        {loading ? null : categoryButtons()}
-      </div>
-      <RecipesCardsContainer test="recipe" />
-      <FooterMenu />
-    </div>
-
+    loading
+      ? <FoodLoader />
+      : (
+        <div>
+          <Header title="Comidas" isButtonVisible />
+          <div className="meal-div-category">
+            <button
+              type="button"
+              data-testid="All-category-filter"
+              onClick={ filterByCategory }
+              className="meal-btn-category"
+            >
+              All
+            </button>
+            {loading ? null : categoryButtons()}
+          </div>
+          <RecipesCardsContainer test="recipe" />
+          <FooterMenu />
+        </div>
+      )
   );
 }
 

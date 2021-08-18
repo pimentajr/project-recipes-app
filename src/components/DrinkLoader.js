@@ -4,7 +4,7 @@ import './DrinkLoader.css';
 export default function DrinkLoader() {
   return (
     <div className="loader">
-      <ul>
+      <ul className="drink-loader-ul">
         <li />
         <li />
         <li />
