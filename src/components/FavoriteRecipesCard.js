@@ -37,15 +37,13 @@ function FavoriteRecipesCard({ recipe, index }) {
     } return recipeData;
   }
 
-  console.log(RecipeData());
-
   const path = type === 'comida' ? `/comidas/${id}` : `/bebidas/${id}`;
   const categoryOrArea = area ? `${area} - ${category}` : alcoholicOrNot;
   const sliceNumber = -19;
   const SliceLink = (window.location.href).slice(0, sliceNumber);
   const pathLink = SliceLink.concat(path);
   return (
-    <section>
+    <section className="recipes-card-box">
       <div>
         <Link to={ path }>
           <img
@@ -53,31 +51,33 @@ function FavoriteRecipesCard({ recipe, index }) {
             alt={ name }
             data-testid={ `${index}-horizontal-image` }
             style={ { width: '100px' } }
+            className="favorite-recipes-box-image"
           />
         </Link>
       </div>
       <div
         data-testid={ `${index}-recipe-card` }
+        className="favorite-recipe-card"
       >
-
-        <h5
-          data-testid={ `${index}-horizontal-top-text` }
-        >
-          { categoryOrArea }
-        </h5>
-        <Link to={ path }>
-          <h4
-            data-testid={ `${index}-horizontal-name` }
+        <div>
+          <h5
+            data-testid={ `${index}-horizontal-top-text` }
           >
-            { name }
-          </h4>
-        </Link>
-        <div>
-          <ShareButton link={ pathLink } index={ index } />
+            { categoryOrArea }
+          </h5>
+          <Link to={ path }>
+            <h4
+              data-testid={ `${index}-horizontal-name` }
+            >
+              { name }
+            </h4>
+          </Link>
         </div>
-        <div>
+        <div className="div-buttons">
+          <ShareButton link={ pathLink } index={ index } />
           <FavoriteButton recipeData={ RecipeData() } type={ type } index={ index } />
         </div>
+
       </div>
 
     </section>

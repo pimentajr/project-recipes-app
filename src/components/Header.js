@@ -49,7 +49,9 @@ function Header({ title, isButtonVisible }) {
           />
         </button>
       );
-    }
+    } return (
+      <div className="div-null" />
+    );
   }
 
   return (

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import shareIcon from '../images/black/shareIcon.svg';
+import { useLocation } from 'react-router-dom';
+import shareIconB from '../images/black/shareIcon.svg';
+import shareIconW from '../images/white/shareIcon.svg';
 
 function ShareButton({ link, index }) {
   const [copy, setCopy] = useState(false);
@@ -10,14 +12,23 @@ function ShareButton({ link, index }) {
     return navigator.clipboard.writeText(link);
   }
 
+  const { pathname } = useLocation();
+  const shareIcon = pathname.includes('receitas') ? shareIconB : shareIconW;
+
   return (
     <button
       type="button"
       data-testid="share-btn"
       onClick={ () => shareLink() }
+      className="share-btn-btn"
     >
       {copy ? (
-        <span>Link copiado!</span>
+        <span
+          className={ pathname.includes('receitas')
+            ? 'link-black' : 'link-white' }
+        >
+          Link copiado!
+        </span>
       ) : (<img
         src={ shareIcon }
         alt="Compartilhar"

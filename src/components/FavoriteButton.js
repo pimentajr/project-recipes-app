@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIconB from '../images/whiteHeartIcon.svg';
+import blackHeartIconB from '../images/blackHeartIcon.svg';
+import whiteHeartIconW from '../images/white/whiteHeartIcon.svg';
+import blackHeartIconW from '../images/white/blackHeartIcon.svg';
 import { saveFavorites } from '../helpers/handleLocalStorage';
 import LSContext from '../context/LSContext';
 
@@ -33,10 +36,17 @@ function FavoriteButton({ recipeData, type, index }) {
     saveFavorites(recipe, setFavoriteRecipes);
   }
 
+  const { pathname } = useLocation();
+  const blackHeartIcon = pathname.includes('receitas')
+    ? blackHeartIconB : blackHeartIconW;
+  const whiteHeartIcon = pathname.includes('receitas')
+    ? whiteHeartIconB : whiteHeartIconW;
+
   return (
     <button
       type="button"
       onClick={ setFavorites }
+      className="favorite-btn-btn"
     >
       <img
         src={
@@ -46,6 +56,7 @@ function FavoriteButton({ recipeData, type, index }) {
         alt="Favorite"
         data-testid={ index === negativeNumber
           ? 'favorite-btn' : `${index}-horizontal-favorite-btn` }
+        className="favorite-heart"
       />
     </button>
   );

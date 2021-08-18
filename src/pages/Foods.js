@@ -10,6 +10,7 @@ import {
   getMealsByCategory,
 }
   from '../services/theMealAPI';
+import FoodLoader from '../components/FoodLoader';
 
 function Foods() {
   const {
@@ -76,6 +77,7 @@ function Foods() {
 
   return (
     <div>
+      <FoodLoader />
       <Header title="Comidas" isButtonVisible />
       <div className="meal-div-category">
         <button
