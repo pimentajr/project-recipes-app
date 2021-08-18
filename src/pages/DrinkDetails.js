@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { DrinkDetailsCard, FoodRecomendation, DrinkStartRecipe } from '../components';
 import { fetchDrinkID, fetchFoodRecomendations } from '../redux/actions/drinkActions';
+import ReturnButton from '../components/ReturnButton';
 
 class DrinkDetails extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class DrinkDetails extends Component {
     const { match: { params: { id } } } = this.props;
     return (
       <div>
+        <ReturnButton />
         <DrinkDetailsCard />
         <FoodRecomendation />
         <DrinkStartRecipe id={ id } />

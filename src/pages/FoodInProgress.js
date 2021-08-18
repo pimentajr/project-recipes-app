@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FoodInProgressCard from '../components/FoodInProgressCard';
 import { fetchFoodID } from '../redux/actions/foodActions';
+import ReturnButton from '../components/ReturnButton';
 
 class FoodInProgress extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class FoodInProgress extends Component {
   render() {
     return (
       <div>
+        <ReturnButton />
         <FoodInProgressCard />
       </div>
     );

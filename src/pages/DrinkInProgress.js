@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DrinkInProgressCard from '../components/DrinkInProgressCard';
 import { fetchDrinkID } from '../redux/actions/drinkActions';
+import ReturnButton from '../components/ReturnButton';
 
 class DrinkInProgress extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class DrinkInProgress extends Component {
   render() {
     return (
       <div>
+        <ReturnButton />
         <DrinkInProgressCard />
       </div>
     );
