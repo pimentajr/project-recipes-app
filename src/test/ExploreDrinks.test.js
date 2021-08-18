@@ -1,12 +1,16 @@
 import React from 'react';
-// import { fireEvent } from '@testing-library/react';
-// import { createMemoryHistory } from 'history';
+import { fireEvent } from '@testing-library/react';
 import ExplorarBebidas from '../pages/explorar/bebidas';
 import renderWithRouterAndStore from './testConfig';
-
-// const history = createMemoryHistory({ initialEntries: ['/'] });
+import oneDrink from '../../cypress/mocks/oneDrink';
 
 describe('Testa a página ExplorarBebidas', () => {
+  const drinkResponse = {
+    json: jest.fn().mockResolvedValue(oneDrink),
+  };
+  const mockOneDrink = jest.spyOn(global, 'fetch');
+  mockOneDrink.mockResolvedValueOnce(drinkResponse);
+
   it('Tem o botão Por Ingredientes', () => {
     const { getByTestId } = renderWithRouterAndStore(<ExplorarBebidas />);
     const btnByIngredients = getByTestId('explore-by-ingredient');
@@ -23,13 +27,13 @@ describe('Testa a página ExplorarBebidas', () => {
     const { getAllByRole } = renderWithRouterAndStore(<ExplorarBebidas />);
     const buttons = getAllByRole('button');
     expect(buttons[0].innerHTML).toBe('Por Ingredientes');
-    expect(buttons[1].innerHTML).toBe('Me Surpreenda');
+    expect(buttons[1].innerHTML).toBe('Me Surpreenda!');
   });
 
-  it('Redireciona para a página BebidasIngredientes', () => {
-    // const { history } = renderWithRouterAndStore(<ExplorarBebidas />, history);
-    const buttons = getAllByRole('button');
-    expect(buttons[0].innerHTML).toBe('Por Ingredientes');
-    expect(buttons[1].innerHTML).toBe('Me Surpreenda');
+  it('Testa o mock', () => {
+    const { getByTestId } = renderWithRouterAndStore(<ExplorarBebidas />);
+    const btn = getByTestId('explore-surprise');
+    fireEvent.click(btn);
+    expect(mockOneDrink).toBeCalled();
   });
 });
