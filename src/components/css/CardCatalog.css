@@ -1,15 +1,26 @@
-.supply-card {
-  background-color: white;
-  border: solid rgb(117, 117, 117) 1px;
-  border-radius: 5px;
-  color: black;
-  font-family: Times , serif;
-  font-size: 20px;
-  padding: 10px;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.supply-card .supply-img {
+.Supply-Card {
+  background-color: #FC6E51;
+  border-radius: 5px 5px 5px 5px;
+  padding-bottom: 15px;
+}
+
+.Supply-Card .supply-img {
   align-items: center;
-  width: 80%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.title-card {
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  top: 12px;
+  text-align: center;
+  font-size: 1.45em;
+  text-transform: uppercase;
+  color: white;
 }

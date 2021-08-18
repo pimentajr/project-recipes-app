@@ -1,0 +1,78 @@
+.perfil-page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 360px;
+  height: 640px;
+  }
+
+/* .link-btn {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  
+} */
+
+.header-email {
+  font-size: x-large;
+  /* margin-top: 40px; */
+  border: solid 1px black;
+  color: black;
+}
+
+.btn-done-recipes {
+  background-color: #FFC729;
+  font-family: 'Poppins', sans-serif;
+  width: 80%;
+  height: 60px;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 10px 0px;
+}
+
+.btn-favorite-recipes {
+  background-color: #A0D468;
+  font-family: 'Poppins', sans-serif;
+  width: 80%;
+  height: 60px;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 10px 0px;
+}
+
+.btn-exit {
+  background-color: #FC6E51;
+  font-family: 'Poppins', sans-serif;
+  width: 80%;
+  height: 60px;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 10px 0px;
+}
+
+.logo-image {
+  width: 40%;
+  padding: 10px;
+  /* margin-left: 100px; */
+}
+
+/* FFC729
+FCD770
+DFB28B
+FC6E51
+A0D468 */

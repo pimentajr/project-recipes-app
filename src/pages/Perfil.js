@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import './css/Perfil.css';
 
 function Perfil() {
   const headerProps = {
@@ -14,22 +15,31 @@ function Perfil() {
   console.log(email);
 
   return (
-    <div>
+    <div className="perfil-page">
       <Header props={ headerProps } />
-      <h1 data-testid="profile-email">{email ? email.email : ''}</h1>
-      <Link to="/receitas-feitas">
-        <button type="button" data-testid="profile-done-btn">Receitas Feitas</button>
+      <h1
+        className="header-email"
+        data-testid="profile-email"
+      >
+        {email ? email.email : ''}
+      </h1>
+      <Link className="link-btn" to="/receitas-feitas">
+        <button className="btn-done-recipes" type="button" data-testid="profile-done-btn">
+          Receitas Feitas
+        </button>
       </Link>
-      <Link to="/receitas-favoritas">
+      <Link className="link-btn" to="/receitas-favoritas">
         <button
+          className="btn-favorite-recipes"
           type="button"
           data-testid="profile-favorite-btn"
         >
           Receitas Favoritas
         </button>
       </Link>
-      <Link to="/">
+      <Link className="link-btn" to="/">
         <button
+          className="btn-exit"
           type="button"
           data-testid="profile-logout-btn"
           onClick={ () => localStorage.clear() }
@@ -37,6 +47,7 @@ function Perfil() {
           Sair
         </button>
       </Link>
+      <img className="logo-image" alt="logo" src="http://localhost:3000/static/media/foodLogo.9b5ccf4c.png" />
       <Footer />
     </div>
   );
