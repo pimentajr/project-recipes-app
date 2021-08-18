@@ -3,35 +3,26 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import shareIcon from '../images/shareIcon.svg';
 import { getFromStorage, setToStorage } from '../helpers/utils';
-
-const copy = require('clipboard-copy');
+import ShareButton from './ShareButton';
 
 class RecipeDetailMain extends Component {
   constructor() {
     super();
+
     this.state = {
       favoriteBtnSrc: whiteHeartIcon,
-      shareBtnStatus: '',
     };
+
     this.main = this.main.bind(this);
     this.handleFavoriteBtn = this.handleFavoriteBtn.bind(this);
     this.changeFavoriteBtn = this.changeFavoriteBtn.bind(this);
-    this.handleShareBtn = this.handleShareBtn.bind(this);
     this.addToLocalStorage = this.addToLocalStorage.bind(this);
     this.removeFromLocalStorage = this.removeFromLocalStorage.bind(this);
   }
 
   componentDidMount() {
     this.changeFavoriteBtn();
-  }
-
-  handleShareBtn() {
-    copy(window.location.href); // https://stackoverflow.com/questions/39823681/read-the-current-full-url-with-react
-    this.setState({
-      shareBtnStatus: 'Link copiado!',
-    });
   }
 
   handleFavoriteBtn() {
@@ -93,7 +84,7 @@ class RecipeDetailMain extends Component {
   }
 
   main(recipeDetail) {
-    const { favoriteBtnSrc, shareBtnStatus } = this.state;
+    const { favoriteBtnSrc } = this.state;
     const { strMealThumb, strDrinkThumb, strDrink, strMeal,
       strCategory, strAlcoholic, strInstructions,
       strYoutube } = recipeDetail;
@@ -129,14 +120,11 @@ class RecipeDetailMain extends Component {
         <br />
         <h2 data-testid="recipe-title">{ str }</h2>
         <br />
-        <button
-          data-testid="share-btn"
-          type="button"
-          onClick={ () => this.handleShareBtn() }
-        >
-          { shareBtnStatus !== '' ? 'Link copiado!'
-            : <img alt="Ícone do botão compartilhar" src={ shareIcon } /> }
-        </button>
+        <ShareButton
+          dataTestId="share-btn"
+          testLocation="button"
+          url={ window.location.href }
+        />
         &nbsp;  &nbsp;
         <button
           type="button"

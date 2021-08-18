@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ShareIcon from '../../images/shareIcon.svg';
 import FavoriteButton from '../FavoriteButton';
+import ShareButton from '../ShareButton';
 
 class FavoriteRecipeCard extends React.Component {
   render() {
     const { recipe, count } = this.props;
+    const detailPage = `/${recipe.type}s/${recipe.id}`;
 
     return (
       <section>
         <section>
-          <Link to={ `/${recipe.type}s/${recipe.id}` }>
+          <Link to={ detailPage }>
             <img
               src={ recipe.image }
               alt={ recipe.name }
@@ -33,13 +34,11 @@ class FavoriteRecipeCard extends React.Component {
               { recipe.name }
             </h1>
           </Link>
-          <button type="button">
-            <img
-              src={ ShareIcon }
-              alt="Compartilhar"
-              data-testid={ `${count}-horizontal-share-btn` }
-            />
-          </button>
+          <ShareButton
+            dataTestId={ `${count}-horizontal-share-btn` }
+            testLocation="img"
+            url={ `${window.location.origin}${detailPage}` }
+          />
           <FavoriteButton recipe={ recipe } count={ count } />
         </section>
       </section>
@@ -58,4 +57,5 @@ FavoriteRecipeCard.propTypes = {
     type: PropTypes.string,
     alcoholicOrNot: PropTypes.string,
   }),
+  count: PropTypes.number,
 }.isRequired;
