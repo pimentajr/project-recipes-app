@@ -3,6 +3,7 @@ import { MemoryRouter, Route } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import LSProvider from '../../context/LSProvider';
 import MainProvider from '../../context/MainProvider';
+import Routes from '../../routes/Routes';
 
 export function renderWithRouter(component, { route = '/' } = {}) {
   window.history.pushState({}, 'Test page', route);
@@ -23,17 +24,14 @@ export function renderWithMainContext(component, { ...renderOptions }) {
   );
 }
 
-export function renderWithRouterAndBothContext(
-  component,
-  { route = '/' } = {},
-) {
+export function renderWithRouterAndBothContext(route = '/') {
   let testLocation;
   return {
     ...render(
       <LSProvider>
         <MainProvider>
           <MemoryRouter initialEntries={ [route] }>
-            { component }
+            <Routes />
             <Route
               path="*"
               render={ ({ location }) => {
@@ -45,6 +43,6 @@ export function renderWithRouterAndBothContext(
         </MainProvider>
       </LSProvider>,
     ),
-    location: testLocation,
+    location: () => testLocation,
   };
 }
