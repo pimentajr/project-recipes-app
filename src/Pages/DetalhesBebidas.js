@@ -120,46 +120,56 @@ function DetalhesBebidas() {
         data-testid="recipe-photo"
         width="100%"
       />
-      <h1 data-testid="recipe-title">{ recipe.strDrink }</h1>
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => {
-          copy(window.location);
-          setCopyOk(true);
-        } }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
-      { copyOk && <p>Link copiado!</p> }
-      <button
-        type="button"
-        onClick={ guide }
-      >
-        <img
-          src={ isFavorite ? favoriteIcon : nonFavoriteIcon }
-          data-testid="favorite-btn"
-          alt="share"
-        />
-      </button>
-      <h5 data-testid="recipe-category">{ recipe.strAlcoholic }</h5>
-      <ol>
-        { getIngredients2(recipe) }
-      </ol>
-      <p data-testid="instructions">{ recipe.strInstructions }</p>
-      <Link to={ `/bebidas/${recipe.idDrink}/in-progress` }>
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-          style={ {
-            position: 'fixed',
-            bottom: '0',
-          } }
-        >
-          { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
-        </button>
-      </Link>
+      <section className="details-header">
+        <span className="name-category-container">
+          <h2 data-testid="recipe-title">{ recipe.strDrink }</h2>
+          <p data-testid="recipe-category">{ recipe.strAlcoholic }</p>
+        </span>
+        <span className="copy-favorite-btn-container">
+          <button
+            type="button"
+            data-testid="share-btn"
+            onClick={ () => {
+              copy(window.location);
+              setCopyOk(true);
+            } }
+          >
+            <img src={ shareIcon } alt="share" />
+          </button>
+          { copyOk && <p>Link copiado!</p> }
+          <button
+            type="button"
+            onClick={ guide }
+          >
+            <img
+              src={ isFavorite ? favoriteIcon : nonFavoriteIcon }
+              data-testid="favorite-btn"
+              alt="share"
+            />
+          </button>
+        </span>
+      </section>
+      <section className="details-ingredients-container">
+        <h3>Ingredients</h3>
+        <ol>
+          { getIngredients2(recipe) }
+        </ol>
+      </section>
+      <section className="instructions-container">
+        <h3>Instructions</h3>
+        <p data-testid="instructions">{ recipe.strInstructions }</p>
+      </section>
       <RenderRecomendations typeReco="comidas" />
+      <span className="go-to-progress">
+        <Link to={ `/bebidas/${recipe.idDrink}/in-progress` }>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
+          </button>
+        </Link>
+      </span>
     </div>
   );
 }

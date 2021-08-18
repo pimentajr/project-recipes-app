@@ -129,54 +129,60 @@ function ComidaProcesso() {
         src={ recipe.strMealThumb }
         alt={ recipe.strMeal }
         data-testid="recipe-photo"
-        width="25px"
+        width="100%"
       />
-      <h1 data-testid="recipe-title">{ recipe.strMeal }</h1>
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => {
-          copy(`http://localhost:3000/comidas/${recipe.idMeal}`);
-          setCopyOk(true);
-        } }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
-      { copyOk && <p>Link copiado!</p> }
-      <button
-        type="button"
-        onClick={ guide }
-      >
-        <img
-          src={ isFavorite ? favoriteIcon : nonFavoriteIcon }
-          data-testid="favorite-btn"
-          alt="share"
-        />
-      </button>
-      <h5 data-testid="recipe-category">{ recipe.strAlcoholic }</h5>
-      <div>
+      <section className="details-header">
+        <span className="name-category-container">
+          <h2 data-testid="recipe-title">{ recipe.strMeal }</h2>
+          <p data-testid="recipe-category">{ recipe.strCategory }</p>
+        </span>
+        <span className="copy-favorite-btn-container">
+          <button
+            type="button"
+            data-testid="share-btn"
+            onClick={ () => {
+              copy(`http://localhost:3000/comidas/${recipe.idMeal}`);
+              setCopyOk(true);
+            } }
+          >
+            <img src={ shareIcon } alt="share" />
+          </button>
+          { copyOk && <p>Link copiado!</p> }
+          <button
+            type="button"
+            onClick={ guide }
+          >
+            <img
+              src={ isFavorite ? favoriteIcon : nonFavoriteIcon }
+              data-testid="favorite-btn"
+              alt="share"
+              width="100%"
+            />
+          </button>
+        </span>
+      </section>
+      <section className="details-ingredients-container">
+        <h3>Ingredients</h3>
         { getIngredients2(recipe, 'strIngredient') }
-      </div>
-      <p data-testid="instructions">{ recipe.strInstructions }</p>
-      {/* Alterar o link */}
-      <Link to="/receitas-feitas">
-        <button
-          disabled={ disabledButton }
-          type="button"
-          data-testid="finish-recipe-btn"
-          style={ {
-            position: 'fixed',
-            bottom: '0',
-          } }
-          onClick={ handleDoneRecipe }
-        >
-          Finalizar Receita
-        </button>
-      </Link>
+      </section>
+      <section className="instructions-container progress-recipes">
+        <h3>Instructions</h3>
+        <p data-testid="instructions">{ recipe.strInstructions }</p>
+      </section>
+      <span className="go-to-progress">
+        <Link to="/receitas-feitas">
+          <button
+            disabled={ disabledButton }
+            type="button"
+            data-testid="finish-recipe-btn"
+            onClick={ handleDoneRecipe }
+          >
+            Finalizar Receita
+          </button>
+        </Link>
+      </span>
     </div>
   );
 }
-
-// Arrumar dinâmica do botão
 
 export default ComidaProcesso;

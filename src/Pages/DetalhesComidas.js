@@ -33,7 +33,7 @@ const getIngredients2 = (recipe) => {
   console.log(measure);
   return ingredients.map((ingredient, index) => (
     <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-      { `${ingredient} ${measure[index] || ''}` }
+      { `${ingredient} - ${measure[index] || ''}` }
     </li>
   ));
 };
@@ -116,53 +116,71 @@ function DetalhesComidas() {
         data-testid="recipe-photo"
         width="100%"
       />
-      <h3 data-testid="recipe-title">{ recipe.strMeal }</h3>
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => {
-          copy(window.location);
-          setCopyOk(true);
-        } }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
-      { copyOk && <p>Link copiado!</p> }
-      <button
-        type="button"
-        onClick={ guide }
-      >
-        <img
-          src={ isFavorite ? favoriteIcon : nonFavoriteIcon }
-          data-testid="favorite-btn"
-          alt="share"
-        />
-      </button>
-      <h5 data-testid="recipe-category">{ recipe.strCategory }</h5>
-      <ol>
-        { getIngredients2(recipe) }
-      </ol>
-      <p data-testid="instructions">{ recipe.strInstructions }</p>
-      <section data-testid="video">
+      <section className="details-header">
+        <span className="name-category-container">
+          <h2 data-testid="recipe-title">{ recipe.strMeal }</h2>
+          <p data-testid="recipe-category">{ recipe.strCategory }</p>
+        </span>
+        <span
+          className="copy-favorite-btn-container"
+        >
+          <button
+            type="button"
+            data-testid="share-btn"
+            onClick={ () => {
+              copy(window.location);
+              setCopyOk(true);
+            } }
+          >
+            <img src={ shareIcon } alt="share" />
+          </button>
+          { copyOk && <p>Link copiado!</p> }
+          <button
+            type="button"
+            onClick={ guide }
+          >
+            <img
+              src={ isFavorite ? favoriteIcon : nonFavoriteIcon }
+              data-testid="favorite-btn"
+              alt="share"
+              width="100%"
+            />
+          </button>
+        </span>
+      </section>
+      <section className="details-ingredients-container">
+        <h3>Ingredients</h3>
+        <ol>
+          { getIngredients2(recipe) }
+        </ol>
+      </section>
+      <section className="instructions-container">
+        <h3>Instructions</h3>
+        <p
+          data-testid="instructions"
+        >
+          { recipe.strInstructions }
+        </p>
+      </section>
+      <section className="video-container" data-testid="video">
+        <h3>Video</h3>
         <YouTube
           videoId={ recipe.strYoutube.split('=')[1] }
           title={ recipe.strMeal }
-          opts={ { height: '150', width: '200' } }
+          opts={ { height: '100%', width: '100%' } }
         />
       </section>
-      <Link to={ `/comidas/${recipe.idMeal}/in-progress` }>
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-          style={ {
-            position: 'fixed',
-            bottom: '0',
-          } }
-        >
-          { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
-        </button>
-      </Link>
       <RenderRecomendations typeReco="bebidas" />
+      <span className="go-to-progress">
+        <Link to={ `/comidas/${recipe.idMeal}/in-progress` }>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
+          </button>
+        </Link>
+      </span>
     </div>
   );
 }

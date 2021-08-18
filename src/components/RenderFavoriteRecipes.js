@@ -42,78 +42,79 @@ function RenderFavoriteRecipes() {
   if (recipesToRender.length !== 0) {
     return (
       <div>
-        <div>
-          <section>
-            <button
-              type="button"
-              data-testid="filter-by-all-btn"
-              value="todo"
-              onClick={ handleClick }
-            >
-              All
-            </button>
-            <button
-              type="button"
-              data-testid="filter-by-food-btn"
-              value="comida"
-              onClick={ handleClick }
-            >
-              Food
-            </button>
-            <button
-              type="button"
-              data-testid="filter-by-drink-btn"
-              value="bebida"
-              onClick={ handleClick }
-            >
-              Drinks
-            </button>
-          </section>
-          { recipesToRender.map((recipe, index) => (
-            <div key={ index }>
-              <Link to={ `/${recipe.type}s/${recipe.id}` }>
-                <img
-                  src={ recipe.image }
-                  alt={ recipe.name }
-                  data-testid={ `${index}-horizontal-image` }
-                  width="50px"
-                />
-              </Link>
-              <p data-testid={ `${index}-horizontal-top-text` }>
-                { recipe.type === 'comida'
-                  ? `${recipe.area} - ${recipe.category}`
-                  : recipe.alcoholicOrNot }
-              </p>
-              <Link to={ `/${recipe.type}s/${recipe.id}` }>
+        <section className="filter-recipes">
+          <button
+            type="button"
+            data-testid="filter-by-all-btn"
+            value="todo"
+            onClick={ handleClick }
+          >
+            All
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-food-btn"
+            value="comida"
+            onClick={ handleClick }
+          >
+            Food
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            value="bebida"
+            onClick={ handleClick }
+          >
+            Drinks
+          </button>
+        </section>
+        { recipesToRender.map((recipe, index) => (
+          <Link className="card-link" key={ index } to={ `/${recipe.type}s/${recipe.id}` }>
+            <div className="favorite-done-card" key={ index }>
+              <img
+                src={ recipe.image }
+                alt={ recipe.name }
+                data-testid={ `${index}-horizontal-image` }
+                width="50px"
+              />
+              <span className="recipe-info">
                 <h3 data-testid={ `${index}-horizontal-name` }>{ recipe.name }</h3>
-              </Link>
-              <button
-                type="button"
-                onClick={ () => {
-                  copy(`http://localhost:3000/${recipe.type}s/${recipe.id}`);
-                  setCopyOk(true);
-                } }
-              >
-                <img
-                  data-testid={ `${index}-horizontal-share-btn` }
-                  src={ shareIcon }
-                  alt="share"
-                />
-              </button>
-              <button
-                type="button"
-                onClick={ () => removeFromStorage(recipe) }
-              >
-                <img
-                  src={ favoriteIcon }
-                  data-testid={ `${index}-horizontal-favorite-btn` }
-                  alt="share"
-                />
-              </button>
-              { copyOk && <p>Link copiado!</p> }
+                <p data-testid={ `${index}-horizontal-top-text` }>
+                  { recipe.type === 'comida'
+                    ? `${recipe.area} - ${recipe.category}`
+                    : recipe.alcoholicOrNot }
+                </p>
+                <section className="copy-favorite-btn-done-favorite">
+                  <button
+                    type="button"
+                    onClick={ () => {
+                      copy(`http://localhost:3000/${recipe.type}s/${recipe.id}`);
+                      setCopyOk(true);
+                    } }
+                  >
+                    <img
+                      data-testid={ `${index}-horizontal-share-btn` }
+                      src={ shareIcon }
+                      alt="share"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={ () => removeFromStorage(recipe) }
+                  >
+                    <img
+                      src={ favoriteIcon }
+                      data-testid={ `${index}-horizontal-favorite-btn` }
+                      alt="share"
+                    />
+                  </button>
+                  { copyOk && <p>Link copiado!</p> }
+                </section>
+              </span>
             </div>
-          ))}
-        </div>
+          </Link>
+        ))}
+
       </div>
     );
   }
