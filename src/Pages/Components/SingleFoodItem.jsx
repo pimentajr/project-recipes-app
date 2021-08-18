@@ -56,7 +56,7 @@ function SingleFoodItem() {
   const { meals } = itemDetail;
   return itemDetail.meals !== null && (
     <div className="d-flex flex-column container">
-      <h1 data-testid="recipe-title">{meals[0].strMeal}</h1>
+      <h1 className="align-self-center" data-testid="recipe-title">{meals[0].strMeal}</h1>
       <img
         width="100%"
         src={ meals[0].strMealThumb }
@@ -67,7 +67,7 @@ function SingleFoodItem() {
         <FavoriteButton currentItem={ meals[0] } typeOf="Meal" />
         <ShareButton />
       </div>
-      <p data-testid="recipe-category">{meals[0].strCategory}</p>
+      <p style={ { fontWeight: 'bold' } } data-testid="recipe-category">{meals[0].strCategory}</p>
       <section>
         <h2>Ingredientes</h2>
         <table>

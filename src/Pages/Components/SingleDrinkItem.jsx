@@ -52,17 +52,19 @@ function SingleFoodItem() {
   const { drinks } = itemDetail;
 
   return itemDetail.drinks !== null && (
-    <div>
-      <h1 data-testid="recipe-title">{drinks[0].strDrink}</h1>
+    <div className="d-flex flex-column container">
+      <h1 className="align-self-center" data-testid="recipe-title">{drinks[0].strDrink}</h1>
       <img
-        width="350"
+        width="100%"
         src={ drinks[0].strDrinkThumb }
         alt={ `Foto da bebida chamada ${drinks[0].strDrink}` }
         data-testid="recipe-photo"
       />
-      <p data-testid="recipe-category">{drinks[0].strAlcoholic}</p>
-      <FavoriteButton currentItem={ drinks[0] } typeOf="Drink" />
-      <ShareButton />
+      <div>
+        <FavoriteButton currentItem={ drinks[0] } typeOf="Drink" />
+        <ShareButton />
+      </div>
+      <p style={ { fontWeight: 'bold' } } data-testid="recipe-category">{drinks[0].strAlcoholic}</p>
       <p data-testid="recipe-category">{drinks[0].strCategory}</p>
       <section>
         <h2>Ingredientes</h2>
@@ -85,7 +87,7 @@ function SingleFoodItem() {
       <button
         data-testid="start-recipe-btn"
         type="button"
-        className="start-recipe-button"
+        className="align-self-center start-recipe-button"
         onClick={ () => history
           .push(`/bebidas/${id}/in-progress`) }
       >
