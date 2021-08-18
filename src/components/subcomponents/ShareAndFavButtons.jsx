@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import shareIcon from '../../images/shareIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { getStorage, setStorage, newFavoriteRecipes } from '../../helpers/Storage';
+import RecipesContext from '../../context/RecipesContext';
 
 function ShareAndFavButtons(props) {
   const { details } = props;
   const { id } = useParams();
-  const [linkCopied, setLinkCopied] = useState('');
   const [favorited, setFavorited] = useState(false);
   const history = useHistory();
   const { location: { pathname } } = history;
+
+  const { setLinkCopied } = useContext(RecipesContext);
 
   useEffect(() => {
     const favorites = getStorage('favoriteRecipes');
@@ -38,9 +40,9 @@ function ShareAndFavButtons(props) {
   };
 
   return (
-    <div>
-      {linkCopied}
+    <>
       <button
+        className="shares"
         type="button"
         data-testid="share-btn"
         onClick={ () => copyUrlToClipboard() }
@@ -49,6 +51,7 @@ function ShareAndFavButtons(props) {
       </button>
       <button
         type="button"
+        className="white-heart"
         data-testid="favorite-btn"
         src={ favorited ? blackHeartIcon : whiteHeartIcon }
         onClick={ () => addOrRemoveFavoriteRecipe() }
@@ -58,7 +61,7 @@ function ShareAndFavButtons(props) {
           alt="Botão favoritar"
         />
       </button>
-    </div>
+    </>
   );
 }
 

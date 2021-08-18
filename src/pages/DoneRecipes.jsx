@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import '../styles/DoneRecipes.css';
@@ -7,6 +7,8 @@ import { getStorage } from '../helpers/Storage';
 
 function DoneRecipes() {
   const [linkCopied, setLinkCopied] = useState('');
+
+  const history = useHistory();
 
   function recipesDone() {
     const storage = getStorage('doneRecipes');
@@ -140,6 +142,14 @@ function DoneRecipes() {
             </button>
           </div>
         ))}
+        <div className="buttons-aux">
+          <button
+            onClick={ () => history.push('/comidas') }
+            type="button"
+          >
+            Buscar Novas Receitas
+          </button>
+        </div>
       </section>
     </>
   );

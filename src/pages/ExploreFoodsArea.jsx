@@ -6,6 +6,7 @@ import LowerMenu from '../components/LowerMenu';
 import DropdownAreas from '../components/subcomponents/DropdownAreas';
 import RecipesContext from '../context/RecipesContext';
 import { exploreFoodsByArea, exploreArea, fetchFoods } from '../services/API';
+import '../styles/Explore.css';
 
 function ExploreFoodsArea() {
   const [totalAreas, setTotalAreas] = useState([]);
@@ -43,7 +44,7 @@ function ExploreFoodsArea() {
   return (
     <>
       <Header />
-      {dropDown ? null
+      {!dropDown ? null
         : <DropdownAreas fetchAreas={ fetchAreasToFilter } totalAreas={ totalAreas } />}
       <section className="recipes-container">
         {loading ? <ReactBootStrap.Spinner animation="border" />

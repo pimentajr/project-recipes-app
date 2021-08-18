@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import LowerMenu from '../components/LowerMenu';
-import '../styles/profile.css';
+import '../styles/Explore.css';
 
 function Profile() {
   const history = useHistory();
@@ -18,9 +18,12 @@ function Profile() {
   return (
     <>
       <Header />
-      <div className="rf">
-        {user && getEmail()}
+      <div className="explore">
+        <p>
+          {user && getEmail()}
+        </p>
         <button
+          className="button-categories"
           type="button"
           data-testid="profile-done-btn"
           onClick={ () => history.push('/receitas-feitas') }
@@ -28,6 +31,7 @@ function Profile() {
           Receitas Feitas
         </button>
         <button
+          className="button-categories"
           type="button"
           data-testid="profile-favorite-btn"
           onClick={ () => history.push('/receitas-favoritas') }
@@ -35,6 +39,7 @@ function Profile() {
           Receitas Favoritas
         </button>
         <button
+          className="button-categories"
           type="button"
           data-testid="profile-logout-btn"
           onClick={ () => {

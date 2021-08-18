@@ -6,11 +6,6 @@ import TopHeaderBar from './subcomponents/TopHeaderBar';
 
 function Header() {
   const { searchBar, setSearchBar, dropDown, setDropDown } = useContext(RecipesContext);
-
-  const sec = 10000;
-  setTimeout(() => {
-  }, sec);
-
   return (
     <header>
       <TopHeaderBar

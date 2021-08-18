@@ -20,10 +20,8 @@ function DrinksRecomendations(props) {
                 src={ element.strDrinkThumb }
                 alt="Bebida recomendada"
               />
-              <p>{element.strAlcoholic}</p>
-              <p
-                data-testid={ `${index}-recomendation-title` }
-              >
+              <p className="category">{element.strAlcoholic}</p>
+              <p className="name" data-testid={ `${index}-recomendation-title` }>
                 {element.strDrink}
               </p>
             </Carousel.Item>

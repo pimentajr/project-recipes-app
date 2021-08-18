@@ -5,7 +5,6 @@ import '../styles/RecipesRecomendations.css';
 
 function FoodsRecomendations(props) {
   const { recomendations } = props;
-  console.log(recomendations);
   const recomendationsNumber = 6;
   return (
     <Carousel>
@@ -21,8 +20,9 @@ function FoodsRecomendations(props) {
                 src={ element.strMealThumb }
                 alt="Comida recomendada"
               />
-              <p>{element.strCategory}</p>
+              <p className="category">{element.strCategory}</p>
               <p
+                className="name"
                 data-testid={ `${index}-recomendation-title` }
               >
                 {element.strMeal}

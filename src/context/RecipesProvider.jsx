@@ -15,6 +15,7 @@ function RecipesProvider({ children }) {
   const [foodsByItem, setFoodsByItem] = useState([]);
   const [searchBar, setSearchBar] = useState(false);
   const [dropDown, setDropDown] = useState(false);
+  const [linkCopied, setLinkCopied] = useState('');
 
   const handleClick = (pathname) => (pathname === '/comidas'
     ? handleFoods(radioButton, searchText, setDataFilter, setLoading)
@@ -44,6 +45,8 @@ function RecipesProvider({ children }) {
     setSearchBar,
     dropDown,
     setDropDown,
+    linkCopied,
+    setLinkCopied,
   };
 
   return (

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function DropdownAreas(props) {
   const { totalAreas, fetchAreas } = props;
   return (
-    <label htmlFor="area">
+    <label className="select-dropdwon" htmlFor="area">
       <select
         name="area"
         id="area"

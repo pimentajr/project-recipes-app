@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../styles/login.css';
-import profileIcon from '../images/profileIcon.svg';
 
 function Login() {
   const [user, setUser] = useState([]);
@@ -43,32 +42,32 @@ function Login() {
 
   return (
     <div className="container-login">
-      <img className=" login-img" src={ profileIcon } alt="Profile" />
-      <input
-        className="Email"
-        type="email"
-        data-testid="email-input"
-        placeholder="Digite seu Email"
-        onChange={ ({ target }) => handleEmail(target.value) }
-      />
-      <input
-        className="Password"
-        type="password"
-        data-testid="password-input"
-        placeholder="Digite sua Senha"
-        onChange={ ({ target }) => handlePassword(target.value) }
-      />
-
-      {/* aqui utilizo o link para direciona para tela de comida  */}
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ !email + !password }
-        value={ user }
-        onClick={ ({ target }) => loginToApp(target) }
-      >
-        Entrar
-      </button>
+      <section className="btn-login">
+        <input
+          className="email"
+          type="email"
+          data-testid="email-input"
+          placeholder="Digite seu Email"
+          onChange={ ({ target }) => handleEmail(target.value) }
+        />
+        <input
+          className="password"
+          type="password"
+          data-testid="password-input"
+          placeholder="Digite sua Senha"
+          onChange={ ({ target }) => handlePassword(target.value) }
+        />
+        <button
+          className="login"
+          type="button"
+          data-testid="login-submit-btn"
+          disabled={ !email + !password }
+          value={ user }
+          onClick={ ({ target }) => loginToApp(target) }
+        >
+          Entrar
+        </button>
+      </section>
     </div>
   );
 }

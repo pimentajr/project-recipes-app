@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap';
 import { fetchDrinksDetails, fetchFoods } from '../services/API';
-import '../styles/DrinksDetails.css';
+import '../styles/RecipesDetails.css';
 import ingredientsDetails from '../helpers/ingredientsDetails';
 import FoodsRecomendations from '../components/FoodsRecomendations';
-import { getStorage } from '../helpers/Storage';
+import { getStorage, setStorage } from '../helpers/Storage';
 import ShareAndFavButtons from '../components/subcomponents/ShareAndFavButtons';
+import RecipesContext from '../context/RecipesContext';
+import arrowLeft from '../images/arrowLeft.svg';
 
 function DrinksDetails() {
   const { id } = useParams();
@@ -17,6 +19,14 @@ function DrinksDetails() {
   const [inProgressRecipe, setInProgressRecipe] = useState(false);
   const history = useHistory();
 
+  const { linkCopied } = useContext(RecipesContext);
+
+  if (!localStorage.inProgressRecipes) {
+    setStorage('inProgressRecipes', ({
+      cocktails: {},
+      meals: {},
+    }));
+  }
   useEffect(() => {
     const foodDetails = async (drinkId) => {
       const fetchedDetails = await fetchDrinksDetails(drinkId);
@@ -48,26 +58,47 @@ function DrinksDetails() {
     ? ingredientsDetails(details) : [];
 
   return (
-    <div className="details-container">
+    <section className="details-container">
+      <div className="header-buttons">
+        <button
+          className="btn-return"
+          onClick={ () => { window.history.back(); } }
+          type="button"
+        >
+          <img
+            className="altSvg"
+            data-testid="explore-bottom-btn"
+            alt="Explorer"
+            src={ arrowLeft }
+            width="30px"
+          />
+        </button>
+        <div className="share-heart">
+          <ShareAndFavButtons details={ details } />
+        </div>
+      </div>
       {loading ? (
         <ReactBootStrap.Spinner animation="border" />
       )
         : (
           <>
-            <img
-              src={ details.strDrinkThumb }
-              alt="Detalhe da bebida"
-              data-testid="recipe-photo"
-            />
-            <div className="details-header">
-              <div>
-                <span data-testid="recipe-title">{details.strDrink}</span>
-                <span data-testid="recipe-category">{details.strAlcoholic}</span>
+            <div className="recipe-cardDetail">
+              <p className="link">
+                {linkCopied}
+              </p>
+              <img
+                className="img-recipe"
+                src={ details.strDrinkThumb }
+                alt="Detalhe da bebida"
+                data-testid="recipe-photo"
+              />
+              <div className="details-header">
+                <h5 data-testid="recipe-title">{details.strDrink}</h5>
+                <h5 data-testid="recipe-category">{details.strAlcoholic}</h5>
               </div>
-              <ShareAndFavButtons details={ details } />
             </div>
-            <div className="ingredients-container">
-              <span>Ingredients</span>
+            <section className="ingredients-container">
+              <h3>Ingredientes</h3>
               <ul>
                 {ingredientsAndMeasures.map((ingredient, index) => (
                   <li
@@ -78,26 +109,25 @@ function DrinksDetails() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
             <div className="instructions-container">
-              <span>Instruções</span>
+              <h3>Instruções</h3>
               <p data-testid="instructions">{details.strInstructions}</p>
             </div>
             <div className="recomendation-container">
-              <span>Recomendadas</span>
+              <h3 className="recomendation-title">Recomendadas</h3>
               <FoodsRecomendations recomendations={ recomendations } />
             </div>
           </>)}
       {!doneRecipe && (
         <button
-          data-testid="start-recipe-btn"
+          className="btn-details"
           type="button"
-          className="button-categories"
           onClick={ () => history.push(`/bebidas/${id}/in-progress`) }
         >
           {inProgressRecipe ? 'Continuar Receita' : 'Iniciar Receita'}
         </button>)}
-    </div>
+    </section>
   );
 }
 

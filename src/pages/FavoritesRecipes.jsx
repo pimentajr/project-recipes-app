@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import '../styles/FavoritesRecipes.css';
@@ -8,6 +8,7 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { getStorage, setStorage } from '../helpers/Storage';
 
 function FavoritesRecipes() {
+  const history = useHistory();
   const [linkCopied, setLinkCopied] = useState('');
 
   function favoritesRecipe() {
@@ -50,7 +51,6 @@ function FavoritesRecipes() {
   }
 
   function deletes(id) {
-    console.log(id);
     const filtered = FavoriteRecipes.filter((item) => item.id !== id);
     setStorage('favoriteRecipes', filtered);
     setFavoriteRecipes(filtered);
@@ -147,6 +147,14 @@ function FavoritesRecipes() {
             </div>
           </div>
         ))}
+        <div className="buttons-aux">
+          <button
+            onClick={ () => history.push('/comidas') }
+            type="button"
+          >
+            Buscar Novas Receitas
+          </button>
+        </div>
       </section>
     </>
   );
