@@ -2,16 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getXFirstElementsFromArray } from '../../helpers/utils';
-import ShareIcon from '../../images/shareIcon.svg';
+import ShareButton from '../ShareButton';
 
 class RecipeDoneCard extends React.Component {
   render() {
     const { recipe, count } = this.props;
+    const detailPage = `/${recipe.type}s/${recipe.id}`;
 
     return (
       <section>
         <section>
-          <Link to={ `/${recipe.type}s/${recipe.id}` }>
+          <Link to={ detailPage }>
             <img
               src={ recipe.image }
               alt={ recipe.name }
@@ -36,13 +37,11 @@ class RecipeDoneCard extends React.Component {
           <p data-testid={ `${count}-horizontal-done-date` }>
             { `Feita em: ${recipe.doneDate}` }
           </p>
-          <button type="button">
-            <img
-              src={ ShareIcon }
-              alt="Compartilhar"
-              data-testid={ `${count}-horizontal-share-btn` }
-            />
-          </button>
+          <ShareButton
+            dataTestId={ `${count}-horizontal-share-btn` }
+            testLocation="img"
+            url={ `${window.location.origin}${detailPage}` }
+          />
           <section>
             {
               getXFirstElementsFromArray(recipe.tags, 2).map((tag, index) => (
