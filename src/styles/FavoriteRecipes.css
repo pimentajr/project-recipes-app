@@ -17,7 +17,7 @@
 
 .favorite-recipes-container {
   margin: 10px auto;
-  width: 95%
+  width: 95%;
 }
 
 .favorite-recipe-card {
@@ -46,8 +46,8 @@
 .favorite-recipe-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 120px;
+  justify-content: space-between;
   width: 59%;
 }
 

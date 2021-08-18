@@ -13,8 +13,8 @@
   border-radius: 5px;
   box-shadow: #555 2px 3px 3px;
   height: 200px;
-  overflow-y: hidden;
   margin: 0 5px 15px;
+  overflow-y: hidden;
   width: 150px;
 }
 

@@ -17,7 +17,7 @@
 
 .done-recipes-container {
   margin: 10px auto;
-  width: 95%
+  width: 95%;
 }
 
 .done-recipe-card {
@@ -60,6 +60,6 @@
 
 .done-recipe-share-btn {
   position: absolute;
-  top: 5px;
   right: 5px;
+  top: 5px;
 }

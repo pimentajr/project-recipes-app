@@ -7,7 +7,6 @@
 }
 
 .category-btn {
-  /* background-color: rgba(255, 0, 0, 0.555); */
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -16,10 +15,4 @@
   margin-bottom: 10px;
   padding: 0.1em 0;
   width: 45%;
-}
-
-#root {
-  background-color: #ffa6001a;
-  height: 100%;
-  min-height: 100vh;
 }

@@ -1,9 +1,9 @@
 .header-div {
   align-items: flex-start;
-  display: flex;
-  justify-content: space-between;
   background-color: rgba(255, 166, 0, 0.904);
   color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header-div * {
