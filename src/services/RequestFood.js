@@ -46,12 +46,6 @@ export async function searchById(id) {
   return result.meals;
 }
 
-export async function searchImage(ingredientImage) {
-  const ingredients = await fetch(`https://www.themealdb.com/images/ingredients/${ingredientImage}.png`);
-  const result = await ingredients.url;
-  return result;
-}
-
 export async function searchByCategoryFood(category) {
   const categories = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
   const result = await categories.json();

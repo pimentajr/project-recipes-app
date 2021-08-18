@@ -10,6 +10,7 @@ function ExploreDrink() {
     const request = await searchRandomDrink();
     history.push(`/bebidas/${request.idDrink}`);
   }
+
   return (
     <div>
       <HeaderDrink title="Explorar Bebidas" search={ false } />

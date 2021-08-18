@@ -8,8 +8,8 @@ function foodPage() {
   return (
     <div>
       <HeaderFood title="Comidas" search />
-      <NavCategories />
-      <CardRecipeList />
+      <NavCategories origin="Food" />
+      <CardRecipeList origin="Food" />
       <Footer />
     </div>
   );

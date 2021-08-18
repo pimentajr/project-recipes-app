@@ -8,8 +8,8 @@ function drinkPage() {
   return (
     <div>
       <HeaderDrink title="Bebidas" search />
-      <NavCategories />
-      <CardRecipeList />
+      <NavCategories origin="Drink" />
+      <CardRecipeList origin="Drink" />
       <Footer />
     </div>
   );

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import Footer from '../components/Footer';
 import HeaderDrink from '../components/HeaderDrink';
 import { getIngredients } from '../services/RequestDrinks';
+import { RequestHook } from '../Context/RequestHook';
 
 function ExploreDrinkIngredients() {
   const [ingredientsArray, setIngredientsArray] = useState([]);
+  const { setIngredient } = RequestHook();
   const MAX_RESULT = 12;
+  const history = useHistory();
 
   useEffect(() => {
     async function loadIngredients() {
@@ -16,9 +19,18 @@ function ExploreDrinkIngredients() {
     loadIngredients();
   }, []);
 
+  function handleClick(text) {
+    history.push('/bebidas/');
+    setIngredient(text);
+  }
+
   function renderCard(object, number) {
     return (
-      <Link to="/bebidas/" key={ number }>
+      <button
+        type="button"
+        key={ number }
+        onClick={ () => handleClick(object.strIngredient1) }
+      >
         <div data-testid={ `${number}-ingredient-card` }>
           <p data-testid={ `${number}-card-name` }>{ object.strIngredient1 }</p>
           <img
@@ -28,7 +40,7 @@ function ExploreDrinkIngredients() {
             width="50px"
           />
         </div>
-      </Link>
+      </button>
     );
   }
 

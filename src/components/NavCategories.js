@@ -1,82 +1,76 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { getCategoriesDrink, searchByCategoryDrink } from '../services/RequestDrinks';
 import { getCategoriesFood, searchByCategoryFood } from '../services/RequestFood';
 import { RequestHook } from '../Context/RequestHook';
 
-function NavCategories() {
+function NavCategories({ origin }) {
+  const [clickedButton, setClickedButton] = useState('');
   const [category, setCategory] = useState([]);
-  const { setInitialItensFood, setInitialItensDrink } = RequestHook();
-
-  const local = window.location.href;
-  const url = 'http://localhost:3000/comidas';
-  const MAX_RESULT = 5;
+  const { setFiltered, setByCategory } = RequestHook();
 
   useEffect(() => {
-    async function getAllCategories() {
-      if (local === url) {
-        setInitialItensFood([]);
-        setCategory([]);
-        const items = await getCategoriesFood();
-        setCategory(items);
-      } else if (local !== url) {
-        setCategory([]);
-        setInitialItensDrink([]);
-        const itemsDrink = await getCategoriesDrink();
-        setCategory(itemsDrink);
+    function loadCategories() {
+      let array;
+      if (origin === 'Food') {
+        array = ['All', 'Beef', 'Breakfast', 'Chicken', 'Dessert', 'Goat'];
+      } else if (origin === 'Drink') {
+        array = ['All', 'Ordinary Drink', 'Cocktail',
+          'Milk / Float / Shake', 'Other/Unknown', 'Cocoa'];
       }
+      setCategory(array);
     }
-    getAllCategories();
+    loadCategories();
   }, []);
 
-  async function searchByCategoryDrinkAndFood(text) {
-    if (local === url) {
-      setInitialItensFood([]);
-      const items = await searchByCategoryFood(text);
-      setInitialItensFood(items);
-    } else if (local !== url) {
-      setInitialItensDrink([]);
-      const itemsDrink = await searchByCategoryDrink(text);
-      setInitialItensDrink(itemsDrink);
+  async function searchByCategory(text) {
+    let items;
+    if (origin === 'Food') {
+      if (text === 'All') {
+        items = await getCategoriesFood();
+      }
+      items = await searchByCategoryFood(text);
+    } else if (origin === 'Drink') {
+      if (text === 'All') {
+        items = await getCategoriesDrink();
+      }
+      items = await searchByCategoryDrink(text);
     }
+    setFiltered(items);
   }
 
-  async function renderAllCategoriesButtons() {
-    if (local === url) {
-      setInitialItensFood([]);
-      const items = await getCategoriesFood();
-      setInitialItensFood(items);
-    } if (local !== url) {
-      setInitialItensDrink([]);
-      const itemsDrink = await getCategoriesDrink();
-      setInitialItensDrink(itemsDrink);
+  function handleClick({ value }) {
+    if (clickedButton === '') {
+      setClickedButton(value);
+      setByCategory((state) => !state);
+      searchByCategory(value);
+    } else if (clickedButton !== value) {
+      setClickedButton(value);
+      searchByCategory(value);
+    } else {
+      setByCategory((state) => !state);
     }
   }
 
   return (
     <div>
-      { category ? category.length >= 1 && category
-        .slice(0, MAX_RESULT)
-        .map((item, index) => (
-          <button
-            type="button"
-            key={ index }
-            data-testid={ `${item.strCategory}-category-filter` }
-            onClick={ (e) => searchByCategoryDrinkAndFood(e.target.value) }
-            value={ item.strCategory }
-          >
-            { item.strCategory }
-          </button>
-        )) : <p>Loading...</p> }
-
-      <button
-        type="button"
-        data-testid="All-category-filter"
-        onClick={ () => renderAllCategoriesButtons() }
-      >
-        All
-      </button>
+      { category.map((item, index) => (
+        <button
+          type="button"
+          key={ index }
+          data-testid={ `${item}-category-filter` }
+          value={ item }
+          onClick={ (e) => handleClick(e.target) }
+        >
+          { item }
+        </button>
+      ))}
     </div>
   );
 }
+
+NavCategories.propTypes = {
+  origin: PropTypes.string.isRequired,
+};
 
 export default NavCategories;

@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
-
+import { Link } from 'react-router-dom';
 import { searchById } from '../services/RequestFood';
 import { searchDrinksAll } from '../services/RequestDrinks';
-
 import { RequestHook } from '../Context/RequestHook';
-import CardRecipe from '../components/CardRecipe';
 import Clipboard from '../components/Clipboard';
 
 function DetailsFood(props) {
   const { match: { params: { id } } } = props;
-  const { initialItensDrink, setInitialItensDrink } = RequestHook();
+  const { initialItens, setInitialItens } = RequestHook();
   const [initialItemApi, setInitialItemApi] = useState([]);
   const limitItensRecomend = 6;
 
@@ -22,7 +20,7 @@ function DetailsFood(props) {
 
   async function getAllCategories() {
     const items = await searchDrinksAll();
-    setInitialItensDrink(items);
+    setInitialItens(items);
   }
 
   useEffect(() => {
@@ -30,7 +28,7 @@ function DetailsFood(props) {
     getAllCategories();
   }, []);
 
-  function renderIngrediente(food) {
+  function renderIngredient(food) {
     const array = [];
     const limitItens = 15;
     for (let numero = 1; numero <= limitItens; numero += 1) {
@@ -52,21 +50,35 @@ function DetailsFood(props) {
     return array;
   }
 
-  // const startRecipeButton = () => (
-  //   <button
-  //     data-testid="start-recipe-btn"
-  //     className="start-recipe-btn"
-  //     type="button"
-  //   >
-  //     Iniciar Receita
-  //   </button>
-  // );
+  function renderCard(object, number) {
+    return (
+      <Link to={ `/comidas/${object.idDrink}` }>
+        <button
+          type="button"
+          key={ number }
+          data-testid={ `${number}-recomendation-card` }
+          className="recomendation-button"
+          hidden={ number > 1 }
+        >
+          <p data-testid={ `${number}-recomendation-title` }>{ object.strDrink }</p>
+          <img
+            src={ object.strDrinkThumb }
+            alt={ `${number}-card-name` }
+            width="100px"
+          />
+        </button>
+      </Link>
+    );
+  }
 
   return (
     (!initialItemApi)
       ? (<p>Loading...</p>)
       : initialItemApi.map((meal, index) => (
-        <div key={ index } className="details-page">
+        <div
+          key={ index }
+          className="details-page"
+        >
           <img
             data-testid="recipe-photo"
             src={ meal.strMealThumb }
@@ -79,7 +91,7 @@ function DetailsFood(props) {
           </h4>
           <div>
             <h3>Ingredientes</h3>
-            { renderIngrediente(meal) }
+            { renderIngredient(meal) }
           </div>
           <h3>Instruções</h3>
           <p data-testid="instructions">{ meal.strInstructions }</p>
@@ -90,13 +102,6 @@ function DetailsFood(props) {
             width="150"
             height="150"
           />
-          <button
-            className="buttons"
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Start recipe
-          </button>
 
           <Clipboard />
 
@@ -109,22 +114,9 @@ function DetailsFood(props) {
           </button>
           <div className="recomendation-card">
             {
-              initialItensDrink && initialItensDrink
+              initialItens && initialItens
                 .slice(0, limitItensRecomend)
-                .map((foodRecomend, indexRec) => (
-                  <button
-                    key={ indexRec }
-                    type="button"
-                    data-testid={ `${indexRec}-recomendation-card` }
-                    className="recomendation-button"
-                  >
-                    <CardRecipe
-                      key={ indexRec }
-                      item={ foodRecomend }
-                      index={ indexRec }
-                    />
-                  </button>
-                ))
+                .map((foodRecomend, indexRec) => renderCard(foodRecomend, indexRec))
             }
           </div>
           <button
@@ -134,7 +126,6 @@ function DetailsFood(props) {
           >
             Iniciar Receita
           </button>
-          {/* { startRecipeButton() } */ }
         </div>
       ))
   );

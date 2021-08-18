@@ -9,13 +9,9 @@ function CardRecipe({ item, index }) {
         <Link to={ `/comidas/${object.idMeal}` }>
           <div data-testid={ `${index}-recipe-card` } className="recipe-card">
             <p
-              type="button"
               data-testid={ `${index}-card-name` }
               className="recipe-card-title"
             >
-              { object.strMeal }
-            </p>
-            <p data-testid={ `${index}-recomendation-title` }>
               { object.strMeal }
             </p>
             <img
@@ -50,13 +46,9 @@ function CardRecipe({ item, index }) {
         <Link to={ `/bebidas/${object.idDrink}` }>
           <div data-testid={ `${index}-recipe-card` } className="recipe-card">
             <p
-              type="button"
               data-testid={ `${index}-card-name` }
               className="recipe-card-title"
             >
-              { object.strDrink }
-            </p>
-            <p data-testid={ `${index}-recomendation-title` }>
               { object.strDrink }
             </p>
             <img

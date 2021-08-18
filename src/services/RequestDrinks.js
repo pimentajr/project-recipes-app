@@ -16,32 +16,31 @@ export async function getIngredients() {
   return result.drinks;
 }
 
-export async function searchIngredient(ingredient) {
+export async function searchDrinkByIngredient(ingredient) {
   const ingredients = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const result = await ingredients.json();
-
   return result.drinks;
 }
 
-export async function searchFirstLetter(letter) {
+export async function searchDrinkByFirstLetter(letter) {
   const ingredients = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
   const result = await ingredients.json();
   return result.drinks;
 }
 
-export async function searchName(name) {
+export async function searchDrinkByName(name) {
   const ingredients = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
   const result = await ingredients.json();
   return result.drinks;
 }
 
-export async function searchArea(area) {
+export async function searchDrinkByArea(area) {
   const ingredients = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${area}`);
   const result = await ingredients.json();
   return result.drinks;
 }
 
-export async function searchId(id) {
+export async function searchDrinkById(id) {
   const ingredients = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
   const result = await ingredients.json();
   return result.drinks;

@@ -42,6 +42,7 @@ function Login() {
           />
         </label>
       </div>
+
       <Link to="/comidas">
         <button
           type="button"
