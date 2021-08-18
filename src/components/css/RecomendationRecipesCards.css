@@ -8,3 +8,12 @@
   margin: 0 11px;
   width: 150px;
 }
+
+.scroll-container {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  align-items: center;
+  overflow: hidden;
+}

@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+import {
+  Container,
+  CardIngredient,
+  Image,
+  SVG,
+  TitleIngredient,
+} from './styles/FoodOrDrinkIngredients';
+
 function ExplorerFoodIngredient() {
   const headerProps = {
     title: 'Explorar Ingredientes',
@@ -21,28 +29,41 @@ function ExplorerFoodIngredient() {
       .then((result) => setListIngredients(result.meals));
   }, []);
 
-  console.log(ingredientsLimited);
-
   const imageIngredientUrl = 'https://www.themealdb.com/images/ingredients/';
+
+  const maxLengthFont = 10;
 
   return (
     <div>
       <Header props={ headerProps } />
-      {ingredientsLimited && ingredientsLimited.map((listIngredient, index) => (
-        <Link
-          key={ index }
-          to={ `/comidas/ingredientes/${listIngredient.strIngredient}` }
-        >
-          <div data-testid={ `${index}-ingredient-card` }>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ `${imageIngredientUrl}${listIngredient.strIngredient}-Small.png` }
-              alt={ listIngredient.strIngredient }
-            />
-            <h1 data-testid={ `${index}-card-name` }>{listIngredient.strIngredient}</h1>
-          </div>
-        </Link>
-      ))}
+      <Container>
+        {ingredientsLimited && ingredientsLimited.map((listIngredient, index) => (
+          <CardIngredient key={ index }>
+            <Link
+              to={ `/comidas/ingredientes/${listIngredient.strIngredient}` }
+            >
+              <div data-testid={ `${index}-ingredient-card` }>
+                <SVG viewBox="0 0 20 12" width="100%">
+                  <path d="M0,0 L0,0 L80,20 L0,20z" fill="#FC6E51" />
+                </SVG>
+                <Image
+                  data-testid={ `${index}-card-img` }
+                  src={ `${imageIngredientUrl}${listIngredient.strIngredient}.png` }
+                  alt={ listIngredient.strIngredient }
+                />
+                <TitleIngredient
+                  data-testid={ `${index}-card-name` }
+                  font-size={ listIngredient.strIngredient.length > maxLengthFont
+                    ? 'small' : 'regular' }
+                >
+                  {listIngredient.strIngredient}
+                </TitleIngredient>
+
+              </div>
+            </Link>
+          </CardIngredient>
+        ))}
+      </Container>
       <Footer />
     </div>
   );
