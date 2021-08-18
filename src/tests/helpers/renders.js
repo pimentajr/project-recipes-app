@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import LSProvider from '../../context/LSProvider';
 import MainProvider from '../../context/MainProvider';
@@ -27,13 +27,24 @@ export function renderWithRouterAndBothContext(
   component,
   { route = '/' } = {},
 ) {
-  return render(
-    <LSProvider>
-      <MainProvider>
-        <MemoryRouter initialEntries={ [route] }>
-          { component }
-        </MemoryRouter>
-      </MainProvider>
-    </LSProvider>,
-  );
+  let testLocation;
+  return {
+    ...render(
+      <LSProvider>
+        <MainProvider>
+          <MemoryRouter initialEntries={ [route] }>
+            { component }
+            <Route
+              path="*"
+              render={ ({ location }) => {
+                testLocation = location;
+                return null;
+              } }
+            />
+          </MemoryRouter>
+        </MainProvider>
+      </LSProvider>,
+    ),
+    location: testLocation,
+  };
 }

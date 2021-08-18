@@ -12,11 +12,12 @@ describe('Teste', () => {
   it('1', () => {
     const {
       getByText,
-      history,
+      location,
     } = renderWithRouterAndBothContext(<DoneRecipes />, '/receitas-feitas');
     const aquamarine = getByText('Aquamarine');
+    console.log(location);
     expect(aquamarine).toBeInTheDocument();
     fireEvent.click(aquamarine);
-    console.log(window.history);
+    // console.log(renderWithRouterAndBothContext(<DoneRecipes />, '/receitas-feitas'));
   });
 });
