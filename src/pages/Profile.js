@@ -17,6 +17,11 @@ function Profile({ history: { push } }) {
     push('/receitas-feitas');
   }
 
+  function handleLogout() {
+    localStorage.clear();
+    push('/');
+  }
+
   return (
     <>
       <Header withSearch={ false } pageTitle="Perfil" />
@@ -53,6 +58,7 @@ function Profile({ history: { push } }) {
           data-testid="profile-logout-btn"
           aria-label="Botão de sair"
           type="button"
+          onClick={ handleLogout }
         >
           Sair
         </button>
