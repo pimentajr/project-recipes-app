@@ -87,7 +87,7 @@ function DoneRecipes() {
       </p>
       <section className="done-recipes-container">
         {doneRecipes.length === 0
-          ? <h3 className="msg">Sem receitas prontas!</h3> : doneRecipes.map((
+          ? <h3 className="msg">Sem receitas Feitas!</h3> : doneRecipes.map((
             { category,
               id, type, doneDate, tags, image, area, alcoholicOrNot, name }, index,
           ) => (
