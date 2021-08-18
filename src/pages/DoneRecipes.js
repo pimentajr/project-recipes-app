@@ -33,9 +33,6 @@ const DoneRecipes = () => {
     }
   }
 
-  console.log(filteredRecipes);
-  console.log(doneRecipes);
-
   return (
     <>
       <Header title="Receitas Feitas" />

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import ShareButton from './ShareButton';
 
 function DoneRecipesCard({ recipe, index }) {
-  console.log(index);
   const {
     image,
     area,
