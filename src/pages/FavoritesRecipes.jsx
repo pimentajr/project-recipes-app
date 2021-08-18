@@ -93,60 +93,61 @@ function FavoritesRecipes() {
         {linkCopied}
       </p>
       <section className="done-recipes-container">
-        { FavoriteRecipes.map((
-          { category,
-            id, type, image, area, alcoholicOrNot, name }, index,
-        ) => (
-          <div
-            className="done-recipe-cards"
-            data-testid={ `${index}-recipe-card` }
-            key={ index }
-          >
-            <Link to={ `/${type}s/${id}` }>
-              <img
-                className="recipe-image"
-                data-testid={ `${index}-horizontal-image` }
-                src={ image }
-                alt={ name }
-              />
-            </Link>
-            <div className="infos">
-              {type === 'comida' ? mealInfo(index, category, area)
-                : drinkInfo(index, alcoholicOrNot)}
+        {FavoriteRecipes.length === 0
+          ? <h3 className="msg">Sem receitas favoritas!</h3> : FavoriteRecipes.map((
+            { category,
+              id, type, image, area, alcoholicOrNot, name }, index,
+          ) => (
+            <div
+              className="done-recipe-cards"
+              data-testid={ `${index}-recipe-card` }
+              key={ index }
+            >
               <Link to={ `/${type}s/${id}` }>
-                <p className="name" data-testid={ `${index}-horizontal-name` }>
-                  {name}
-                </p>
+                <img
+                  className="recipe-image"
+                  data-testid={ `${index}-horizontal-image` }
+                  src={ image }
+                  alt={ name }
+                />
               </Link>
-              <div className="icons">
-                <button
-                  type="button"
-                  className="share"
-                  data-testid="share-btn"
-                  onClick={ () => copyUrlToClipboard() }
-                >
-                  <img
-                    src={ shareIcon }
-                    alt="share-icon"
-                    data-testid={ `${index}-horizontal-share-btn` }
-                  />
-                </button>
-                <button
-                  data-testid="heart-btn"
-                  className="heart"
-                  type="button"
-                  onClick={ () => deletes(id) }
-                >
-                  <img
-                    src={ blackHeartIcon }
-                    alt="Botão desfavoritar"
-                    data-testid={ `${index}-horizontal-favorite-btn` }
-                  />
-                </button>
+              <div className="infos">
+                {type === 'comida' ? mealInfo(index, category, area)
+                  : drinkInfo(index, alcoholicOrNot)}
+                <Link to={ `/${type}s/${id}` }>
+                  <p className="name" data-testid={ `${index}-horizontal-name` }>
+                    {name}
+                  </p>
+                </Link>
+                <div className="icons">
+                  <button
+                    type="button"
+                    className="share"
+                    data-testid="share-btn"
+                    onClick={ () => copyUrlToClipboard() }
+                  >
+                    <img
+                      src={ shareIcon }
+                      alt="share-icon"
+                      data-testid={ `${index}-horizontal-share-btn` }
+                    />
+                  </button>
+                  <button
+                    data-testid="heart-btn"
+                    className="heart"
+                    type="button"
+                    onClick={ () => deletes(id) }
+                  >
+                    <img
+                      src={ blackHeartIcon }
+                      alt="Botão desfavoritar"
+                      data-testid={ `${index}-horizontal-favorite-btn` }
+                    />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         <div className="buttons-aux">
           <button
             onClick={ () => history.push('/comidas') }
