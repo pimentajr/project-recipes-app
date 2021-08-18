@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { searchDrinkById } from '../services/RequestDrinks';
 import { searchFoodsAll } from '../services/RequestFood';
 import { RequestHook } from '../Context/RequestHook';
-import CardRecipe from '../components/CardRecipe';
 import Clipboard from '../components/Clipboard';
 
 function DetailsDrink(props) {
@@ -26,6 +26,27 @@ function DetailsDrink(props) {
     getDetailsById();
     getAllCategories();
   }, []);
+
+  function renderCard(object, number) {
+    return (
+      <Link to={ `/comidas/${object.idMeal}` }>
+        <button
+          type="button"
+          key={ number }
+          data-testid={ `${number}-recomendation-card` }
+          className="recomendation-button"
+          hidden={ number > 1 }
+        >
+          <p data-testid={ `${number}-recomendation-title` }>{object.strMeal}</p>
+          <img
+            src={ object.strMealThumb }
+            alt={ `${number}-card-name` }
+            width="100px"
+          />
+        </button>
+      </Link>
+    );
+  }
 
   function renderIngrediente(drink) {
     const array = [];
@@ -72,13 +93,6 @@ function DetailsDrink(props) {
           <h3>Instruções</h3>
           <p data-testid="instructions">{ drink.strInstructions }</p>
 
-          <button
-            className="buttons"
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Start recipe
-          </button>
           <Clipboard />
           <button
             className="buttons"
@@ -91,20 +105,7 @@ function DetailsDrink(props) {
             {
               initialItens && initialItens
                 .slice(0, limitItensRecomend)
-                .map((drinkRecomend, indexRec) => (
-                  <button
-                    key={ indexRec }
-                    type="button"
-                    data-testid={ `${indexRec}-recomendation-card` }
-                    className="recomendation-button"
-                  >
-                    <CardRecipe
-                      key={ indexRec }
-                      item={ drinkRecomend }
-                      index={ indexRec }
-                    />
-                  </button>
-                ))
+                .map((drinkRecomend, indexRec) => renderCard(drinkRecomend, indexRec))
             }
           </div>
           <button
