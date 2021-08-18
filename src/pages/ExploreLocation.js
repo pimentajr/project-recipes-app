@@ -97,6 +97,8 @@ const mapDispatchToProps = (dispatch) => ({
 ExploreLocation.propTypes = {
   history: PropTypes.shape({
     recipes: PropTypes.arrayOf(PropTypes.object),
+    loading: PropTypes.bool,
+    error: PropTypes.string,
     area: PropTypes.arrayOf(PropTypes.object),
     dispatchFetchRecipes: PropTypes.func,
     dispatchFetchArea: PropTypes.func,
