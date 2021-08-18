@@ -49,9 +49,17 @@ class ExplorarIngredientesBebidas extends Component {
         key={ index }
         role="button"
         tabIndex="0"
+        className="recipe-card"
+        style={ { width: '80vw' } }
       >
-        <p data-testid={ `${index}-card-name` }>{ item.strIngredient1 }</p>
-        <img data-testid={ `${index}-card-img` } src={ `https://www.thecocktaildb.com/images/ingredients/${item.strIngredient1}-Small.png` } style={ { width: '80px' } } alt="imagem comida" />
+        <p style={ { fontWeight: '26px' } } data-testid={ `${index}-card-name` }>{ item.strIngredient1 }</p>
+        <img
+          className="recipe-image"
+          style={ { border: 'none' } }
+          data-testid={ `${index}-card-img` }
+          src={ `https://www.thecocktaildb.com/images/ingredients/${item.strIngredient1}-Small.png` }
+          alt="imagem comida"
+        />
       </div>
     ));
   }
@@ -60,7 +68,7 @@ class ExplorarIngredientesBebidas extends Component {
     return (
       <div>
         <Header title="Explorar Ingredientes" />
-        <div style={ { display: 'flex' } }>
+        <div style={ { display: 'flex', flexDirection: 'column', alignItems: 'center' } }>
           { this.renderIngredientsCards() }
         </div>
         <Footer />

@@ -66,7 +66,7 @@ class ReceitasFeitas extends Component {
     return itemsToRender.map((item, index) => {
       if (item.type === 'comida') {
         return (
-          <div key={ index }>
+          <div className="recipe-card" style={ { margin: '20px auto', width: '80vw' } } key={ index }>
             <div
               onClick={ () => this.redirectToRecipeDetails(item.id, 'comidas') }
               onKeyDown={ () => this.redirectToRecipeDetails(item.id, 'comidas') }
@@ -77,18 +77,18 @@ class ReceitasFeitas extends Component {
               <img
                 src={ item.image }
                 alt="recipe representation"
+                className="recipe-image"
                 data-testid={ `${index}-horizontal-image` }
-                style={ { width: '50px' } }
               />
             </div>
-            <p data-testid={ `${index}-horizontal-top-text` }>
+            <p style={ { fontSize: '21px' } } data-testid={ `${index}-horizontal-top-text` }>
               {item.area}
               {' '}
               -
               {' '}
               {item.category}
             </p>
-            <p data-testid={ `${index}-horizontal-done-date` }>{item.doneDate}</p>
+            <p style={ { fontSize: '18px', fontStyle: 'italic' } } data-testid={ `${index}-horizontal-done-date` }>{`Feito em: ${item.doneDate}`}</p>
             {
               item.tags.map(
                 (tag, index2) => {
@@ -110,19 +110,22 @@ class ReceitasFeitas extends Component {
             <button
               onClick={ () => this.shareLinkClick(item.id, 'comidas') }
               type="button"
+              className="share-button"
+              style={ { backgroundColor: 'inherit' } }
             >
-              <img
+              {/* <img
                 data-testid={ `${index}-horizontal-share-btn` }
                 src={ shareIcon }
                 alt="share"
-              />
+              /> */}
+              <i className="fas fa-share-alt-square" />
             </button>
-            {shareButton ? <span style={ { color: 'red' } }>Link copiado!</span> : null}
+            {shareButton ? <span style={ { color: 'red', fontSize: '16px' } }>Link copiado!</span> : null}
           </div>
         );
       }
       return (
-        <div key={ index }>
+        <div className="recipe-card" style={ { margin: '20px auto', width: '80vw' } } key={ index }>
           <div
             onClick={ () => this.redirectToRecipeDetails(item.id, 'bebidas') }
             onKeyDown={ () => this.redirectToRecipeDetails(item.id, 'bebidas') }
@@ -134,24 +137,27 @@ class ReceitasFeitas extends Component {
               src={ item.image }
               alt="recipe representation"
               data-testid={ `${index}-horizontal-image` }
-              style={ { width: '50px' } }
+              className="recipe-image"
             />
 
           </div>
-          <p data-testid={ `${index}-horizontal-top-text` }>{item.alcoholicOrNot}</p>
-          <p data-testid={ `${index}-horizontal-done-date` }>{item.doneDate}</p>
+          <p style={ { fontSize: '21px' } } data-testid={ `${index}-horizontal-top-text` }>{item.alcoholicOrNot}</p>
+          <p style={ { fontSize: '18px', fontStyle: 'italic' } } data-testid={ `${index}-horizontal-done-date` }>{`Feito em: ${item.doneDate}`}</p>
 
           <button
             onClick={ () => this.shareLinkClick(item.id, 'bebidas') }
             type="button"
+            className="share-button"
+            style={ { backgroundColor: 'inherit' } }
           >
-            <img
+            {/* <img
               data-testid={ `${index}-horizontal-share-btn` }
               src={ shareIcon }
               alt="share"
-            />
+            /> */}
+            <i className="fas fa-share-alt-square" />
           </button>
-          {shareButton ? <span style={ { color: 'red' } }>Link copiado!</span> : null}
+          {shareButton ? <span style={ { color: 'red', fontSize: '16px' } }>Link copiado!</span> : null}
         </div>
       );
     });

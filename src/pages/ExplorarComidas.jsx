@@ -14,19 +14,21 @@ export default class ExplorarComidas extends Component {
     return (
       <div>
         <Header title="Explorar Comidas" />
-        <Link to="/explorar/comidas/ingredientes">
-          <button type="button" data-testid="explore-by-ingredient">
-            Por Ingredientes
+        <div className="profile-buttons" style={ { display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', height: '50vh' } }>
+          <Link to="/explorar/comidas/ingredientes">
+            <button type="button" data-testid="explore-by-ingredient">
+              Por Ingredientes
+            </button>
+          </Link>
+          <Link to="/explorar/comidas/area">
+            <button type="button" data-testid="explore-by-area">
+              Por Local de Origem
+            </button>
+          </Link>
+          <button onClick={ this.surpriseMe } type="button" data-testid="explore-surprise">
+            Me Surpreenda!
           </button>
-        </Link>
-        <Link to="/explorar/comidas/area">
-          <button type="button" data-testid="explore-by-area">
-            Por Local de Origem
-          </button>
-        </Link>
-        <button onClick={ this.surpriseMe } type="button" data-testid="explore-surprise">
-          Me Surpreenda!
-        </button>
+        </div>
         <Footer />
       </div>
     );

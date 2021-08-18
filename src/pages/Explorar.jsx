@@ -9,7 +9,7 @@ class Explorar extends Component {
     return (
       <div>
         <Header title="Explorar" />
-        <div>
+        <div className="profile-buttons" style={ { display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', height: '50vh' } }>
           <Link
             to="explorar/comidas"
           >

@@ -5,10 +5,12 @@ class FiltersDoneAndFavorites extends React.Component {
   render() {
     const { filterPerType } = this.props;
     return (
-      <div>
+      <div style={ { display: 'flex', justifyContent: 'center' } }>
         <button
           onClick={ () => filterPerType() }
           data-testid="filter-by-all-btn"
+          className="filter-category-button"
+          style={ { width: '100px' } }
           type="button"
         >
           All
@@ -16,6 +18,8 @@ class FiltersDoneAndFavorites extends React.Component {
         <button
           onClick={ () => filterPerType('comida') }
           data-testid="filter-by-food-btn"
+          className="filter-category-button"
+          style={ { width: '100px' } }
           type="button"
         >
           Food
@@ -23,6 +27,8 @@ class FiltersDoneAndFavorites extends React.Component {
         <button
           onClick={ () => filterPerType('bebida') }
           data-testid="filter-by-drink-btn"
+          className="filter-category-button"
+          style={ { width: '100px' } }
           type="button"
         >
           Drinks

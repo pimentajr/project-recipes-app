@@ -64,6 +64,7 @@ class ExplorarComidasPorArea extends Component {
         <select
           data-testid="explore-by-area-dropdown"
           onChange={ this.handleChange }
+          style={ { width: '80vw', margin: '15px 30px', padding: '10px', fontWeight: 'bold', border: '1px solid #307DFB', borderRadius: '6px', backgroundColor: '#f0f2f7' } }
         >
           <option
             defaultValue

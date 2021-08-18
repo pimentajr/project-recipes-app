@@ -14,14 +14,16 @@ export default class ExplorarBebidas extends Component {
     return (
       <div>
         <Header title="Explorar Bebidas" />
-        <Link to="/explorar/bebidas/ingredientes">
-          <button type="button" data-testid="explore-by-ingredient">
-            Por Ingredientes
+        <div className="profile-buttons" style={ { display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', height: '50vh' } }>
+          <Link to="/explorar/bebidas/ingredientes">
+            <button type="button" data-testid="explore-by-ingredient">
+              Por Ingredientes
+            </button>
+          </Link>
+          <button onClick={ this.surpriseMe } type="button" data-testid="explore-surprise">
+            Me Surpreenda!
           </button>
-        </Link>
-        <button onClick={ this.surpriseMe } type="button" data-testid="explore-surprise">
-          Me Surpreenda!
-        </button>
+        </div>
         <Footer />
       </div>
     );
