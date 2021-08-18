@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ScrollContainer from 'react-indiana-drag-scroll';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ExploreFood from '../images/exploreFood.png';
@@ -13,11 +12,14 @@ import {
   Green,
   Red,
   CardContainer,
+  CardBox,
   ImageFood,
   ImageShadow,
   ImageDrink,
-  CardTitle,
-  CardTitleBordered,
+  CardFoodTitle,
+  CardDrinkTitle,
+  CardFoodTitleBordered,
+  CardDrinkTitleBordered,
 } from './styles/ExplorerStyle';
 
 function Explorer() {
@@ -36,30 +38,32 @@ function Explorer() {
         <Green>.</Green>
         <Red>.</Red>
       </Title>
-      <ScrollContainer className="scroll-container">
+      <div className="scroll-container">
         <CardContainer food>
           <Link className="explore-link" to="/explorar/comidas">
 
-            <CardTitle food>FOOD</CardTitle>
-            <CardTitleBordered food>FOOD</CardTitleBordered>
+            <CardFoodTitle>FOOD</CardFoodTitle>
+            <CardFoodTitleBordered>FOOD</CardFoodTitleBordered>
+
+            <CardBox food />
 
             <ImageFood src={ ExploreFood } />
             <ImageShadow />
-
           </Link>
         </CardContainer>
 
         <CardContainer drink>
           <Link className="explore-link" to="/explorar/bebidas">
 
-            <CardTitle drink>DRINK</CardTitle>
-            <CardTitleBordered drink>DRINK</CardTitleBordered>
+            <CardDrinkTitle>DRINK</CardDrinkTitle>
+            <CardDrinkTitleBordered>DRINK</CardDrinkTitleBordered>
+
+            <CardBox drink />
 
             <ImageDrink src={ ExploreDrink } />
-
           </Link>
         </CardContainer>
-      </ScrollContainer>
+      </div>
       <Footer />
     </div>
   );
