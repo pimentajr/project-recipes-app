@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 .meals {
   align-items: center;
   background: #0fa36b;
