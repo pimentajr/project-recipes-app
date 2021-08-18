@@ -162,7 +162,7 @@
 .footer {
   align-items: center;
   background-color: white;
-  bottom: -1px;
+  bottom: 0;
   display: flex;
   height: 8vh;
   justify-content: space-between;
