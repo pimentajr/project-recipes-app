@@ -27,6 +27,7 @@ function ExplorarArea() {
       <select
         onChange={ ({ target }) => setCurrentArea(target.value) }
         data-testid="explore-by-area-dropdown"
+        className="form-select explore-area-select"
       >
         <option data-testid="All-option" value="">All</option>
         {
