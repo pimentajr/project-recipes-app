@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../ReturnButton.css';
 
 class ReturnButton extends Component {
@@ -9,8 +10,12 @@ class ReturnButton extends Component {
       <button className="return-button" type="button" onClick={ () => history.goBack() }>
         {'<'}
       </button>
-    )
+    );
   }
 }
 
-export default withRouter(ReturnButton)
+ReturnButton.propTypes = {
+  history: PropTypes.func.isRequired,
+};
+
+export default withRouter(ReturnButton);
