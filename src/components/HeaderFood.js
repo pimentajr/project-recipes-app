@@ -28,7 +28,6 @@ function HeaderFood({ title, search }) {
     switch (option) {
     case (nameSearch):
       request = await searchByName(inputTextSearch);
-      console.log(request);
       if (request === null || request.length < 1) {
         alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         break;

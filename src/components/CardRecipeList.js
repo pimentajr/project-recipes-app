@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-// import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
+// import { Redirect } from 'react-router-dom';
 import { RequestHook } from '../Context/RequestHook';
 import CardRecipe from './CardRecipe';
 import { searchFoodsAll, searchByIngredient } from '../services/RequestFood';
@@ -16,7 +16,6 @@ function CardRecipeList({ origin }) {
     setInitialItens } = RequestHook();
 
   const MAX_RESULT = 12;
-  // const history = useHistory();
 
   async function loadInitialItens() {
     let request;
@@ -39,16 +38,20 @@ function CardRecipeList({ origin }) {
   }, []);
 
   function renderItems(array) {
-    // if (array.length === 1) {
-    //   if (origin === 'Food') {
-    //     return (history.push(`comidas/${array[0].idMeal}`));
-    //   }
-    //   return (history.push(`bebidas/${array[0].idDrink}`));
-    // }
     return (
       array.slice(0, MAX_RESULT).map((item, index) => (
-        <CardRecipe key={ index } item={ item } index={ index } />)));
+        <CardRecipe key={ index } item={ item } index={ index } />))
+    );
   }
+
+  // function changeLocation(array) {
+  //   if (array.length === 1) {
+  //     if (origin === 'Food') {
+  //       return <Redirect to={ `comidas/${array[0].idMeal}` } />;
+  //     }
+  //     return <Redirect to={ `bebidas/${array[0].idDrink}` } />;
+  //   }
+  // }
 
   return (
     <div>
