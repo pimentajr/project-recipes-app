@@ -168,7 +168,7 @@ class DrinkDetails extends Component {
                 <h1 data-testid="recipe-title">
                   { result.strDrink }
                 </h1>
-                <hr id="seraquevai" />
+                <hr id="hrcontainer" />
                 <p data-testid="recipe-category">
                   { result.strAlcoholic }
                 </p>
@@ -221,7 +221,10 @@ class DrinkDetails extends Component {
               <button
                 id="initRecipe"
                 type="button"
-                style={ { display: this.verifyRecipeIsDone() ? 'none' : 'initial' } }
+                style={ {
+                  display: this.verifyRecipeIsDone() ? 'none' : 'initial',
+                  width: '400px',
+                } }
                 data-testid="start-recipe-btn"
                 onClick={ () => this.addMealInProgress() }
               >
