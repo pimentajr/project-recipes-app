@@ -193,7 +193,7 @@ class FoodDetails extends Component {
               <button
                 style={ { color: 'white',
                   backgroundColor: 'rgb(151, 0, 0)',
-                  width: '400px' } }
+                  width: '100%' } }
                 type="button"
                 data-testid="share-btn"
                 onClick={ () => this.setState({ copyToClipboard: true }) }
@@ -225,10 +225,7 @@ class FoodDetails extends Component {
               <button
                 id="initRecipe"
                 type="button"
-                style={ {
-                  display: this.verifyRecipeIsDone() ? 'none' : 'initial',
-                  width: '400px',
-                } }
+                style={ { display: this.verifyRecipeIsDone() ? 'none' : 'initial' } }
                 data-testid="start-recipe-btn"
                 onClick={ () => this.addMealInProgress() }
               >

@@ -25,13 +25,13 @@ export default class ExploreFoodIngredients extends Component {
 
   render() {
     const { ingredients } = this.state;
-    const magicNUMBER = 12;
+    const MAX_LENGTH = 12;
     return (
       <div className="explore-container">
         <HeaderWithoutSearch title="Explorar Ingredientes" />
         { ingredients && (
           ingredients.map((item, index) => (
-            index < magicNUMBER && (
+            index < MAX_LENGTH && (
               <Link
                 to={ {
                   pathname: '/comidas',

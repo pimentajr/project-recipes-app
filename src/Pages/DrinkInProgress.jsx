@@ -166,7 +166,7 @@ export default class DrinkInProgress extends Component {
                 <h1 data-testid="recipe-title">
                   { result.strDrink }
                 </h1>
-                <hr id="hrcontainer" />
+                <hr id="seraquevai" />
                 <p data-testid="recipe-category">
                   { result.strAlcoholic }
                 </p>
@@ -230,7 +230,6 @@ export default class DrinkInProgress extends Component {
                 data-testid="finish-recipe-btn"
                 onClick={ () => this.setDoneRecipe() }
                 disabled={ this.enableButton() }
-                style={ { width: '400px' } }
               >
                 Finalizar Receita
               </button>
