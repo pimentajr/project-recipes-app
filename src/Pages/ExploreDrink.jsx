@@ -6,7 +6,7 @@ import ButtonsExplorer from '../Components/ButtonsExplorer';
 export default class ExploreDrink extends Component {
   render() {
     return (
-      <div className="explore-container">
+      <div className="explore-container container-link-explorer">
         <HeaderWithoutSearch title="Explorar Bebidas" />
         <ButtonsExplorer type="bebidas" />
         <FooterMenu />

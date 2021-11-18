@@ -8,8 +8,15 @@ export default class Explore extends Component {
     return (
       <div className="explore-container">
         <HeaderWithoutSearch title="Explorar" />
-        <Link data-testid="explore-food" to="/explorar/comidas">Explorar Comidas</Link>
-        <Link data-testid="explore-drinks" to="/explorar/bebidas">Explorar Bebidas</Link>
+        <div className="container-link container-link-explorer">
+          <Link data-testid="explore-food" to="/explorar/comidas">Explorar Comidas</Link>
+          <Link
+            data-testid="explore-drinks"
+            to="/explorar/bebidas"
+          >
+            Explorar Bebidas
+          </Link>
+        </div>
         <FooterMenu />
       </div>
     );

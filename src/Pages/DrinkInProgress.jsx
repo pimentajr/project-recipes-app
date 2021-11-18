@@ -166,7 +166,7 @@ export default class DrinkInProgress extends Component {
                 <h1 data-testid="recipe-title">
                   { result.strDrink }
                 </h1>
-                <hr id="seraquevai" />
+                <hr id="separator" />
                 <p data-testid="recipe-category">
                   { result.strAlcoholic }
                 </p>

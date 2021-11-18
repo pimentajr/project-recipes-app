@@ -64,7 +64,7 @@ export default class ButtonsExplorer extends Component {
       break;
     }
     return (
-      <div>
+      <div className="container-link">
         <Link
           to={ links.screenIngredients }
           data-testid="explore-by-ingredient"

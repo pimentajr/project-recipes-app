@@ -78,7 +78,7 @@ class RecipesList extends Component {
     return (
       <div className="button-container">
         <Button
-          variant="warning"
+          variant="light"
           className="filter-button"
           type="button"
           data-testid="All-category-filter"
@@ -90,7 +90,7 @@ class RecipesList extends Component {
           index < maxFilters
           && (
             <Button
-              variant="warning"
+              variant="light"
               className="filter-button"
               type="button"
               key={ index }

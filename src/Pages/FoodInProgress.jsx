@@ -166,7 +166,7 @@ export default class FoodInProgress extends Component {
                 <h1 data-testid="recipe-title">
                   { result.strMeal }
                 </h1>
-                <hr id="seraquevai" />
+                <hr id="separator" />
                 <p data-testid="recipe-category">
                   { result.strCategory }
                 </p>

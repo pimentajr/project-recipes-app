@@ -65,11 +65,11 @@ class HeaderFood extends Component {
         </div>
         { inputLoading && (
           <Form
-            className="text-center lg"
+            className="text-center lg form"
             onSubmit={ this.submitRequest }
           >
             <Form.Control
-              className="text-center"
+              className="text-center form-text"
               data-testid="search-input"
               type="text"
               placeholder="Procure Aqui"
