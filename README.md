@@ -38,10 +38,10 @@ Com os softwares instalados, siga as instruções abaixo:
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/pimentajr/project-recipes-app.git
+git clone https://github.com/pimentajr/trybe-recipes-app.git
 
 # Entrar no diretório
-cd project-recipes-app
+cd trybe-recipes-app
 
 # Baixar as dependências
 npm i
